@@ -1,0 +1,43 @@
+/* página de inicio */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* pagina tiempo real */
+#contenedorProductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
