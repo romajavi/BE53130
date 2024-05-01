@@ -57,7 +57,7 @@
   {
     "id": 6,
     "title": "Transportadora Canil",
-    "description": "Transportadora Canil de Polipropileno y acero",
+    "description": "Transportadora Canil de Polipropileno",
     "price": 55,
     "img": "imagen.jpg",
     "code": "code6",
@@ -108,17 +108,5 @@
     "stock": 9,
     "category": "Transporte",
     "status": true
-  },
-  {
-    "title": "pro",
-    "description": "pro",
-    "price": "10",
-    "img": "Sin Imagen",
-    "code": "code200",
-    "stock": "10",
-    "category": "Alimentos",
-    "status": true,
-    "thumbnails": [],
-    "id": 11
   }
 ]

@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos en tiempo real</title>
-    <link rel="stylesheet" href="../public/styles.css"> <!-- Enlace al archivo CSS -->
-</head>
-<body>
+<div class="linea-horizontal"></div>
+<div class="menu-container">
+  <div class="logo">
+    <a href="/">
+      <img src="/img/2.png" alt="Logo de la empresa">
+    </a>
+  </div>
+  <div class="menu">
+        <span class="separator">|</span>
+        <a href="/login" class="menu-item">Iniciar Sesión</a>
+        <span class="separator">|</span>
+        <a href="/register" class="menu-item">Registrarme</a>
+        <span class="separator">|</span>
+        <a href="/products" class="menu-item">Productos</a>
+        <span class="separator">|</span>
+  </div>
+</div>
 
 <h1>Productos en tiempo real</h1>
 
 <div id="contenedorProductos"></div>
 
-<h2>Formulario para agregar productos</h2>
-<form>
+<div class="formulario">
+  <h2>Formulario para agregar productos</h2>
+  <form>
     <input type="text" id="title" placeholder="Titulo">
     <input type="text" id="description" placeholder="Descripcion">
     <input type="number" id="price" placeholder="Precio">
@@ -22,14 +31,59 @@
     <input type="number" id="stock" placeholder="Stock">
     <input type="text" id="category" placeholder="Categoria">
     <select id="status">
-        <option value="true"> Activo </option>
-        <option value="false"> Inactivo </option>
+      <option value="true">Activo</option>
+      <option value="false">Inactivo</option>
     </select>
-    <button type="button" id="btnEnviar"> Enviar </button>
-</form>
+    <button type="button" id="btnEnviar">Enviar</button>
+  </form>
+</div>
 
 <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
-<script src="js/main.js"></script>
+<script>
+  const socket = io();
 
-</body>
-</html>
+  const btnEnviar = document.getElementById('btnEnviar');
+  btnEnviar.addEventListener('click', () => {
+    const producto = {
+      title: document.getElementById('title').value,
+      description: document.getElementById('description').value,
+      price: parseFloat(document.getElementById('price').value),
+      img: document.getElementById('img').value,
+      code: document.getElementById('code').value,
+      stock: parseInt(document.getElementById('stock').value),
+      category: document.getElementById('category').value,
+      status: document.getElementById('status').value === 'true',
+    };
+
+    socket.emit('agregarProducto', producto);
+  });
+
+  socket.on('productos', (productos) => {
+    const contenedorProductos = document.getElementById('contenedorProductos');
+    contenedorProductos.innerHTML = '';
+
+    productos.forEach((producto) => {
+      const productoElement = document.createElement('div');
+      productoElement.innerHTML = `
+        <h3>${producto.title}</h3>
+        <p>Precio: ${producto.price}</p>
+        <p>Código: ${producto.code}</p>
+        <p>Stock: ${producto.stock}</p>
+        <button class="eliminar-btn" data-id="${producto._id}">Eliminar</button>
+      `;
+      contenedorProductos.appendChild(productoElement);
+    });
+
+
+    const eliminarBtns = document.querySelectorAll('.eliminar-btn');
+    eliminarBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const productoId = btn.dataset.id;
+        socket.emit('eliminarProducto', productoId);
+      });
+    });
+  });
+</script>
+
+<link rel="stylesheet" href="/css/styles.css">
+<div class="linea-horizontal"></div>

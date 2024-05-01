@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="linea-horizontal"></div>
+        <div class="menu-container">
+            <div class="logo">
+                <a href="/">
+                <img src="/img/2.png" alt="Logo de la empresa">
+                </a>
+            </div>
+            <div class="menu">
+                <span class="separator">|</span>
+                <a href="/login" class="menu-item">Iniciar Sesión</a>
+                <span class="separator">|</span>
+                <a href="/register" class="menu-item">Registrarme</a>
+                <span class="separator">|</span>
+                <a href="/products" class="menu-item">Productos</a>
+                <span class="separator">|</span>
+            </div>
+    </div>
+    <h1>Login</h1>
+    {{#if error}}
+    <p class="error">{{error}}</p>
+    {{/if}}
+    <div class="formulario">
+        <form action="/login" method="POST">
+                <div class="form-group">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+</body>
+</html>

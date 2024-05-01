@@ -1,0 +1,46 @@
+<div class="linea-horizontal"></div>
+<div class="menu-container">
+  <div class="logo">
+    <a href="/">
+      <img src="/img/2.png" alt="Logo de la empresa">
+    </a>
+  </div>
+  <div class="menu">
+        <span class="separator">|</span>
+        <a href="/login" class="menu-item">Iniciar Sesión</a>
+        <span class="separator">|</span>
+        <a href="/register" class="menu-item">Registrarme</a>
+        <span class="separator">|</span>
+        <a href="/products" class="menu-item">Productos</a>
+        <span class="separator">|</span>
+  </div>
+</div>
+
+<h1>Productos</h1>
+
+<div id="contenedorProductos">
+  {{#each products}}
+    <div class="product-card">
+      <h3>{{this.title}}</h3>
+      <p>{{this.description}}</p>
+      <p>Precio: ${{this.price}}</p>
+      <p>Categoría: {{this.category}}</p>
+      <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+    </div>
+  {{/each}}
+</div>
+
+<div class="pagination">
+  {{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}">Anterior</a>
+  {{/if}}
+  
+  <span>Página {{page}} de {{totalPages}}</span>
+  
+  {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}">Siguiente</a>
+  {{/if}}
+</div>
+
+<script src="/js/main.js"></script>
+<link rel="stylesheet" href="/css/styles.css">
