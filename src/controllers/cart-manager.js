@@ -1,9 +1,10 @@
-const Cart = require("../models/cart");
+const { client } = require("../database");
+const { ObjectId } = require('mongodb');
 
 class CartManager {
   async cargarCarritos() {
     try {
-      this.carts = await Cart.find();
+      this.carts = await client.db().collection('carts').find().toArray();
     } catch (error) {
       console.log("Error al cargar los carritos: ", error);
       throw error;
@@ -12,8 +13,8 @@ class CartManager {
 
   async crearCarrito() {
     try {
-      const nuevoCarrito = new Cart({ products: [] });
-      await nuevoCarrito.save();
+      const nuevoCarrito = { products: [] };
+      await client.db().collection('carts').insertOne(nuevoCarrito);
       return nuevoCarrito;
     } catch (error) {
       console.log("Error al crear el carrito: ", error);
@@ -23,7 +24,7 @@ class CartManager {
 
   async getCarritoById(carritoId) {
     try {
-      return Cart.findById(carritoId).populate('products.product');
+      return client.db().collection('carts').findOne({ _id: new ObjectId(carritoId) });
     } catch (error) {
       console.log("Error al obtener el carrito por ID: ", error);
       throw error;
@@ -32,12 +33,12 @@ class CartManager {
 
   async agregarProductoAlCarrito(carritoId, productoId, quantity = 1) {
     try {
-      const carrito = await Cart.findById(carritoId);
+      const carrito = await client.db().collection('carts').findOne({ _id: new ObjectId(carritoId) });
       if (!carrito) {
         throw new Error("Carrito no encontrado");
       }
       carrito.products.push({ product: productoId, quantity });
-      await carrito.save();
+      await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
       return carrito;
     } catch (error) {
       console.log("Error al agregar producto al carrito: ", error);
@@ -55,7 +56,7 @@ class CartManager {
       const productoIndex = carrito.products.findIndex(item => item.product.toString() === productoId);
       if (productoIndex !== -1) {
         carrito.products.splice(productoIndex, 1);
-        await carrito.save();
+        await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
         return carrito;
       } else {
         throw new Error("Producto no encontrado en el carrito");
@@ -82,7 +83,7 @@ class CartManager {
         quantity: item.quantity || 1
       }));
       carrito.products = productosFormateados;
-      await carrito.save();
+      await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
       return carrito;
     } catch (error) {
       console.log("Error al actualizar el carrito: ", error);
@@ -100,7 +101,7 @@ class CartManager {
       const productoIndex = carrito.products.findIndex(item => item.product.toString() === productoId);
       if (productoIndex !== -1) {
         carrito.products[productoIndex].quantity = nuevaCantidad;
-        await carrito.save();
+        await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
         return carrito;
       } else {
         // Si el producto no existe en el carrito, agregarlo con la nueva cantidad
@@ -109,7 +110,7 @@ class CartManager {
           quantity: nuevaCantidad
         };
         carrito.products.push(newProduct);
-        await carrito.save();
+        await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
         return carrito;
       }
     } catch (error) {
@@ -125,7 +126,7 @@ class CartManager {
         throw new Error("Carrito no encontrado");
       }
       carrito.products = [];
-      await carrito.save();
+      await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
       return carrito;
     } catch (error) {
       console.log("Error al vaciar el carrito: ", error);

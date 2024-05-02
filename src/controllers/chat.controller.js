@@ -1,12 +1,13 @@
-const Message = require('../models/message.model');
+const { client } = require("../database");
 
 const sendMessage = async (data) => {
   try {
-    const message = new Message({
+    const message = {
       user: data.user,
       message: data.message,
-    });
-    await message.save();
+      timestamp: new Date(),
+    };
+    await client.db().collection('messages').insertOne(message);
     console.log('Mensaje guardado en la base de datos');
   } catch (error) {
     console.error('Error al guardar el mensaje en la base de datos:', error);
