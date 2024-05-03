@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configuración para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Configuramos Handlebars
+// CHandlebars
 app.engine('handlebars', engine({
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
@@ -66,9 +66,23 @@ app.use("/api/carts", cartsRouter);
 app.use("/chat", chatRouter);
 app.use("/", viewsRouter);
 
-// Configuramos la conexión de socket.io
+// la conexión de socket.io
 io.on('connection', (socket) => {
-  // Resto del código de configuración de socket.io
+  console.log('Un usuario se ha conectado');
+
+  socket.on('agregarProducto', async (producto) => {
+    try {
+      await productManager.addProduct(producto);
+      const productos = await productManager.getProducts();
+      io.emit('productos', productos.payload);
+    } catch (error) {
+      console.error('Error al agregar producto:', error);
+    }
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Un usuario se ha desconectado');
+  });
 });
 
 // Puerto
