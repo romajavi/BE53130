@@ -6,13 +6,13 @@
     </a>
   </div>
   <div class="menu">
-        <span class="separator">|</span>
-        <a href="/login" class="menu-item">Iniciar Sesión</a>
-        <span class="separator">|</span>
-        <a href="/register" class="menu-item">Registrarme</a>
-        <span class="separator">|</span>
-        <a href="/products" class="menu-item">Productos</a>
-        <span class="separator">|</span>
+    <span class="separator">|</span>
+    <a href="/login" class="menu-item">Iniciar Sesión</a>
+    <span class="separator">|</span>
+    <a href="/register" class="menu-item">Registrarme</a>
+    <span class="separator">|</span>
+    <a href="/products" class="menu-item">Productos</a>
+    <span class="separator">|</span>
   </div>
 </div>
 
@@ -25,7 +25,8 @@
       <p>{{this.description}}</p>
       <p>Precio: ${{this.price}}</p>
       <p>Categoría: {{this.category}}</p>
-      <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+      <input type="number" class="quantity-input" value="1" min="1" max="{{this.stock}}" data-id="{{this._id}}">
+      <button class="add-to-cart" data-id="{{this._id}}">Agregar al carrito</button>
     </div>
   {{/each}}
 </div>
@@ -42,5 +43,6 @@
   {{/if}}
 </div>
 
+<script src="/socket.io/socket.io.js"></script>
 <script src="/js/main.js"></script>
 <link rel="stylesheet" href="/css/styles.css">

@@ -29,8 +29,8 @@ router.get('/:cid', async (req, res) => {
   }
 });
 
-// Para Agrgar un producto a un carrito
-router.post("/:cid/products/:pid", async (req, res) => {
+// Para agregar un producto a un carrito
+router.post('/:cid/products/:pid', async (req, res) => {
   const cartId = req.params.cid;
   const productId = req.params.pid;
   const { quantity } = req.body;
@@ -38,48 +38,34 @@ router.post("/:cid/products/:pid", async (req, res) => {
     const cart = await cartManager.agregarProductoAlCarrito(cartId, productId, quantity);
     res.json(cart);
   } catch (error) {
-    console.error("Error al agregar producto al carrito:", error.message);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error('Error al agregar producto al carrito:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
 
 router.delete('/:cid/products/:pid', async (req, res) => {
-    const cartId = req.params.cid;
-    const productId = req.params.pid;
-    try {
-      const cart = await cartManager.eliminarProductoDelCarrito(cartId, productId);
-      res.json(cart);
-    } catch (error) {
-      console.error('Error al eliminar producto del carrito:', error);
-      res.status(500).json({ error: 'Error interno del servidor' });
-    }
-  });
-
-  router.put('/:cid/products/:pid', async (req, res) => {
-    const cartId = req.params.cid;
-    const productId = req.params.pid;
-    const { quantity } = req.body;
-    try {
-      const cart = await cartManager.actualizarCantidadDeProducto(cartId, productId, quantity);
-      res.json(cart);
-    } catch (error) {
-      console.error('Error al actualizar la cantidad del producto en el carrito:', error);
-      res.status(500).json({ error: 'Error interno del servidor' });
-    }
-  });
+  const cartId = req.params.cid;
+  const productId = req.params.pid;
+  try {
+    const cart = await cartManager.eliminarProductoDelCarrito(cartId, productId);
+    res.json(cart);
+  } catch (error) {
+    console.error('Error al eliminar producto del carrito:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
 
 router.put('/:cid/products/:pid', async (req, res) => {
-    const cartId = req.params.cid;
-    const productId = req.params.pid;
-    const { quantity } = req.body;
-    try {
-      const cart = await cartManager.actualizarCantidadDeProducto(cartId, productId, quantity);
-      res.json(cart);
-    } catch (error) {
-      console.error('Error al actualizar la cantidad del producto en el carrito:', error);
-      res.status(500).json({ error: 'Error interno del servidor' });
-    }
-  });
-
+  const cartId = req.params.cid;
+  const productId = req.params.pid;
+  const { quantity } = req.body;
+  try {
+    const cart = await cartManager.actualizarCantidadDeProducto(cartId, productId, quantity);
+    res.json(cart);
+  } catch (error) {
+    console.error('Error al actualizar la cantidad del producto en el carrito:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
 
 module.exports = router;

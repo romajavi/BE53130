@@ -37,7 +37,12 @@ class CartManager {
       if (!carrito) {
         throw new Error("Carrito no encontrado");
       }
-      carrito.products.push({ product: productoId, quantity });
+      const productoIndex = carrito.products.findIndex(item => item.product.toString() === productoId);
+      if (productoIndex !== -1) {
+        carrito.products[productoIndex].quantity += quantity;
+      } else {
+        carrito.products.push({ product: productoId, quantity });
+      }
       await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
       return carrito;
     } catch (error) {
@@ -73,11 +78,11 @@ class CartManager {
       if (!carrito) {
         throw new Error("Carrito no encontrado");
       }
-      // Verificar si nuevosProductos es un array
+
       if (!Array.isArray(nuevosProductos)) {
         throw new Error("Los nuevos productos deben ser un array");
       }
-      // Verificar y formatear los nuevos productos
+
       const productosFormateados = nuevosProductos.map(item => ({
         product: item.product,
         quantity: item.quantity || 1
@@ -104,7 +109,7 @@ class CartManager {
         await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
         return carrito;
       } else {
-        // Si el producto no existe en el carrito, agregarlo con la nueva cantidad
+
         const newProduct = {
           product: productoId,
           quantity: nuevaCantidad

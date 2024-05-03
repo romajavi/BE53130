@@ -33,7 +33,7 @@ async function connectToDatabase() {
   try {
     await client.connect();
     console.log('Conexión exitosa a MongoDB Atlas');
-    // Aquí puedes realizar operaciones con la base de datos
+
   } catch (error) {
     console.error('Error al conectar a MongoDB Atlas:', error);
   }
@@ -66,9 +66,18 @@ app.use("/api/carts", cartsRouter);
 app.use("/chat", chatRouter);
 app.use("/", viewsRouter);
 
-// la conexión de socket.io
+// Configuración de la conexión de socket.io
 io.on('connection', (socket) => {
   console.log('Un usuario se ha conectado');
+
+  socket.on('getProducts', async () => {
+    try {
+      const productos = await productManager.getProducts();
+      io.emit('productos', productos.payload);
+    } catch (error) {
+      console.error('Error al obtener los productos:', error);
+    }
+  });
 
   socket.on('agregarProducto', async (producto) => {
     try {
@@ -77,6 +86,16 @@ io.on('connection', (socket) => {
       io.emit('productos', productos.payload);
     } catch (error) {
       console.error('Error al agregar producto:', error);
+    }
+  });
+
+  socket.on('eliminarProducto', async (productoId) => {
+    try {
+      await productManager.deleteProduct(productoId);
+      const productos = await productManager.getProducts();
+      io.emit('productos', productos.payload);
+    } catch (error) {
+      console.error('Error al eliminar producto:', error);
     }
   });
 
