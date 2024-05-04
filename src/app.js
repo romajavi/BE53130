@@ -72,8 +72,8 @@ io.on('connection', (socket) => {
 
   socket.on('getProducts', async () => {
     try {
-      const productos = await productManager.getProducts();
-      io.emit('productos', productos.payload);
+      const productos = await productManager.getProducts(0); 
+      socket.emit('productos', productos.payload);
     } catch (error) {
       console.error('Error al obtener los productos:', error);
     }
@@ -84,6 +84,7 @@ io.on('connection', (socket) => {
       await productManager.addProduct(producto);
       const productos = await productManager.getProducts();
       io.emit('productos', productos.payload);
+      console.log('Producto agregado:', producto);
     } catch (error) {
       console.error('Error al agregar producto:', error);
     }
@@ -94,6 +95,7 @@ io.on('connection', (socket) => {
       await productManager.deleteProduct(productoId);
       const productos = await productManager.getProducts();
       io.emit('productos', productos.payload);
+      console.log('Producto eliminado:', productoId);
     } catch (error) {
       console.error('Error al eliminar producto:', error);
     }

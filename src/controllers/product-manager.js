@@ -23,7 +23,7 @@ class ProductManager {
     }
   }
 
-  async getProducts(limit = 10, page = 1, sort, query) {
+  async getProducts(limit = 0, page = 1, sort, query) {
     try {
       const options = {
         page: parseInt(page),

@@ -42,22 +42,10 @@
 <script>
   const socket = io();
 
-  const btnEnviar = document.getElementById('btnEnviar');
-  btnEnviar.addEventListener('click', () => {
-    const producto = {
-      title: document.getElementById('title').value,
-      description: document.getElementById('description').value,
-      price: parseFloat(document.getElementById('price').value),
-      img: document.getElementById('img').value,
-      code: document.getElementById('code').value,
-      stock: parseInt(document.getElementById('stock').value),
-      category: document.getElementById('category').value,
-      status: document.getElementById('status').value === 'true',
-    };
+  // Para Cargar los productos existentes al ingresar a la página
+  socket.emit('getProducts');
 
-    socket.emit('agregarProducto', producto);
-  });
-
+  //  evento 'productos' para recibir los productos actualizados
   socket.on('productos', (productos) => {
     const contenedorProductos = document.getElementById('contenedorProductos');
     contenedorProductos.innerHTML = '';
@@ -72,18 +60,35 @@
         <button class="eliminar-btn" data-id="${producto._id}">Eliminar</button>
       `;
       contenedorProductos.appendChild(productoElement);
-    });
 
-    const eliminarBtns = document.querySelectorAll('.eliminar-btn');
-    eliminarBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const productoId = btn.dataset.id;
+
+      const eliminarBtn = productoElement.querySelector('.eliminar-btn');
+      eliminarBtn.addEventListener('click', () => {
+        const productoId = producto._id;
         socket.emit('eliminarProducto', productoId);
       });
     });
+
+    console.log('Productos actualizados:', productos);
   });
 
-  socket.emit('getProducts');
+  const btnEnviar = document.getElementById('btnEnviar');
+  btnEnviar.addEventListener('click', () => {
+    const producto = {
+      title: document.getElementById('title').value,
+      description: document.getElementById('description').value,
+      price: parseFloat(document.getElementById('price').value),
+      img: document.getElementById('img').value,
+      code: document.getElementById('code').value,
+      stock: parseInt(document.getElementById('stock').value),
+      category: document.getElementById('category').value,
+      status: document.getElementById('status').value === 'true',
+    };
+
+    socket.emit('agregarProducto', producto);
+    console.log('Producto agregado:', producto);
+    alert('Producto agregado exitosamente');
+  });
 </script>
 
 <link rel="stylesheet" href="/css/styles.css">
