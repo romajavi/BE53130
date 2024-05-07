@@ -1,0 +1,34 @@
+<div class="linea-horizontal"></div>
+<div class="menu-container">
+  <div class="logo">
+    <a href="/">
+      <img src="/img/2.png" alt="Logo de la empresa">
+    </a>
+  </div>
+  <div class="menu">
+    <span class="separator">|</span>
+    <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
+    <span class="separator">|</span>
+    <a href="/chat" class="menu-item">Chat en Vivo</a>
+    <span class="separator">|</span>
+    <a href="/profile" class="menu-item">Perfil</a>
+    <span class="separator">|</span>
+    <a href="/logout" class="menu-item">Cerrar Sesión</a>
+    <span class="separator">|</span>
+  </div>
+</div>
+
+<h1>Perfil de Usuario</h1>
+
+<div class="user-info-container">
+  <div class="user-card">
+      {{#if user}}
+          <p>Nombre: {{user.first_name}} {{user.last_name}}</p>
+          <p>Email: {{user.email}}</p>
+          <p>Edad: {{user.age}}</p>
+          <p>Rol: {{user.role}}</p>
+      {{else}}
+          <p>Debes iniciar sesión para ver tu perfil.</p>
+      {{/if}}
+  </div>
+</div>

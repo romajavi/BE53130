@@ -1,4 +1,4 @@
-const { client } = require("../database");
+const Product = require('../models/product');
 
 const sendMessage = async (data) => {
   try {

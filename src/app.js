@@ -1,13 +1,14 @@
 const express = require('express');
 const { engine } = require('express-handlebars');
 const app = express();
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const exphbs = require("express-handlebars");
 const path = require("path");
-
-// Importar el archivo database.js
-const { client } = require('./database.js');
+const mongoose = require('./database.js');
+const authMiddleware = require('./middlewares/auth.middleware.js');
 
 // Importación de las rutas
 const productsRouter = require("./routes/products.router.js");
@@ -31,9 +32,11 @@ const cartManager = new CartManager();
 // Configuración de la conexión a MongoDB Atlas
 async function connectToDatabase() {
   try {
-    await client.connect();
+    await mongoose.connect(mongoose.connection.getClient().s.url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log('Conexión exitosa a MongoDB Atlas');
-
   } catch (error) {
     console.error('Error al conectar a MongoDB Atlas:', error);
   }
@@ -48,7 +51,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configuración para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// CHandlebars
+// Handlebars
 app.engine('handlebars', engine({
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
@@ -58,6 +61,17 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
+// Configuración de sesiones
+app.use(session({
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://admin:1234@cluster0.rcj2pgu.mongodb.net/test?retryWrites=true&w=majority',
+    ttl: 14 * 24 * 60 * 60, // 14 días de duración de la sesión
+  }),
+  secret: 'mi-secreto',
+  resave: false,
+  saveUninitialized: false,
+}));
+
 // Rutas
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
@@ -65,6 +79,19 @@ app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use("/chat", chatRouter);
 app.use("/", viewsRouter);
+
+// Ruta para cerrar sesión
+app.get("/logout", (req, res) => {
+  console.log('Cerrando sesión...');
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error al cerrar sesión:', err);
+    }
+    res.clearCookie('connect.sid'); // Limpia la cookie de sesión
+    console.log('Sesión cerrada exitosamente.');
+    res.redirect('/login');
+  });
+});
 
 // Configuración de la conexión de socket.io
 io.on('connection', (socket) => {

@@ -10,4 +10,17 @@ router.get('/', (req, res) => {
 // POST para procesar el inicio de sesión del usuario
 router.post('/', loginUser);
 
+// Ruta para cerrar sesión
+router.get('/logout', (req, res) => {
+  console.log('Cerrando sesión...');
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error al cerrar sesión:', err);
+    }
+    res.clearCookie('connect.sid'); // Limpia la cookie de sesión
+    console.log('Sesión cerrada exitosamente.');
+    res.redirect('/login');
+  });
+});
+
 module.exports = router;

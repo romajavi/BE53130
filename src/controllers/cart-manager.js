@@ -1,4 +1,4 @@
-const { client } = require("../database");
+const Cart = require('../models/cart');
 const { ObjectId } = require('mongodb');
 
 class CartManager {
@@ -14,8 +14,8 @@ class CartManager {
   async crearCarrito() {
     try {
       const nuevoCarrito = { products: [] };
-      await client.db().collection('carts').insertOne(nuevoCarrito);
-      return nuevoCarrito;
+      const carrito = await Cart.create(nuevoCarrito);
+      return carrito;
     } catch (error) {
       console.log("Error al crear el carrito: ", error);
       throw error;
@@ -24,7 +24,7 @@ class CartManager {
 
   async getCarritoById(carritoId) {
     try {
-      return client.db().collection('carts').findOne({ _id: new ObjectId(carritoId) });
+      return await Cart.findById(carritoId).lean();
     } catch (error) {
       console.log("Error al obtener el carrito por ID: ", error);
       throw error;
@@ -33,7 +33,7 @@ class CartManager {
 
   async agregarProductoAlCarrito(carritoId, productoId, quantity = 1) {
     try {
-      const carrito = await client.db().collection('carts').findOne({ _id: new ObjectId(carritoId) });
+      const carrito = await Cart.findById(carritoId);
       if (!carrito) {
         throw new Error("Carrito no encontrado");
       }
@@ -43,7 +43,7 @@ class CartManager {
       } else {
         carrito.products.push({ product: productoId, quantity });
       }
-      await client.db().collection('carts').updateOne({ _id: new ObjectId(carritoId) }, { $set: carrito });
+      await carrito.save();
       return carrito;
     } catch (error) {
       console.log("Error al agregar producto al carrito: ", error);

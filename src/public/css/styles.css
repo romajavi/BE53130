@@ -25,7 +25,7 @@
 }
 
 .logo img {
-    width: 180px; 
+    width: 250px; 
     height: auto;
 }
 
@@ -91,17 +91,31 @@ h1 {
 }
 
 .bienvenida {
+    position: absolute;
+    bottom: 20px; /* Ajusta esta cantidad según tu preferencia */
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center; 
-    color: #def2f1; 
-    font-size: 40px; 
+    color: #ffffff; 
+    font-size: 80px; 
     font-weight: bold; 
-    background-color: #3aafa9;
+    background-color: #3aafa92f;
+}
+
+.userBienvenida {
+  position: relative;
+  bottom: 10px; 
+  width: 15%; 
+  padding: 20px; 
+  background-color: #ffffff; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  font-size: large;
 }
 
 
 /* para el formulario */
 .formulario {
-    width: 35%;
+    width: 20%;
     margin: 0 auto;
     text-align: center;
     padding: 20px;
@@ -195,8 +209,8 @@ h1 {
 
 /* Estilo para cada elemento dentro del contenedor de productos */
 #contenedorProductos > div {
-    width: 300px; 
-    height: 150px; 
+    width: 400px; 
+    height: 230px; 
     margin: 10px;
     padding: 20px; 
     border: 1px solid #ccc; 
@@ -259,37 +273,9 @@ h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
+/* 
 
-/* Estilos para el menú cuadrado */
-.menu-cuadrado {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 4px;
-}
 
-/* Estilos para los elementos del menú cuadrado */
-.menu-cuadrado-item {
-  display: block;
-  padding: 10px 20px;
-  background-color: #2B7A78;
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  font-size: 18px;
-  width: 200px;
-  text-align: center;
-}
-
-/* Estilos para los elementos del menú cuadrado al pasar el cursor */
-.menu-cuadrado-item:hover {
-  background-color: #17252a;
-}
 
 /* Estilos específicos para la página de chat */
 .chat-container {
@@ -339,4 +325,114 @@ h1 {
 
 .pagination a {
   margin: 0 5px;
+}
+
+
+
+
+
+
+/* Estilos para el formulario */
+.formularioLogin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Estilos para los elementos del formulario */
+.formularioLogin input[type="text"],
+.formularioLogin input[type="number"],
+.formularioLogin select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilo para el botón del formulario */
+.formularioLogin button {
+  width: 30%;
+  padding: 10px;
+  background-color: #2B7A78;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para el botón al pasar el cursor */
+.formularioLogin button:hover {
+  background-color: #17252a;
+}
+
+/* Estilo para los grupos de elementos del formulario */
+.formularioLogin .form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas del formulario */
+.formularioLogin label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Estilo para los campos de entrada del formulario */
+.formularioLogin input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilo para el título del formulario */
+.formularioLogin h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos adicionales para el fondo */
+body {
+  overflow: hidden; 
+}
+
+#carouselExampleControls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+}
+
+/* Estilos para la tarjeta de usuario */
+.user-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; 
+}
+
+.user-card {
+  width: 30%; 
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.user-card p {
+  font-size: 24px;
+  margin-bottom: 15px; 
 }

@@ -1,5 +1,6 @@
-const { client } = require("../database");
+const Product = require('../models/product');
 const { ObjectId } = require('mongodb');
+const mongoose = require('mongoose');
 
 class ProductManager {
   async addProduct({ title, description, price, img, code, stock, category, thumbnails }) {
@@ -14,7 +15,7 @@ class ProductManager {
         category,
         thumbnails
       };
-      await client.db().collection('products').insertOne(newProduct);
+      await mongoose.connection.db.collection('products').insertOne(newProduct);
       console.log('Producto agregado correctamente');
       return newProduct;
     } catch (error) {
@@ -41,13 +42,13 @@ class ProductManager {
         };
       }
   
-      const result = await client.db().collection('products').find(queryFilter)
+      const result = await Product.find(queryFilter)
         .skip((options.page - 1) * options.limit)
         .limit(options.limit)
         .sort(options.sort)
-        .toArray();
+        .lean();
   
-      const totalProducts = await client.db().collection('products').countDocuments(queryFilter);
+      const totalProducts = await Product.countDocuments(queryFilter);
       const totalPages = Math.ceil(totalProducts / options.limit);
   
       const response = {
@@ -106,7 +107,7 @@ class ProductManager {
 
   async deleteProduct(id) {
     try {
-      const product = await client.db().collection('products').findOneAndDelete({ _id: new ObjectId(id) });
+      const product = await mongoose.connection.db.collection('products').findOneAndDelete({ _id: new ObjectId(id) });
       if (!product.value) {
         console.log('Producto no encontrado');
         return null;
