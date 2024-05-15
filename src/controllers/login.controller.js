@@ -4,7 +4,6 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Verificar si el usuario existe en la base de datos
     const user = await User.findOne({ email }).lean();
 
     if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
@@ -24,7 +23,7 @@ const loginUser = async (req, res) => {
     req.session.user = user;
     console.log('Usuario autenticado:', req.session.user);
 
-    res.redirect('/products');
+    res.redirect('/products'); 
   } catch (error) {
     if (error.name === 'MongooseTimeoutError') {
       console.error("Error de tiempo de espera al iniciar sesión:", error);

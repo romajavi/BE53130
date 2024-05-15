@@ -1,9 +1,9 @@
 const authMiddleware = (req, res, next) => {
-  if (req.session.user) {
-    // usuario autenticado continuar con la siguiente función
+  const user = req.session.user;
+
+  if (user && (user.email || user.provider === 'github')) {
     next();
   } else {
-    // no autenticado redirigir al login
     res.redirect('/login');
   }
 };

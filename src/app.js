@@ -8,7 +8,8 @@ const io = require("socket.io")(http);
 const exphbs = require("express-handlebars");
 const path = require("path");
 const mongoose = require('./database.js');
-const authMiddleware = require('./middlewares/auth.middleware.js');
+const passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
 
 // Importación de las rutas
 const productsRouter = require("./routes/products.router.js");
@@ -44,7 +45,59 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-// Middleware
+// Middleware para inicializar sesiones
+app.use(session({
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://admin:1234@cluster0.rcj2pgu.mongodb.net/test?retryWrites=true&w=majority',
+    ttl: 14 * 24 * 60 * 60, // 14 dias de duracion de sesion
+  }),
+  secret: 'mi-secreto',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+// Inicialización de Passport.js
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Config. Passport
+passport.use(new GitHubStrategy({
+  clientID: "Ov23li5icwdaAon1zX0A",
+  clientSecret: "026522e557223f62c8d94ae57b27135f7315a4ca",
+  callbackURL: "http://localhost:8080/login/github/callback"
+}, (accessToken, refreshToken, profile, done) => {
+  // No se realiza ninguna acción adicional, solo se llama a `done` con el perfil de GitHub
+  return done(null, profile);
+}));
+
+// Serialización y deserialización de usuarios
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
+
+// Ruta para iniciar sesión con GitHub
+app.get('/login/github', passport.authenticate('github'));
+
+// Ruta de callback para la autenticación de GitHub
+app.get('/login/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
+  console.log('Redireccionando tras autenticación con GitHub');
+  // Crear una sesión temporal con los datos del usuario de GitHub
+  req.session.user = {
+    id: req.user.id,
+    displayName: req.user.displayName || req.user.username,
+    username: req.user.username,
+    photos: req.user.photos,
+    provider: 'github'
+  };
+
+  res.redirect('/products'); // Redirigir a la página de productos después de la autenticación con GitHub
+});
+
+// Configuración de las rutas
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -60,17 +113,6 @@ app.engine('handlebars', engine({
 }));
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
-
-// Configuración de sesiones
-app.use(session({
-  store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://admin:1234@cluster0.rcj2pgu.mongodb.net/test?retryWrites=true&w=majority',
-    ttl: 14 * 24 * 60 * 60, // 14 días de duración de la sesión
-  }),
-  secret: 'mi-secreto',
-  resave: false,
-  saveUninitialized: false,
-}));
 
 // Rutas
 app.use("/register", registerRouter);
@@ -99,7 +141,7 @@ io.on('connection', (socket) => {
 
   socket.on('getProducts', async () => {
     try {
-      const productos = await productManager.getProducts(0); 
+      const productos = await productManager.getProducts(0);
       socket.emit('productos', productos.payload);
     } catch (error) {
       console.error('Error al obtener los productos:', error);
@@ -133,14 +175,14 @@ io.on('connection', (socket) => {
   });
 });
 
-// Puerto
-const PUERTO = process.env.PORT || 8080;
-
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
   console.error('Error en el servidor:', err);
   res.status(500).json({ error: 'Error interno del servidor' });
 });
+
+// Puerto
+const PUERTO = process.env.PORT || 8080;
 
 // Servidor HTTP
 http.listen(PUERTO, () => {

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { loginUser } = require('../controllers/login.controller');
+const passport = require('passport');
+const { loginUser } = require('../controllers/login.controller'); 
+const axios = require('axios');
 
 // GET para mostrar el formulario de inicio de sesión
 router.get('/', (req, res) => {
@@ -9,6 +11,31 @@ router.get('/', (req, res) => {
 
 // POST para procesar el inicio de sesión del usuario
 router.post('/', loginUser);
+
+// Ruta para iniciar sesión con GitHub
+router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
+
+// Ruta de callback para autenticación con GitHub
+router.get('/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Crear una sesión temporal con los datos del usuario de GitHub
+    const profile = req.user._json;
+    const userEmail = profile.email || null; 
+
+    req.session.user = {
+      id: profile.id,
+      displayName: profile.name || profile.login,
+      username: profile.login,
+      photos: profile.avatar_url ? [{ value: profile.avatar_url }] : [],
+      provider: 'github',
+      email: userEmail, 
+      role: 'usuario' 
+    };
+
+    res.redirect('/products');
+  }
+);
 
 // Ruta para cerrar sesión
 router.get('/logout', (req, res) => {
