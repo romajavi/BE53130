@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const CartManager = require("../controllers/cart-manager");
+const CartManager = require("../services/cart.service");
 const cartManager = new CartManager();
 
 // Para crear un nuevo carrito

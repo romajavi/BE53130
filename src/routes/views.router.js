@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middlewares/auth.middleware.js");
-const ProductManager = require('../controllers/product-manager');
+const ProductManager = require('../services/product.service.js'); //'../controllers/product-manager'
 const productManager = new ProductManager();
-const CartManager = require("../controllers/cart-manager");
+const CartManager = require("../services/cart.service.js"); //../controllers/cart-manager"
 const cartManager = new CartManager();
 
 // Rutas que requieren autenticación

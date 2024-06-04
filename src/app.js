@@ -5,11 +5,10 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-const exphbs = require("express-handlebars");
 const path = require("path");
-const mongoose = require('./database.js');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
+const config = require('./config/config');
 
 // Importación de las rutas
 const productsRouter = require("./routes/products.router.js");
@@ -19,36 +18,10 @@ const registerRouter = require("./routes/register.router.js");
 const loginRouter = require("./routes/login.router.js");
 const chatRouter = require("./routes/chat.router.js");
 
-// Importación del controlador de chat
-const chatController = require("./controllers/chat.controller");
-
-// Importación del ProductManager
-const ProductManager = require("./controllers/product-manager");
-const productManager = new ProductManager();
-
-// Importación de CartManager
-const CartManager = require("./controllers/cart-manager");
-const cartManager = new CartManager();
-
-// Configuración de la conexión a MongoDB Atlas
-async function connectToDatabase() {
-  try {
-    await mongoose.connect(mongoose.connection.getClient().s.url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Conexión exitosa a MongoDB Atlas');
-  } catch (error) {
-    console.error('Error al conectar a MongoDB Atlas:', error);
-  }
-}
-
-connectToDatabase();
-
 // Middleware para inicializar sesiones
 app.use(session({
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://admin:1234@cluster0.rcj2pgu.mongodb.net/test?retryWrites=true&w=majority',
+    mongoUrl: config.MONGODB_URI, // Usar la variable de entorno MONGODB_URI desde config.js
     ttl: 14 * 24 * 60 * 60, // 14 dias de duracion de sesion
   }),
   secret: 'mi-secreto',
@@ -70,7 +43,6 @@ passport.use(new GitHubStrategy({
   return done(null, profile);
 }));
 
-// Serialización y deserialización de usuarios
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -84,8 +56,6 @@ app.get('/login/github', passport.authenticate('github'));
 
 // Ruta de callback para la autenticación de GitHub
 app.get('/login/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
-  console.log('Redireccionando tras autenticación con GitHub');
-  // Crear una sesión temporal con los datos del usuario de GitHub
   req.session.user = {
     id: req.user.id,
     displayName: req.user.displayName || req.user.username,
@@ -94,7 +64,7 @@ app.get('/login/github/callback', passport.authenticate('github', { failureRedir
     provider: 'github'
   };
 
-  res.redirect('/products'); // Redirigir a la página de productos después de la autenticación con GitHub
+  res.redirect('/products');
 });
 
 // Configuración de las rutas
@@ -124,21 +94,17 @@ app.use("/", viewsRouter);
 
 // Ruta para cerrar sesión
 app.get("/logout", (req, res) => {
-  console.log('Cerrando sesión...');
   req.session.destroy((err) => {
     if (err) {
       console.error('Error al cerrar sesión:', err);
     }
-    res.clearCookie('connect.sid'); // Limpia la cookie de sesión
-    console.log('Sesión cerrada exitosamente.');
+    res.clearCookie('connect.sid');
     res.redirect('/login');
   });
 });
 
 // Configuración de la conexión de socket.io
 io.on('connection', (socket) => {
-  console.log('Un usuario se ha conectado');
-
   socket.on('getProducts', async () => {
     try {
       const productos = await productManager.getProducts(0);
@@ -153,7 +119,6 @@ io.on('connection', (socket) => {
       await productManager.addProduct(producto);
       const productos = await productManager.getProducts();
       io.emit('productos', productos.payload);
-      console.log('Producto agregado:', producto);
     } catch (error) {
       console.error('Error al agregar producto:', error);
     }
@@ -164,7 +129,6 @@ io.on('connection', (socket) => {
       await productManager.deleteProduct(productoId);
       const productos = await productManager.getProducts();
       io.emit('productos', productos.payload);
-      console.log('Producto eliminado:', productoId);
     } catch (error) {
       console.error('Error al eliminar producto:', error);
     }
@@ -182,9 +146,9 @@ app.use((err, req, res, next) => {
 });
 
 // Puerto
-const PUERTO = process.env.PORT || 8080;
+const PORT = config.PORT;
 
 // Servidor HTTP
-http.listen(PUERTO, () => {
-  console.log(`Servidor Express iniciado en el puerto: ${PUERTO}`);
+http.listen(PORT, () => {
+  console.log(`Servidor Express iniciado en el puerto: ${PORT}`);
 });

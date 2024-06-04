@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
+const config = require('./config/config');
 
-const uri = "mongodb+srv://admin:1234@cluster0.rcj2pgu.mongodb.net/test?retryWrites=true&w=majority";
+const uri = config.MONGODB_URI;
 
-mongoose.connect(uri)
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
     console.log('Conexión exitosa a MongoDB Atlas');
   })
