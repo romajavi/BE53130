@@ -7,7 +7,6 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email }).lean();
 
     if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
-      // Usuario administrador
       req.session.user = {
         email: 'adminCoder@coder.com',
         role: 'admin',
@@ -19,7 +18,6 @@ const loginUser = async (req, res) => {
       return res.status(401).render('login', { error: 'Email o contraseña incorrectos.' });
     }
 
-    // Guardar el usuario en la sesión
     req.session.user = user;
     console.log('Usuario autenticado:', req.session.user);
 
