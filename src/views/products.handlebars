@@ -23,7 +23,7 @@
   {{#if user}}
   <p>Bienvenido, {{user.email}}!</p>
   <p>Rol: {{user.role}}</p>
-{{/if}}
+  {{/if}}
 </div>
 
 <h1>Productos</h1>
@@ -31,28 +31,30 @@
 
 <div id="contenedorProductos">
   {{#each products}}
-    <div class="product-card">
-      <h3>{{this.title}}</h3>
-      <br>
-      <p>{{this.description}}</p>
-      <p>Precio: ${{this.price}}</p>
-      <p>Categoría: {{this.category}}</p>
-      <input type="number" class="quantity-input" value="1" min="1" max="{{this.stock}}" data-id="{{this._id}}">
-      <br>
-      <button class="add-to-cart" data-id="{{this._id}}" onclick="addToCart('{{this._id}}', document.querySelector('.quantity-input[data-id=\'{{this._id}}\']').value)">Agregar al carrito</button>
-    </div>
+  <div class="product-card">
+    <h3>{{this.title}}</h3>
+    <br>
+    <p>{{this.description}}</p>
+    <p>Precio: ${{this.price}}</p>
+    <p>Categoría: {{this.category}}</p>
+    <input type="number" class="quantity-input" value="1" min="1" max="{{this.stock}}" data-id="{{this._id}}">
+    <br>
+    <button class="add-to-cart" data-id="{{this._id}}"
+      onclick="addToCart('{{this._id}}', document.querySelector('.quantity-input[data-id=\'{{this._id}}\']').value)">Agregar
+      al carrito</button>
+  </div>
   {{/each}}
 </div>
 
 <div class="pagination">
   {{#if hasPrevPage}}
-    <a href="/products?page={{prevPage}}">Anterior</a>
+  <a href="/products?page={{prevPage}}&limit={{limit}}">Anterior</a>
   {{/if}}
-  
+
   <span>Página {{page}} de {{totalPages}}</span>
-  
+
   {{#if hasNextPage}}
-    <a href="/products?page={{nextPage}}">Siguiente</a>
+  <a href="/products?page={{nextPage}}&limit={{limit}}">Siguiente</a>
   {{/if}}
 </div>
 

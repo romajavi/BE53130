@@ -402,8 +402,9 @@ h1 {
 }
 
 /* Estilos adicionales para el fondo */
-body {
-  overflow: hidden; 
+html body {
+  height: 100%;
+  overflow: auto; 
 }
 
 #carouselExampleControls {

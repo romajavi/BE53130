@@ -63,6 +63,7 @@ passport.use(new GitHubStrategy({
     }
     return done(null, user);
   } catch (error) {
+    console.error('Error en la estrategia de autenticación de GitHub:', error);
     return done(error);
   }
 }));
@@ -159,6 +160,7 @@ io.on('connection', async (socket) => {
   // Productos
   const productos = await productManager.getProducts(0);
   socket.emit('productos', productos.payload);
+  io.emit('productos', productos.payload); 
 
   socket.on('agregarProducto', async (producto) => {
     try {

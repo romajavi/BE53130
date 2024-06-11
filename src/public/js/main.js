@@ -18,15 +18,14 @@ if (window.location.pathname === '/products' || window.location.pathname === '/r
         <button class="add-to-cart" data-id="${producto._id}">Agregar al carrito</button>
       `;
       contenedorProductos.appendChild(productoElement);
-    });
-  });
 
-  const agregarAlCarritoButtons = document.querySelectorAll('.add-to-cart');
-  agregarAlCarritoButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const productoId = button.dataset.id;
-      const cantidad = document.querySelector(`.quantity-input[data-id="${productoId}"]`).value;
-      addToCart(productoId, cantidad);
+      // Asignar el evento click a cada botón "Agregar al carrito"
+      const agregarAlCarritoButton = productoElement.querySelector('.add-to-cart');
+      agregarAlCarritoButton.addEventListener('click', () => {
+        const productoId = agregarAlCarritoButton.dataset.id;
+        const cantidad = productoElement.querySelector(`.quantity-input[data-id="${productoId}"]`).value;
+        addToCart(productoId, cantidad);
+      });
     });
   });
 }
