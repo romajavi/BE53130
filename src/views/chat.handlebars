@@ -25,7 +25,7 @@
     <h1>Bienvenido al Chat</h1>
     <div id="message-history" class="message-history">
       {{#each messages}}
-      <p>{{this.user}} dice: {{this.message}}</p>
+      <p>{{this.user.first_name}} dice: {{this.message}}</p>
       {{/each}}
     </div>
 

@@ -1,19 +1,15 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
-const passport = require('passport');
 
 const registerUser = async (req, res) => {
   try {
     const { first_name, last_name, email, age, password } = req.body;
 
-
     if (!first_name || !last_name || !email || !age || !password) {
       return res.status(400).json({ message: "Todos los campos son requeridos." });
     }
 
-
-    const existingUser = await User.findOne({ email });
-
+    const existingUser = await User.findOne({ email }).exec();
     if (existingUser) {
       return res.status(400).json({ message: "El email ya está en uso." });
     }
@@ -37,3 +33,4 @@ const registerUser = async (req, res) => {
 };
 
 module.exports = { registerUser };
+

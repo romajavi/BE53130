@@ -2,8 +2,9 @@ const Product = require('../models/product');
 const { ObjectId } = require('mongodb');
 
 class ProductManager {
-    async addProduct({ title, description, price, img, code, stock, category, thumbnails }) {
+    async addProduct({ title, description, price, img, code, stock, category, status = true }) {
         try {
+            console.log("Intentando agregar producto:", { title, description, price, img, code, stock, category, status });
             const newProduct = new Product({
                 title,
                 description,
@@ -12,14 +13,14 @@ class ProductManager {
                 code,
                 stock,
                 category,
-                thumbnails
+                status
             });
             await newProduct.save();
-            console.log('Producto agregado correctamente');
-            return newProduct;
+            console.log('Producto agregado correctamente:', newProduct);
+            return { status: 'success', message: 'Producto agregado correctamente', product: newProduct };
         } catch (error) {
             console.error('Error al agregar producto:', error.message);
-            throw error;
+            return { status: 'error', message: 'Error al agregar producto', error: error.message };
         }
     }
 

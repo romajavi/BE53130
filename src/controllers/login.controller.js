@@ -1,11 +1,12 @@
+const bcrypt = require('bcrypt');
 const User = require("../models/user.model");
 
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log('Datos enviados:', { email, password });
 
-    const user = await User.findOne({ email }).lean();
-
+    // usuario adminCoder
     if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
       req.session.user = {
         email: 'adminCoder@coder.com',
@@ -14,7 +15,16 @@ const loginUser = async (req, res) => {
       return res.redirect('/products');
     }
 
-    if (!user || user.password !== password) {
+
+    const user = await User.findOne({ email: email }).exec();
+    console.log('Usuario encontrado:', user);
+
+    if (!user) {
+      return res.status(401).render('login', { error: 'Email o contraseña incorrectos.' });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
       return res.status(401).render('login', { error: 'Email o contraseña incorrectos.' });
     }
 
@@ -23,14 +33,12 @@ const loginUser = async (req, res) => {
 
     res.redirect('/products'); 
   } catch (error) {
-    if (error.name === 'MongooseTimeoutError') {
-      console.error("Error de tiempo de espera al iniciar sesión:", error);
-      res.status(500).render('login', { error: 'El servidor está tardando demasiado en responder. Por favor, intenta nuevamente más tarde.' });
-    } else {
-      console.error("Error al iniciar sesión:", error);
-      res.status(500).render('login', { error: 'Error al iniciar sesión.' });
-    }
+    console.error("Error al iniciar sesión:", error);
+    res.status(500).render('login', { error: 'Error al iniciar sesión.' });
   }
 };
 
 module.exports = { loginUser };
+
+
+
