@@ -33,7 +33,7 @@ router.get('/github/callback',
       role: 'usuario' 
     };
 
-    res.redirect('/products');
+    res.redirect('/profile');
   }
 );
 

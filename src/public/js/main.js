@@ -24,36 +24,51 @@ if (window.location.pathname === '/products' || window.location.pathname === '/r
       agregarAlCarritoButton.addEventListener('click', () => {
         const productoId = agregarAlCarritoButton.dataset.id;
         const cantidad = productoElement.querySelector(`.quantity-input[data-id="${productoId}"]`).value;
-        addToCart(productoId, cantidad);
+        addToCart(productoId, cantidad, cartId); // Pasar la variable global cartId como argumento
       });
     });
   });
 }
 
 async function addToCart(productId, quantity) {
-  let cartId = localStorage.getItem('cartId');
-  if (!cartId) {
-    const response = await fetch('/api/carts', { method: 'POST' });
-    const data = await response.json();
-    cartId = data._id;
-    localStorage.setItem('cartId', cartId);
-  }
+  try {
+    const response = await fetch('/api/carts/get-cart-id', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-  const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ quantity }),
-  });
+    if (response.ok) {
+      const { cartId } = await response.json();
+      if (!cartId) {
+        console.error('ID de carrito no encontrado');
+        alert('Debes iniciar sesión para agregar productos al carrito');
+        return;
+      }
 
-  if (response.ok) {
-    console.log('Producto agregado al carrito');
-    alert('Producto agregado al carrito exitosamente');
-  } else {
-    console.error('Error al agregar el producto al carrito');
+      const addToCartResponse = await fetch(`/api/carts/${cartId}/products/${productId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quantity }),
+      });
+
+      if (addToCartResponse.ok) {
+        console.log('Producto agregado al carrito');
+        alert('Producto agregado al carrito exitosamente');
+      } else {
+        console.error('Error al agregar el producto al carrito');
+        alert('Error al agregar el producto al carrito.');
+      }
+    } else {
+      console.error('Error al obtener el ID de carrito');
+      alert('Error al obtener el ID de carrito.');
+    }
+  } catch (error) {
+    console.error('Error al agregar el producto al carrito', error);
     alert('Error al agregar el producto al carrito.');
   }
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const btnEnviar = document.getElementById('btnEnviar');

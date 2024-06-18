@@ -54,14 +54,12 @@ class ProductManager {
             const response = {
                 status: 'success',
                 payload: result,
-                totalPages: totalPages,
-                prevPage: options.page > 1 ? options.page - 1 : null,
+                totalPages,
+                prevPage: options.page > 1 ? options.page  - 1 : null,
                 nextPage: options.page < totalPages ? options.page + 1 : null,
                 page: options.page,
                 hasPrevPage: options.page > 1,
                 hasNextPage: options.page < totalPages,
-                prevLink: options.page > 1 ? `/api/products?page=${options.page - 1}&limit=${limit}&sort=${sort}&query=${query}` : null,
-                nextLink: options.page < totalPages ? `/api/products?page=${options.page + 1}&limit=${limit}&sort=${sort}&query=${query}` : null,
             };
 
             return response;

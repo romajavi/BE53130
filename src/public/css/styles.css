@@ -421,7 +421,7 @@ html body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh; 
+  height: 30vh; 
 }
 
 .user-card {
@@ -436,4 +436,28 @@ html body {
 .user-card p {
   font-size: 24px;
   margin-bottom: 15px; 
+}
+
+
+/* Estilo para el botón del formulario */
+.botones {
+  text-align: center; /* Centra el contenido dentro del contenedor */
+  margin-top: 20px;   /* Añade un margen superior para separarlo del contenido anterior */
+}
+
+.botones button {
+  width: 10%;  /* Ancho del botón */
+  padding: 10px;  /* Espaciado interno del botón */
+  background-color: #2B7A78;  /* Color de fondo del botón */
+  color: #fff;  /* Color del texto del botón */
+  border: none;  /* Sin borde */
+  border-radius: 5px;  /* Esquinas redondeadas */
+  cursor: pointer;  /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s;  /* Transición suave para el cambio de color de fondo */
+  margin-top: 0;
+}
+
+/* Estilo para el botón al pasar el cursor */
+.botones button:hover {
+  background-color: #17252a;  /* Color de fondo al pasar el cursor */
 }

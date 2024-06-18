@@ -17,6 +17,8 @@ const bcrypt = require('bcrypt');
 const sharedsession = require("express-socket.io-session");
 const authMiddleware = require('./middlewares/auth.middleware.js');
 const authSocketMiddleware = require('./middlewares/auth.socket.middleware.js');
+const cookieParser = require('cookie-parser');
+
 
 // Importación de las rutas
 const productsRouter = require("./routes/products.router.js");
@@ -91,6 +93,7 @@ app.get('/login/github/callback', passport.authenticate('github', { failureRedir
 // Configuración de las rutas
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser()); 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware para depurar peticiones POST a /login
@@ -159,8 +162,8 @@ io.on('connection', async (socket) => {
 
   // Productos
   const productos = await productManager.getProducts(0);
+  socket.join('productos');
   socket.emit('productos', productos.payload);
-  io.emit('productos', productos.payload); 
 
   socket.on('agregarProducto', async (producto) => {
     try {
@@ -168,7 +171,7 @@ io.on('connection', async (socket) => {
       const result = await productManager.addProduct(producto);
       if (result.status === 'success') {
         const productos = await productManager.getProducts();
-        io.emit('productos', productos.payload);
+        io.to('productos').emit('productos', productos.payload);
       } else {
         socket.emit('error', result);
       }
@@ -182,7 +185,7 @@ io.on('connection', async (socket) => {
     try {
       await productManager.deleteProduct(productoId);
       const productos = await productManager.getProducts(0);
-      socket.emit('productos', productos.payload);
+      io.to('productos').emit('productos', productos.payload);
     } catch (error) {
       console.error('Error al eliminar producto:', error);
       socket.emit('error', { status: 'error', message: 'Error al eliminar producto', error: error.message });
@@ -222,7 +225,9 @@ io.on('connection', async (socket) => {
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
   console.error('Error en el servidor:', err);
-  res.status(500).json({ error: 'Error interno del servidor' });
+  const status = err.status || 500;
+  const message = err.message || 'Error interno del servidor';
+  res.status(status).json({ error: message });
 });
 
 // Puerto
