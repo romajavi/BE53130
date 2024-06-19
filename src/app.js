@@ -86,9 +86,27 @@ passport.deserializeUser(async (id, done) => {
 // Rutas de autenticación
 app.get('/login/github', passport.authenticate('github'));
 
-app.get('/login/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect('/products');
-});
+// app.get('/login/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
+//   // Después del inicio de sesión exitoso
+//   fetch('/api/carts/create', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     credentials: 'include' // Para incluir las cookies de sesión
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       // El carrito se ha creado correctamente
+//       console.log('Carrito creado:', data.cartId);
+//       // Redirigir al usuario a la página deseada
+//       res.redirect('/products');
+//     })
+//     .catch(error => {
+//       console.error('Error al crear el carrito:', error);
+//       res.redirect('/login');
+//     });
+// });
 
 // Configuración de las rutas
 app.use(express.json());

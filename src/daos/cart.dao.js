@@ -6,8 +6,16 @@ const create = async () => {
     return await cart.save();
 };
 
-const getById = async (id) => {
-    return await Cart.findById(id).populate('products.product');
+const getById = async (cartId, userId) => {
+    try {
+        const cart = await Cart.findOne({ _id: cartId, user: userId }).populate('products.product');
+        if (!cart) {
+            return null; // Retornar null si no se encuentra el carrito
+        }
+        return cart;
+    } catch (error) {
+        throw new Error(`Error al obtener el carrito: ${error.message}`);
+    }
 };
 
 const addProduct = async (cartId, productId) => {

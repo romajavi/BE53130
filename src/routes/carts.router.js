@@ -2,65 +2,45 @@ const express = require("express");
 const router = express.Router();
 const CartManager = require("../services/cart.service");
 const cartManager = new CartManager();
-const ticketService = require("../services/ticket.service");
-
-// Para obtener el cartId desde la sesión
-router.get('/get-cart-id', (req, res) => {
-  const cartId = req.session.cartId;
-  if (cartId) {
-    res.json({ cartId });
-  } else {
-    res.status(404).json({ error: 'ID de carrito no encontrado en la sesión' });
-  }
-});
-
-// Para crear un nuevo carrito
-router.post("/", async (req, res) => {
-  try {
-    const userEmail = req.user.email; // Obtener el correo electrónico del usuario desde la sesión o el token de autenticación
-    const newCart = await cartManager.crearCarrito(userEmail);
-    res.status(201).json(newCart);
-  } catch (error) {
-    console.error("Error al crear el carrito:", error.message);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
+const authMiddleware = require('../middlewares/auth.middleware');
 
 // Para obtener los productos de un carrito por su ID
-router.get('/:cid', async (req, res) => {
+router.get('/:cid', authMiddleware, async (req, res) => {
   const cartId = req.params.cid;
-  const userEmail = req.user.email;
+  const userId = req.session.user._id;
   try {
-    const cart = await cartManager.getCarritoById(cartId, userEmail);
+    const cart = await cartManager.getCartById(cartId, userId);
     if (!cart) {
-      return res.status(404).render('error', { message: 'Carrito no encontrado' });
+      return res.status(404).json({ error: 'Carrito no encontrado' });
     }
-    res.render('cart', { cart });
+    res.json(cart);
   } catch (error) {
     console.error('Error al obtener el carrito por ID:', error);
-    res.status(500).render('error', { message: 'Error interno del servidor' });
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
 
 // Para agregar un producto a un carrito
-router.post('/:cid/products/:pid', async (req, res) => {
+router.post('/:cid/products', authMiddleware, async (req, res) => {
   const cartId = req.params.cid;
-  const productId = req.params.pid;
-  const { quantity } = req.body;
+  const { productId, quantity } = req.body;
+  const userId = req.session.user._id;
+
   try {
-    const cart = await cartManager.agregarProductoAlCarrito(cartId, productId, quantity);
-    res.json(cart);
+    const cart = await cartManager.addProductToCart(cartId, productId, parseInt(quantity, 10), userId);
+    res.json({ message: 'Producto agregado al carrito', cart });
   } catch (error) {
     console.error('Error al agregar producto al carrito:', error);
     res.status(500).json({ error: 'Error interno del servidor' });
   }
 });
 
-router.delete('/:cid/products/:pid', async (req, res) => {
+router.delete('/:cid/products/:pid', authMiddleware, async (req, res) => {
   const cartId = req.params.cid;
   const productId = req.params.pid;
+  const userId = req.session.user._id;
   try {
-    const cart = await cartManager.eliminarProductoDelCarrito(cartId, productId);
+    const cart = await cartManager.removeProductFromCart(cartId, productId, userId);
     res.json(cart);
   } catch (error) {
     console.error('Error al eliminar producto del carrito:', error);
@@ -68,27 +48,16 @@ router.delete('/:cid/products/:pid', async (req, res) => {
   }
 });
 
-router.put('/:cid/products/:pid', async (req, res) => {
+router.put('/:cid/products/:pid', authMiddleware, async (req, res) => {
   const cartId = req.params.cid;
   const productId = req.params.pid;
   const { quantity } = req.body;
+  const userId = req.session.user._id;
   try {
-    const cart = await cartManager.actualizarCantidadDeProducto(cartId, productId, quantity);
+    const cart = await cartManager.updateProductQuantity(cartId, productId, quantity, userId);
     res.json(cart);
   } catch (error) {
     console.error('Error al actualizar la cantidad del producto en el carrito:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
-});
-
-router.post('/:cid/purchase', async (req, res) => {
-  const cartId = req.params.cid;
-  const userEmail = req.user.email; // Obtener el correo electrónico del usuario desde la sesión o el token de autenticación
-  try {
-    const { ticket, unprocessedProducts } = await cartManager.finalizarCompra(cartId, userEmail);
-    res.json({ message: 'Compra finalizada', ticket, unprocessedProducts });
-  } catch (error) {
-    console.error('Error al finalizar la compra:', error);
     res.status(500).json({ error: 'Error interno del servidor' });
   }
 });

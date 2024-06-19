@@ -24,7 +24,7 @@ if (window.location.pathname === '/products' || window.location.pathname === '/r
       agregarAlCarritoButton.addEventListener('click', () => {
         const productoId = agregarAlCarritoButton.dataset.id;
         const cantidad = productoElement.querySelector(`.quantity-input[data-id="${productoId}"]`).value;
-        addToCart(productoId, cantidad, cartId); // Pasar la variable global cartId como argumento
+        addToCart(productoId, cantidad);
       });
     });
   });
@@ -32,43 +32,36 @@ if (window.location.pathname === '/products' || window.location.pathname === '/r
 
 async function addToCart(productId, quantity) {
   try {
-    const response = await fetch('/api/carts/get-cart-id', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    const cartId = document.getElementById('cart-link').getAttribute('href').split('/').pop();
+
+    if (!cartId) {
+      console.error('ID de carrito no encontrado');
+      alert('Debes iniciar sesión para agregar productos al carrito');
+      return;
+    }
+
+    const addToCartResponse = await fetch(`/carts/${cartId}/products`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId, quantity }),
     });
 
-    if (response.ok) {
-      const { cartId } = await response.json();
-      if (!cartId) {
-        console.error('ID de carrito no encontrado');
-        alert('Debes iniciar sesión para agregar productos al carrito');
-        return;
-      }
-
-      const addToCartResponse = await fetch(`/api/carts/${cartId}/products/${productId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ quantity }),
-      });
-
-      if (addToCartResponse.ok) {
-        console.log('Producto agregado al carrito');
-        alert('Producto agregado al carrito exitosamente');
-      } else {
-        console.error('Error al agregar el producto al carrito');
-        alert('Error al agregar el producto al carrito.');
-      }
+    if (addToCartResponse.ok) {
+      const cartCounter = document.getElementById('cart-counter');
+      const currentCount = parseInt(cartCounter.textContent, 10) || 0;
+      cartCounter.textContent = currentCount + parseInt(quantity, 10);
+      console.log('Producto agregado al carrito');
+      alert('Producto agregado al carrito exitosamente');
     } else {
-      console.error('Error al obtener el ID de carrito');
-      alert('Error al obtener el ID de carrito.');
+      console.error('Error al agregar el producto al carrito');
+      alert('Error al agregar el producto al carrito.');
     }
   } catch (error) {
     console.error('Error al agregar el producto al carrito', error);
     alert('Error al agregar el producto al carrito.');
   }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const btnEnviar = document.getElementById('btnEnviar');

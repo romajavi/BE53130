@@ -8,7 +8,7 @@ console.log('Intentando conectar a MongoDB con la URI:', uri);
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 30000, 
+  connectTimeoutMS: 30000, 
   socketTimeoutMS: 30000,          
 })
   .then(() => {

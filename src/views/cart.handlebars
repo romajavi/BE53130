@@ -1,12 +1,16 @@
 <h2>Carrito de compras</h2>
 
+{{#if cart.products.length}}
 {{#each cart.products}}
 <div class="cart-item">
     <h3>{{this.product.title}}</h3>
     <p>Precio: ${{this.product.price}}</p>
     <p>Cantidad: {{this.quantity}}</p>
-    <button class="remove-item" data-product-id="{{this.product._id}}">Eliminar</button>
+    <form action="/carts/{{../cart._id}}/products/{{this.product._id}}?_method=DELETE" method="POST">
+        <button type="submit" class="remove-item">Eliminar</button>
+    </form>
 </div>
 {{/each}}
-
-<button id="finalize-purchase">Finalizar compra</button>
+{{else}}
+<p>No hay productos en el carrito.</p>
+{{/if}}

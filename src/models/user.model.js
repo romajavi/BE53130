@@ -4,9 +4,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   first_name: { type: String, required: true },
   last_name: String,
-  email: { type: String, unique: true },  // Agregamos unique: true
+  email: { type: String, unique: true },
   age: Number,
-  password: String,
+  password: {
+    type: String,
+    required: true,
+    minlength: 4
+  },
   role: String
 });
 

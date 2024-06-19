@@ -29,48 +29,11 @@
 <div class="carrito">
   <a id="cart-link" href="/carts/{{cartId}}">
     <i class="fas fa-shopping-cart"></i>
-    <span id="cart-counter">{{cartCounter}}</span>
+    <span id="cart-counter">0</span>
   </a>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    fetch('/api/carts/get-cart-id')
-      .then(response => response.json())
-      .then(data => {
-        if (data.cartId) {
-          document.getElementById('cart-link').setAttribute('href', '/carts/' + data.cartId);
-        }
-      })
-      .catch(error => console.error('Error al obtener el ID del carrito:', error));
-
-    const addToCartForms = document.querySelectorAll('.add-to-cart-form');
-    addToCartForms.forEach(form => {
-      form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const productId = form.dataset.productId;
-        const quantity = form.querySelector('input[name="quantity"]').value;
-        fetch(`/api/carts/${data.cartId}/products/${productId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ quantity: parseInt(quantity, 10) })
-        })
-        .then(response => response.json())
-        .then(data => {
-          const cartCounter = document.getElementById('cart-counter');
-          const currentCount = parseInt(cartCounter.textContent, 10) || 0;
-          cartCounter.textContent = currentCount + parseInt(quantity, 10);
-        })
-        .catch(error => console.error('Error al agregar el producto al carrito:', error));
-      });
-    });
-  });
-</script>
-
 <h1>Productos</h1>
-
 
 <div id="contenedorProductos">
   {{#each products}}
@@ -80,11 +43,11 @@
     <p>{{this.description}}</p>
     <p>Precio: ${{this.price}}</p>
     <p>Categoría: {{this.category}}</p>
-    <input type="number" class="quantity-input" value="1" min="1" max="{{this.stock}}" data-id="{{this._id}}">
-    <br>
-    <button class="add-to-cart" data-id="{{this._id}}"
-      onclick="addToCart('{{this._id}}', document.querySelector('.quantity-input[data-id=\'{{this._id}}\']').value)">Agregar
-      al carrito</button>
+    <form>
+      <input type="hidden" name="productId" value="{{this._id}}">
+      <input type="number" name="quantity" value="1" min="1" max="{{this.stock}}">
+      <button type="button" class="add-to-cart" data-id="{{this._id}}">Agregar al carrito</button>
+    </form>
   </div>
   {{/each}}
 </div>
@@ -102,25 +65,46 @@
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/main.js"></script>
 <link rel="stylesheet" href="/css/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script>
-  const cartId = '{{cartId}}'; 
-</script>
-<script>
-  async function updateCartCount() {
+  const cartLink = document.getElementById('cart-link');
+  const cartCounter = document.getElementById('cart-counter');
+
+  // Obtener el ID del carrito desde el enlace
+  const cartId = cartLink.href.split('/').pop();
+
+  // Función para agregar un producto al carrito
+  async function addToCart(productId, quantity) {
     try {
-      const response = await fetch(`/api/carts/{{cartId}}`);
-      if (response.ok) {
-        const cart = await response.json();
-        const totalQuantity = cart.products.reduce((total, item) => total + item.quantity, 0);
-        document.getElementById('cartCount').textContent = totalQuantity;
+      const addToCartResponse = await fetch(`/carts/${cartId}/products`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, quantity }),
+      });
+
+      if (addToCartResponse.ok) {
+        const currentCount = parseInt(cartCounter.textContent, 10) || 0;
+        cartCounter.textContent = currentCount + parseInt(quantity, 10);
+        console.log('Producto agregado al carrito');
+        alert('Producto agregado al carrito exitosamente');
+      } else {
+        console.error('Error al agregar el producto al carrito');
+        alert('Error al agregar el producto al carrito.');
       }
     } catch (error) {
-      console.error('Error al obtener la cantidad de productos en el carrito:', error);
+      console.error('Error al agregar el producto al carrito', error);
+      alert('Error al agregar el producto al carrito.');
     }
   }
 
-  updateCartCount();
+  // Agregar evento click a los botones "Agregar al carrito"
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.id;
+      const quantity = button.parentElement.querySelector('input[name="quantity"]').value;
+      addToCart(productId, quantity);
+    });
+  });
 </script>
