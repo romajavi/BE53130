@@ -11,7 +11,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 4
   },
-  role: String
+  role: String,
+  cart: {
+    type: Schema.Types.ObjectId,
+    ref: 'Cart'
+  }
 });
 
 const User = mongoose.model('User', userSchema);

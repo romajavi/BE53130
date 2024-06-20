@@ -27,9 +27,9 @@
 </div>
 
 <div class="carrito">
-  <a id="cart-link" href="/carts/{{cartId}}">
+  <a id="cart-link" href="/carts/{{cart._id}}">
     <i class="fas fa-shopping-cart"></i>
-    <span id="cart-counter">0</span>
+    <span id="cart-counter">{{cart.products.length}}</span>
   </a>
 </div>
 
@@ -67,44 +67,17 @@
 <script src="/socket.io/socket.io.js"></script>
 <link rel="stylesheet" href="/css/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="/js/main.js"></script>
+
+
 <script>
-  const cartLink = document.getElementById('cart-link');
-  const cartCounter = document.getElementById('cart-counter');
-
-  // Obtener el ID del carrito desde el enlace
-  const cartId = cartLink.href.split('/').pop();
-
-  // Función para agregar un producto al carrito
-  async function addToCart(productId, quantity) {
-    try {
-      const addToCartResponse = await fetch(`/carts/${cartId}/products`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId, quantity }),
-      });
-
-      if (addToCartResponse.ok) {
-        const currentCount = parseInt(cartCounter.textContent, 10) || 0;
-        cartCounter.textContent = currentCount + parseInt(quantity, 10);
-        console.log('Producto agregado al carrito');
-        alert('Producto agregado al carrito exitosamente');
-      } else {
-        console.error('Error al agregar el producto al carrito');
-        alert('Error al agregar el producto al carrito.');
-      }
-    } catch (error) {
-      console.error('Error al agregar el producto al carrito', error);
-      alert('Error al agregar el producto al carrito.');
-    }
-  }
-
-  // Agregar evento click a los botones "Agregar al carrito"
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
   addToCartButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const productId = button.dataset.id;
       const quantity = button.parentElement.querySelector('input[name="quantity"]').value;
-      addToCart(productId, quantity);
+      await addToCart(productId, quantity);
     });
   });
 </script>

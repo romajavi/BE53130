@@ -3,7 +3,6 @@ const router = express.Router();
 const { registerUser } = require('../controllers/register.controller');
 const { body, validationResult } = require('express-validator');
 
-// solicitudes GET para mostrar el formulario de registro
 router.get('/', (req, res) => {
   res.render('register');
 });

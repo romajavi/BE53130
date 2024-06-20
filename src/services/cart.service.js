@@ -2,6 +2,14 @@ const Cart = require('../models/cart');
 const cartDao = require('../daos/cart.dao');
 
 class CartManager {
+    async getOrCreateCart(userId) {
+        let cart = await cartDao.getByUserId(userId);
+        if (!cart) {
+            cart = await this.createCart(userId);
+        }
+        return cart;
+    }
+
     async createCart(userId) {
         try {
             const newCart = new Cart({ user: userId, products: [] });
@@ -21,30 +29,24 @@ class CartManager {
         }
     }
 
-    async addProductToCart(cartId, productId, quantity, userId) {
-        try {
-            let cart = await this.getCartById(cartId, userId);
-            if (!cart) {
-                cart = await this.createCart(userId);
-                cartId = cart._id.toString();
-            }
-
-            const productIndex = cart.products.findIndex(item => item.product.toString() === productId);
-            if (productIndex !== -1) {
-                cart.products[productIndex].quantity += quantity;
-            } else {
-                cart.products.push({ product: productId, quantity });
-            }
-            await cart.save();
-            return cart;
-        } catch (error) {
-            throw new Error(`Error al agregar producto al carrito: ${error.message}`);
+    async addProductToCart(cartId, productId, quantity) {
+        const cart = await Cart.findById(cartId);
+        if (!cart) {
+            throw new Error('Carrito no encontrado');
         }
-    }
 
-    async removeProductFromCart(cartId, productId, userId) {
+        const productIndex = cart.products.findIndex(item => item.product.toString() === productId);
+        if (productIndex !== -1) {
+            cart.products[productIndex].quantity += quantity;
+        } else {
+            cart.products.push({ product: productId, quantity });
+        }
+
+        return await cart.save();
+    }
+    async removeProductFromCart(cartId, productId) {
         try {
-            const cart = await this.getCartById(cartId, userId);
+            const cart = await Cart.findById(cartId);
             if (!cart) {
                 throw new Error("Carrito no encontrado");
             }
@@ -82,9 +84,9 @@ class CartManager {
         }
     }
 
-    async emptyCart(cartId, userId) {
+    async emptyCart(cartId) {
         try {
-            const cart = await this.getCartById(cartId, userId);
+            const cart = await Cart.findById(cartId);
             if (!cart) {
                 throw new Error("Carrito no encontrado");
             }

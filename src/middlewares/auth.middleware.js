@@ -1,15 +1,16 @@
 const User = require('../models/user.model');
 
 const authMiddleware = async (req, res, next) => {
-  console.log('req.cookies:', req.cookies);
   const userEmail = req.cookies.userEmail;
-  console.log('Correo electrónico del usuario en la cookie (authMiddleware):', userEmail);
 
   if (userEmail) {
     try {
       const user = await User.findOne({ email: userEmail });
       if (user) {
         req.user = user;
+        if (user.cartId) {
+          req.cartId = user.cartId;
+        }
         next();
       } else {
         console.log('Usuario no encontrado en la base de datos (authMiddleware)');

@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
+const CartManager = require('../services/cart.service');
+const cartManager = new CartManager();
 
 const registerUser = async (req, res) => {
   try {
@@ -15,6 +17,7 @@ const registerUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       first_name,
       last_name,
@@ -24,6 +27,13 @@ const registerUser = async (req, res) => {
       role: 'usuario'
     });
     await newUser.save();
+
+    // Crear un nuevo carrito para el usuario después de guardar el usuario
+    const newCart = await cartManager.createCart(newUser._id);
+    const cartId = newCart._id.toString();
+
+    // Actualizar el campo cartId del usuario con el ID del carrito recién creado
+    await User.findByIdAndUpdate(newUser._id, { cartId });
 
     res.redirect('/login');
   } catch (error) {
