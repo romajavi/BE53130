@@ -441,23 +441,141 @@ html body {
 
 /* Estilo para el botón del formulario */
 .botones {
-  text-align: center; /* Centra el contenido dentro del contenedor */
-  margin-top: 20px;   /* Añade un margen superior para separarlo del contenido anterior */
+  text-align: center; 
+  margin-top: 20px;  
 }
 
 .botones button {
-  width: 10%;  /* Ancho del botón */
-  padding: 10px;  /* Espaciado interno del botón */
-  background-color: #2B7A78;  /* Color de fondo del botón */
-  color: #fff;  /* Color del texto del botón */
-  border: none;  /* Sin borde */
-  border-radius: 5px;  /* Esquinas redondeadas */
-  cursor: pointer;  /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s;  /* Transición suave para el cambio de color de fondo */
+  width: 10%;  
+  padding: 10px;  
+  background-color: #2B7A78; 
+  color: #fff;  
+  border: none; 
+  border-radius: 5px;  
+  cursor: pointer; 
+  transition: background-color 0.3s;  
   margin-top: 0;
 }
 
 /* Estilo para el botón al pasar el cursor */
 .botones button:hover {
-  background-color: #17252a;  /* Color de fondo al pasar el cursor */
+  background-color: #17252a;  
+  
+}
+
+
+
+
+
+/*CARRITO*/
+
+
+
+/* Contenedor del carrito */
+.cart-file {
+  width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de productos */
+.cart-file li {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none; /* Elimina las viñetas */
+  height: 80px; /* Reduce la altura de las tarjetas */
+  box-sizing: border-box;
+}
+
+.cart-file li:last-child {
+  border-bottom: none;
+}
+
+.cart-file li h3 {
+  color: #2B7A78;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.cart-file li p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* Totales */
+.cart-file p:nth-last-child(3),
+.cart-file p:nth-last-child(2) {
+  text-align: right;
+  font-weight: bold;
+  font-size: 20px; /* Aumenta el tamaño de fuente */
+  margin: 10px 0;
+}
+
+/* Botones de "Eliminar", "Vaciar Carrito" y "Finalizar Compra" */
+.cart-file button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 5px;
+}
+
+.cart-file .remove-item {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.cart-file .remove-item:hover {
+  background-color: #c0392b;
+}
+
+.cart-file form:nth-child(4) button,
+.cart-file form:nth-child(5) button {
+  display: inline-block; /* Coloca los botones en línea */
+}
+
+.cart-file form:nth-child(4) button {
+  background-color: #2B7A78;
+  color: #fff;
+}
+
+.cart-file form:nth-child(4) button:hover {
+  background-color: #17252a;
+}
+
+.cart-file form:nth-child(5) button {
+  background-color: #ab8262;
+  color: #fff;
+}
+
+.cart-file form:nth-child(5) button:hover {
+  background-color: #8d6a4e;
+}
+
+/* Botón "Volver a la Tienda" */
+.cart-file .botones {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #3aafa9;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.cart-file .botones:hover {
+  background-color: #2b8a86;
 }
