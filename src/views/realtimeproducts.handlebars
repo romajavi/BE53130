@@ -45,8 +45,7 @@
 <script>
   const socket = io({
     transports: ['websocket'],
-    upgrade: false,
-    reconnection: false
+    upgrade: false
   });
 
   socket.on('connect', () => {
@@ -55,23 +54,29 @@
   });
 
   socket.on('productos', (productos) => {
+    console.log('Productos recibidos:', productos);
     const contenedorProductos = document.getElementById('contenedorProductos');
     contenedorProductos.innerHTML = '';
 
-    productos.forEach((producto) => {
-      const productoElement = document.createElement('div');
-      productoElement.innerHTML = `
-        <h3>${producto.title}</h3>
-        <p>Precio: ${producto.price}</p>
-        <p>Código: ${producto.code}</p>
-        <p>Stock: ${producto.stock}</p>
-        <button class="eliminar-btn" data-id="${producto._id}">Eliminar</button>
-      `;
-      contenedorProductos.appendChild(productoElement);
-    });
+    if (productos.length === 0) {
+      contenedorProductos.innerHTML = '<p>No hay productos disponibles.</p>';
+    } else {
+      productos.forEach((producto) => {
+        const productoElement = document.createElement('div');
+        productoElement.innerHTML = `
+          <h3>${producto.title}</h3>
+          <p>Precio: ${producto.price}</p>
+          <p>Código: ${producto.code}</p>
+          <p>Stock: ${producto.stock}</p>
+          <button class="eliminar-btn" data-id="${producto._id}">Eliminar</button>
+        `;
+        contenedorProductos.appendChild(productoElement);
+      });
+    }
 
     document.querySelectorAll('.eliminar-btn').forEach(btn => {
       btn.addEventListener('click', () => {
+        console.log('Intentando eliminar producto:', btn.dataset.id);
         socket.emit('eliminarProducto', btn.dataset.id);
       });
     });
@@ -91,24 +96,26 @@
       category: document.getElementById('category').value,
       status: document.getElementById('status').value === 'true',
     };
-
+    console.log('Intentando agregar producto:', producto);
     socket.emit('agregarProducto', producto);
   });
 
   socket.on('productoAgregado', (mensaje) => {
+    console.log('Producto agregado:', mensaje);
     alert(mensaje);
     socket.emit('getProducts');
   });
 
   socket.on('productoEliminado', (mensaje) => {
+    console.log('Producto eliminado:', mensaje);
     alert(mensaje);
     socket.emit('getProducts');
   });
 
   socket.on('error', (error) => {
+    console.error('Error recibido:', error);
     alert(error.message);
   });
 </script>
 
 <link rel="stylesheet" href="/css/styles.css">
-<div class="linea-horizontal"></div>

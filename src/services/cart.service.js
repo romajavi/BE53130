@@ -107,11 +107,11 @@ class CartManager {
         if (!cart) {
             throw new Error('Carrito no encontrado');
         }
-
+    
         let totalAmount = 0;
         const failedProducts = [];
         const successfulProducts = [];
-
+    
         for (const item of cart.products) {
             const product = item.product;
             if (product.stock >= item.quantity) {
@@ -119,38 +119,40 @@ class CartManager {
                 await product.save();
                 totalAmount += product.price * item.quantity;
                 successfulProducts.push(item);
-            } else if (product.stock > 0) {
-                totalAmount += product.price * product.stock;
-                successfulProducts.push({ ...item, quantity: product.stock });
-                failedProducts.push({ ...item, quantity: item.quantity - product.stock });
-                product.stock = 0;
-                await product.save();
             } else {
-                failedProducts.push(item);
+                failedProducts.push({
+                    product: item.product._id,
+                    quantity: item.quantity,
+                    availableStock: product.stock
+                });
             }
         }
-
+    
         if (successfulProducts.length > 0) {
             const ticket = await ticketService.createTicket({
                 amount: totalAmount,
                 purchaser: userId
             });
-
-            cart.products = failedProducts;
+    
+            // Actualizar el carrito con los productos fallidos
+            cart.products = failedProducts.map(item => ({
+                product: item.product,
+                quantity: item.quantity - item.availableStock
+            }));
             await cart.save();
-
+    
             const user = await User.findById(userId);
             await sendPurchaseConfirmationEmail(user.email, ticket, totalAmount);
-
+    
             return {
                 success: true,
                 ticket,
-                failedProducts: failedProducts.map(item => item.product._id)
+                failedProducts
             };
         } else {
             return {
                 success: false,
-                failedProducts: failedProducts.map(item => item.product._id)
+                failedProducts
             };
         }
     }

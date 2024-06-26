@@ -1,105 +1,101 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { authMiddleware } = require("../middlewares/auth.middleware.js");
-const ProductManager = require('../services/product.service.js');
+const ProductManager = require('../services/product.service');
 const productManager = new ProductManager();
-const CartManager = require("../services/cart.service.js");
+const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
-const User = require('../models/user.model'); // Importar el modelo User
-const Cart = require('../models/cart'); // Importar el modelo Cart
-const UserDTO = require('../dtos/user.dto');
-const { isAdmin } = require('../middlewares/auth.middleware.js');
+const { authMiddleware, isUser, isAdmin } = require('../middlewares/auth.middleware');
 
-
-
-// Rutas que requieren autenticación
-router.get('/profile', authMiddleware, async (req, res) => {
-  res.render('profile', { user: req.user });
+router.get('/', (req, res) => {
+    res.render('home');
 });
 
-router.get('/carts/:cid', authMiddleware, async (req, res) => {
-  const cartId = req.params.cid;
-  try {
-    const cart = await Cart.findById(cartId).populate('products.product');
-    if (!cart) {
-      return res.status(404).json({ error: 'Carrito no encontrado' });
+router.get('/register', (req, res) => {
+    res.render('register');
+});
+
+router.get('/login', (req, res) => {
+    res.render('login');
+});
+
+router.get('/profile', authMiddleware, (req, res) => {
+    res.render('profile', { user: req.user });
+});
+
+router.get('/products', authMiddleware, (req, res, next) => {
+    if (req.user.role === 'admin') {
+        return res.redirect('/realtimeproducts');
     }
+    next();
+}, async (req, res) => {
+    try {
+        const { limit = 5, page = 1, sort, query } = req.query;
+        const result = await productManager.getProducts(limit, page, sort, query);
 
-    const totalPrice = cart.products.reduce((total, item) => {
-      return total + item.product.price * item.quantity;
-    }, 0);
+        const cart = await cartManager.getOrCreateCart(req.user._id);
 
-    res.render('cart', { cart, totalPrice });
-  } catch (error) {
-    console.error('Error al obtener el carrito:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
-});
+        let totalProductsInCart = 0;
+        if (cart && cart.products) {
+            totalProductsInCart = cart.products.reduce((total, product) => total + product.quantity, 0);
+        }
 
-router.get('/current', authMiddleware, (req, res) => {
-  const userDTO = new UserDTO(req.user);
-  res.json(userDTO);
-});
-
-
-
-router.get("/", (req, res) => {
-  res.render("home");
-});
-
-router.get("/chat", authMiddleware, async (req, res) => {
-  res.render("chat");
+        res.render('products', {
+            products: result.payload,
+            user: req.user,
+            cart,
+            totalProductsInCart,
+            pagination: {
+                totalPages: result.totalPages,
+                prevPage: result.prevPage,
+                nextPage: result.nextPage,
+                page: result.page,
+                hasPrevPage: result.hasPrevPage,
+                hasNextPage: result.hasNextPage,
+            },
+            limit
+        });
+    } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        res.status(500).render('error', { error: 'Error al cargar los productos' });
+    }
 });
 
 router.get('/realtimeproducts', authMiddleware, isAdmin, async (req, res) => {
-  try {
-    const result = await productManager.getProducts();
-    res.render('realtimeproducts', { 
-      productos: result.payload,
-      user: req.user
-    });
-  } catch (error) {
-    console.error('Error al obtener los productos:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
+    try {
+        const result = await productManager.getProducts(0);
+        res.render('realtimeproducts', {
+            productos: result.payload,
+            user: req.user
+        });
+    } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
 });
 
-router.get('/products', authMiddleware, async (req, res) => {
-  const { page = 1, limit = 5 } = req.query;
-  try {
-    const result = await productManager.getProducts(limit, page);
-    
-    let user;
-    if (req.user._id === 'admin') {
-      user = req.user;
-    } else {
-      user = await User.findById(req.user._id);
-    }
+router.get('/chat', authMiddleware, isUser, (req, res) => {
+    res.render('chat', { user: req.user });
+});
 
-    let cart;
-    if (user._id !== 'admin') {
-      cart = await Cart.findOne({ user: user._id }).populate('products.product');
-    }
+router.get('/carts/:cid', authMiddleware, async (req, res) => {
+    try {
+        const cart = await cartManager.getCartById(req.params.cid, req.user._id);
+        if (!cart) {
+            return res.status(404).render('error', { error: 'Carrito no encontrado' });
+        }
 
-    res.render('products', { 
-      products: result.payload, 
-      pagination: {
-        hasPrevPage: result.hasPrevPage,
-        hasNextPage: result.hasNextPage,
-        prevPage: result.prevPage,
-        nextPage: result.nextPage,
-        page: result.page,
-        totalPages: result.totalPages,
-        totalDocs: result.totalDocs
-      },
-      limit,
-      user,
-      cart
-    });
-  } catch (error) {
-    console.error('Error al obtener los productos:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
+        let totalPrice = 0;
+        if (cart.products) {
+            totalPrice = cart.products.reduce((total, item) => {
+                return total + (item.product.price * item.quantity);
+            }, 0);
+        }
+
+        res.render('cart', { cart, totalPrice, user: req.user });
+    } catch (error) {
+        console.error('Error al obtener el carrito:', error);
+        res.status(500).render('error', { error: 'Error al cargar el carrito' });
+    }
 });
 
 module.exports = router;

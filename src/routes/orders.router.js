@@ -13,22 +13,19 @@ router.post('/create', authMiddleware, isUser, async (req, res) => {
         const result = await cartManager.processPurchase(cart._id, userId);
 
         if (result.success) {
-            res.json({
-                status: 'success',
-                message: 'Compra realizada con éxito',
+            res.render('purchase-success', {
                 ticket: result.ticket,
                 failedProducts: result.failedProducts
             });
         } else {
-            res.status(400).json({
-                status: 'error',
-                message: 'No se pudo procesar la compra',
-                failedProducts: result.failedProducts
+            res.render('purchase-failed', {
+                failedProducts: result.failedProducts,
+                cartId: cart._id
             });
         }
     } catch (error) {
         console.error('Error al procesar la compra:', error);
-        res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
+        res.status(500).render('error', { message: 'Error interno del servidor' });
     }
 });
 

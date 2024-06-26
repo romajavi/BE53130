@@ -91,7 +91,7 @@ passport.deserializeUser(async (id, done) => {
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser()); 
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware para depurar peticiones POST a /login
@@ -108,8 +108,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// Handlebars
+// Handlebars con helpers
 app.engine('handlebars', engine({
+  helpers: {
+    formatDate: (date) => {
+      return new Date(date).toLocaleString();
+    },
+    formatNumber: (number) => {
+      return number.toFixed(2);
+    }
+  },
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true
@@ -139,30 +147,21 @@ app.get("/logout", (req, res) => {
 
 // Configuración de Socket.IO
 io.use((socket, next) => {
-  if (socket.request.session && socket.request.session.passport && socket.request.session.passport.user) {
-    User.findById(socket.request.session.passport.user)
-      .then(user => {
-        if (user) {
-          socket.request.user = user;
-          next();
-        } else {
-          next(new Error('User not found'));
-        }
-      })
-      .catch(err => next(err));
+  const session = socket.request.session;
+  if (session && session.user) {
+    socket.user = session.user;
+    next();
   } else {
     next(new Error('Authentication error'));
   }
 });
 
 io.on('connection', async (socket) => {
-  if (socket.request.user) {
-    console.log('Usuario conectado:', socket.request.user.first_name);
-    const user = socket.request.user;
+  console.log('Usuario conectado:', socket.user ? socket.user.email : 'No autenticado');
 
-    socket.emit('userDetails', { firstName: user.first_name });
+  if (socket.user && (socket.user.role === 'admin' || socket.user.email === 'adminCoder@coder.com')) {
+    console.log('Administrador conectado');
 
-    // Productos
     socket.on('getProducts', async () => {
       try {
         const productos = await productManager.getProducts(0);
@@ -173,45 +172,38 @@ io.on('connection', async (socket) => {
       }
     });
 
-    // Verifica si el usuario es admin antes de permitir operaciones de productos
     socket.on('agregarProducto', async (producto) => {
-      if (user.role === 'admin') {
-        try {
-          console.log("Recibida solicitud para agregar producto:", producto);
-          const result = await productManager.addProduct(producto);
-          if (result.status === 'success') {
-            socket.emit('productoAgregado', 'Producto agregado exitosamente');
-            const productos = await productManager.getProducts();
-            io.emit('productos', productos.payload);
-          } else {
-            socket.emit('error', result);
-          }
-        } catch (error) {
-          console.error('Error al agregar producto:', error);
-          socket.emit('error', { status: 'error', message: 'Error al agregar producto', error: error.message });
+      try {
+        console.log("Recibida solicitud para agregar producto:", producto);
+        const result = await productManager.addProduct(producto);
+        if (result.status === 'success') {
+          io.emit('productoAgregado', 'Producto agregado exitosamente');
+          const productos = await productManager.getProducts(0);
+          io.emit('productos', productos.payload);
+        } else {
+          socket.emit('error', result);
         }
-      } else {
-        socket.emit('error', { status: 'error', message: 'No tienes permiso para realizar esta acción' });
+      } catch (error) {
+        console.error('Error al agregar producto:', error);
+        socket.emit('error', { status: 'error', message: 'Error al agregar producto', error: error.message });
       }
     });
 
     socket.on('eliminarProducto', async (productoId) => {
-      if (user.role === 'admin') {
-        try {
-          await productManager.deleteProduct(productoId);
-          socket.emit('productoEliminado', 'Producto eliminado exitosamente');
-          const productos = await productManager.getProducts(0);
-          io.emit('productos', productos.payload);
-        } catch (error) {
-          console.error('Error al eliminar producto:', error);
-          socket.emit('error', { status: 'error', message: 'Error al eliminar producto', error: error.message });
-        }
-      } else {
-        socket.emit('error', { status: 'error', message: 'No tienes permiso para realizar esta acción' });
+      try {
+        await productManager.deleteProduct(productoId);
+        io.emit('productoEliminado', 'Producto eliminado exitosamente');
+        const productos = await productManager.getProducts(0);
+        io.emit('productos', productos.payload);
+      } catch (error) {
+        console.error('Error al eliminar producto:', error);
+        socket.emit('error', { status: 'error', message: 'Error al eliminar producto', error: error.message });
       }
     });
+  }
 
-    // Chat
+  // Chat
+  if (socket.user) {
     socket.on('getMessages', async () => {
       try {
         const messages = await Message.find().populate('user', 'first_name').lean();
@@ -225,11 +217,11 @@ io.on('connection', async (socket) => {
     socket.on('message', async (data) => {
       try {
         const newMessage = new Message({
-          user: user._id,
+          user: socket.user._id,
           message: data.message,
         });
         await newMessage.save();
-    
+
         const populatedMessage = await Message.findById(newMessage._id).populate('user', 'first_name');
         io.emit('message', { user: populatedMessage.user.first_name, message: data.message });
       } catch (error) {
@@ -237,14 +229,11 @@ io.on('connection', async (socket) => {
         socket.emit('error', { message: 'Error al guardar el mensaje' });
       }
     });
-
-    socket.on('disconnect', () => {
-      console.log('Un usuario se ha desconectado');
-    });
-  } else {
-    console.log('Conexión no autenticada');
-    socket.disconnect(true);
   }
+
+  socket.on('disconnect', () => {
+    console.log('Usuario desconectado');
+  });
 });
 
 // Middleware de manejo de errores

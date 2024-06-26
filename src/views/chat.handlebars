@@ -36,10 +36,12 @@
   <div class="linea-horizontal2"></div>
 </div>
 
-<script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
-
+<script src="/socket.io/socket.io.js"></script>
 <script>
-  const socket = io();
+  const socket = io({
+    transports: ['websocket'],
+    upgrade: false
+  });
 
   const messageForm = document.getElementById("message-form");
   const messageInput = document.getElementById("message");

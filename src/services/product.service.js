@@ -32,7 +32,7 @@ class ProductManager {
                 sort: sort === 'desc' ? { price: -1 } : sort === 'asc' ? { price: 1 } : undefined,
                 lean: true
             };
-    
+
             let queryFilter = {};
             if (query) {
                 queryFilter = {
@@ -42,10 +42,10 @@ class ProductManager {
                     ],
                 };
             }
-    
+
             const result = await Product.paginate(queryFilter, options);
-    
-            const response = {
+
+            return {
                 status: 'success',
                 payload: result.docs,
                 totalPages: result.totalPages,
@@ -55,8 +55,6 @@ class ProductManager {
                 hasPrevPage: result.hasPrevPage,
                 hasNextPage: result.hasNextPage,
             };
-    
-            return response;
         } catch (error) {
             console.error('Error al obtener los productos:', error);
             throw new Error('Error al obtener los productos');

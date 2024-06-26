@@ -18,7 +18,7 @@ async function addToCart(productId, quantity) {
       const result = await response.json();
       console.log('Producto agregado al carrito');
       alert('Producto agregado al carrito exitosamente');
-      updateCartCounter(result.cart.products.length);
+      updateCartCounter(result.cart.products.reduce((total, product) => total + product.quantity, 0));
     } else {
       throw new Error('Error al agregar el producto al carrito');
     }
@@ -35,6 +35,29 @@ function updateCartCounter(count) {
   }
 }
 
+// Función para procesar la compra
+async function processPurchase(cartId) {
+  try {
+    const response = await fetch(`/api/carts/${cartId}/purchase`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const result = await response.json();
+
+    if (result.status === 'success') {
+      alert('Compra realizada con éxito');
+      window.location.href = `/purchase-success?ticketId=${result.ticket._id}`;
+    } else {
+      alert('Error al procesar la compra: ' + result.message);
+      window.location.href = `/purchase-failed?cartId=${cartId}`;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error al procesar la compra.');
+  }
+}
+
 // Evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
   // Agregar eventos a los botones "Agregar al carrito"
@@ -47,6 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
       addToCart(productId, quantity);
     });
   });
+
+  // Agregar evento al botón "Finalizar Compra"
+  const purchaseButton = document.getElementById('finalize-purchase');
+  if (purchaseButton) {
+    purchaseButton.addEventListener('click', () => {
+      const cartId = purchaseButton.dataset.cartId;
+      processPurchase(cartId);
+    });
+  }
 
   // Manejo del chat (si estamos en la página de chat)
   if (window.location.pathname === '/chat') {
@@ -83,4 +115,3 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.emit("getMessages");
   }
 });
-
