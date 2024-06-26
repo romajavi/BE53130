@@ -7,11 +7,11 @@ router.get('/', (req, res) => {
   res.render('register');
 });
 
-// solicitudes POST para procesar el registro de usuario
+// POST para procesar el registro de usuario
 router.post('/', [
   body('email').isEmail().withMessage('El email no es válido'),
   body('password').isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres'),
-  // Agrega más validaciones según sea necesario
+
 ], async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

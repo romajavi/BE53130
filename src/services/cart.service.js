@@ -16,14 +16,14 @@ class CartManager {
 
     async addProductToCart(userId, productId, quantity) {
         const cart = await this.getOrCreateCart(userId);
-        
+
         const productIndex = cart.products.findIndex(item => item.product.toString() === productId);
         if (productIndex !== -1) {
             cart.products[productIndex].quantity += parseInt(quantity);
         } else {
             cart.products.push({ product: productId, quantity: parseInt(quantity) });
         }
-    
+
         await cart.save();
         return cart;
     }
@@ -119,6 +119,12 @@ class CartManager {
                 await product.save();
                 totalAmount += product.price * item.quantity;
                 successfulProducts.push(item);
+            } else if (product.stock > 0) {
+                totalAmount += product.price * product.stock;
+                successfulProducts.push({ ...item, quantity: product.stock });
+                failedProducts.push({ ...item, quantity: item.quantity - product.stock });
+                product.stock = 0;
+                await product.save();
             } else {
                 failedProducts.push(item);
             }

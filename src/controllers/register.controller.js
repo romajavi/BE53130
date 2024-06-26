@@ -28,7 +28,7 @@ const registerUser = async (req, res) => {
     });
     await newUser.save();
 
-    // Crear un nuevo carrito para el usuario después de guardar el usuario
+    // para crear un nuevo carrito para el usuario después de guardar el usuario
     const newCart = await cartManager.createCart(newUser._id);
     const cartId = newCart._id.toString();
 

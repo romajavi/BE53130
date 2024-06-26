@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Manejo del chat (si estamos en la página de chat)
   if (window.location.pathname === '/chat') {
+    const socket = io();
     const messageForm = document.getElementById("message-form");
     const messageInput = document.getElementById("message");
     const messageHistory = document.getElementById("message-history");
@@ -79,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // historial de mensajes al conectarse
     socket.emit("getMessages");
   }
 });

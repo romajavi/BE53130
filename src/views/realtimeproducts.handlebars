@@ -7,15 +7,15 @@
     </a>
   </div>
   <div class="menu">
-      <span class="separator">|</span>
-      <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
-      <span class="separator">|</span>
-      <a href="/chat" class="menu-item">Chat en Vivo</a>
-      <span class="separator">|</span>
-      <a href="/profile" class="menu-item">Perfil</a>
-      <span class="separator">|</span>
-      <a href="/logout" class="menu-item">Cerrar Sesión</a>
-      <span class="separator">|</span>
+    <span class="separator">|</span>
+    <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
+    <span class="separator">|</span>
+    <a href="/chat" class="menu-item">Chat en Vivo</a>
+    <span class="separator">|</span>
+    <a href="/profile" class="menu-item">Perfil</a>
+    <span class="separator">|</span>
+    <a href="/logout" class="menu-item">Cerrar Sesión</a>
+    <span class="separator">|</span>
   </div>
 </div>
 
@@ -93,7 +93,6 @@
     };
 
     socket.emit('agregarProducto', producto);
-    e.target.reset();
   });
 
   socket.on('productoAgregado', (mensaje) => {

@@ -7,7 +7,6 @@ const transporter = nodemailer.createTransport({
         user: config.EMAIL_USER,
         pass: config.EMAIL_PASS
     },
-    secure: true,
     tls: {
         rejectUnauthorized: false
     }

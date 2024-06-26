@@ -92,7 +92,8 @@ router.post('/:cid/purchase', authMiddleware, isUser, async (req, res) => {
             });
         } else {
             res.render('purchase-failed', {
-                failedProducts: result.failedProducts
+                failedProducts: result.failedProducts,
+                cartId: cartId
             });
         }
     } catch (error) {
