@@ -12,31 +12,25 @@ const loginUser = async (req, res) => {
     // usuario adminCoder
     if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
       req.session.user = {
+        _id: 'admin',
         email: 'adminCoder@coder.com',
         role: 'admin',
+        first_name: 'Admin'
       };
 
-      let cart = await Cart.findOne({ user: 'adminCoder@coder.com' });
-      if (!cart) {
-        cart = await cartManager.crearCarrito('adminCoder@coder.com');
-      }
-      req.session.cartId = cart._id.toString();
-      res.locals.cartId = cart._id.toString();
-      console.log('CartId almacenado en la sesión:', req.session.cartId);
-
-      return res.redirect('/products');
+      res.cookie('userEmail', 'adminCoder@coder.com', { httpOnly: true, maxAge: 3600000 });
+      console.log('Usuario admin autenticado:', req.session.user);
+      return res.redirect('/realtimeproducts');
     }
 
-    const user = await User.findOne({ email: email }).exec();
-    console.log('Usuario encontrado:', user);
-
+    const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(401).render('login', { error: 'Email o contraseña incorrectos.' });
+      return res.status(401).render('login', { error: 'Usuario no encontrado.' });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).render('login', { error: 'Email o contraseña incorrectos.' });
+      return res.status(401).render('login', { error: 'Contraseña incorrecta.' });
     }
 
     req.session.user = user;
@@ -45,13 +39,13 @@ const loginUser = async (req, res) => {
 
     let cart = await Cart.findOne({ user: user._id });
     if (!cart) {
-      cart = await cartManager.crearCarrito(user._id);
+      cart = await cartManager.createCart(user._id);
     }
     req.session.cartId = cart._id.toString();
     res.locals.cartId = cart._id.toString();
     console.log('CartId almacenado en la sesión:', req.session.cartId);
 
-    res.redirect('/profile');
+    res.redirect('/products');
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
     res.status(500).render('login', { error: 'Error al iniciar sesión.' });

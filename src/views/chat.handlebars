@@ -39,26 +39,39 @@
 </div>
 
 <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+
 <script>
   const socket = io();
 
-  const sendMessage = (event) => {
+  const messageForm = document.getElementById("message-form");
+  const messageInput = document.getElementById("message");
+  const messageHistory = document.getElementById("message-history");
+
+  messageForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const messageInput = document.getElementById("message");
     const message = messageInput.value.trim();
     if (message !== "") {
-      socket.emit("message", { user: "Usuario", message: message });
+      socket.emit("message", { message: message });
       messageInput.value = "";
     }
-  };
-
-  document.getElementById("message-form").addEventListener("submit", sendMessage);
+  });
 
   socket.on("message", (data) => {
-    const messageHistory = document.getElementById("message-history");
     const messageElement = document.createElement("p");
     messageElement.textContent = `${data.user} dice: ${data.message}`;
     messageHistory.appendChild(messageElement);
     messageHistory.scrollTop = messageHistory.scrollHeight;
   });
+
+  socket.on("messageHistory", (messages) => {
+    messageHistory.innerHTML = '';
+    messages.forEach((message) => {
+      const messageElement = document.createElement("p");
+      messageElement.textContent = `${message.user.first_name} dice: ${message.message}`;
+      messageHistory.appendChild(messageElement);
+    });
+  });
+
+  // Solicitar historial de mensajes al conectarse
+  socket.emit("getMessages");
 </script>

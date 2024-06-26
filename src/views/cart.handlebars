@@ -33,29 +33,33 @@
     {{else}}
     <p>No hay productos en el carrito.</p>
     {{/if}}
-
-    <script>
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const cartId = form.dataset.cartId;
-                const productId = form.dataset.productId;
-                const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
-                    method: 'DELETE'
-                });
-                if (response.ok) {
-                    form.closest('li').remove();
-                    updateCartTotals();
-                }
-            });
-        });
-
-        function updateCartTotals() {
-            const totalProducts = document.querySelectorAll('ul li').length;
-            const totalPrice = Array.from(document.querySelectorAll('ul li'))
-                .reduce((total, li) => total + parseFloat(li.querySelector('p:nth-child(2)').textContent.slice(1)), 0);
-            document.querySelector('p:nth-last-child(3)').textContent = `Total de productos: ${totalProducts}`;
-            document.querySelector('p:nth-last-child(2)').textContent = `Precio total: $${totalPrice.toFixed(2)}`;
-        }
-    </script>
 </div>
+
+<script>
+    document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const cartId = form.dataset.cartId;
+            const productId = form.dataset.productId;
+            const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                form.closest('li').remove();
+                updateCartTotals();
+            }
+        });
+    });
+
+    function updateCartTotals() {
+        const totalProducts = document.querySelectorAll('ul li').length;
+        const totalPrice = Array.from(document.querySelectorAll('ul li'))
+            .reduce((total, li) => {
+                const price = parseFloat(li.querySelector('p:nth-child(2)').textContent.split('$')[1]);
+                const quantity = parseInt(li.querySelector('p:nth-child(3)').textContent.split(': ')[1]);
+                return total + (price * quantity);
+            }, 0);
+        document.querySelector('p:nth-last-child(4)').textContent = `Total de productos: ${totalProducts}`;
+        document.querySelector('p:nth-last-child(3)').textContent = `Precio total: $${totalPrice.toFixed(2)}`;
+    }
+</script>

@@ -36,6 +36,7 @@
 <h1>Productos</h1>
 
 <div id="contenedorProductos">
+  {{#if products.length}}
   {{#each products}}
   <div class="product-card">
     <h3>{{this.title}}</h3>
@@ -50,19 +51,37 @@
     </form>
   </div>
   {{/each}}
+  {{else}}
+  <p>No hay productos disponibles.</p>
+  {{/if}}
 </div>
 
 <div class="pagination">
-  {{#if hasPrevPage}}
-  <a href="/products?page={{prevPage}}&limit={{limit}}">Anterior</a>
+  {{#if pagination.hasPrevPage}}
+  <a href="/products?page=1&limit={{limit}}">Primera</a>
+  <a href="/products?page={{pagination.prevPage}}&limit={{limit}}">Anterior</a>
+  {{else}}
+  <span class="disabled">Primera</span>
+  <span class="disabled">Anterior</span>
   {{/if}}
 
-  <span>Página {{page}} de {{totalPages}}</span>
+  <span>Página {{pagination.page}} de {{pagination.totalPages}}</span>
 
-  {{#if hasNextPage}}
-  <a href="/products?page={{nextPage}}&limit={{limit}}">Siguiente</a>
+  {{#if pagination.hasNextPage}}
+  <a href="/products?page={{pagination.nextPage}}&limit={{limit}}">Siguiente</a>
+  <a href="/products?page={{pagination.totalPages}}&limit={{limit}}">Última</a>
+  {{else}}
+  <span class="disabled">Siguiente</span>
+  <span class="disabled">Última</span>
   {{/if}}
 </div>
+
+<div class="page-info">
+  Mostrando {{products.length}} de {{pagination.totalDocs}} productos
+</div>
+
+
+
 
 <script src="/socket.io/socket.io.js"></script>
 <link rel="stylesheet" href="/css/styles.css">
@@ -70,7 +89,7 @@
 <script src="/js/main.js"></script>
 
 
-<script>
+{{!-- <script>
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
   addToCartButtons.forEach(button => {
@@ -80,4 +99,4 @@
       await addToCart(productId, quantity);
     });
   });
-</script>
+</script> --}}

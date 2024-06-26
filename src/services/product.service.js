@@ -30,8 +30,9 @@ class ProductManager {
                 page: parseInt(page),
                 limit: parseInt(limit),
                 sort: sort === 'desc' ? { price: -1 } : sort === 'asc' ? { price: 1 } : undefined,
+                lean: true
             };
-
+    
             let queryFilter = {};
             if (query) {
                 queryFilter = {
@@ -41,27 +42,20 @@ class ProductManager {
                     ],
                 };
             }
-
-            const result = await Product.find(queryFilter)
-                .skip((options.page - 1) * options.limit)
-                .limit(options.limit)
-                .sort(options.sort)
-                .lean();
-
-            const totalProducts = await Product.countDocuments(queryFilter);
-            const totalPages = Math.ceil(totalProducts / options.limit);
-
+    
+            const result = await Product.paginate(queryFilter, options);
+    
             const response = {
                 status: 'success',
-                payload: result,
-                totalPages,
-                prevPage: options.page > 1 ? options.page  - 1 : null,
-                nextPage: options.page < totalPages ? options.page + 1 : null,
-                page: options.page,
-                hasPrevPage: options.page > 1,
-                hasNextPage: options.page < totalPages,
+                payload: result.docs,
+                totalPages: result.totalPages,
+                prevPage: result.prevPage,
+                nextPage: result.nextPage,
+                page: result.page,
+                hasPrevPage: result.hasPrevPage,
+                hasNextPage: result.hasNextPage,
             };
-
+    
             return response;
         } catch (error) {
             console.error('Error al obtener los productos:', error);

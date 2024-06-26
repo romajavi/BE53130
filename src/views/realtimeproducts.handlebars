@@ -25,30 +25,35 @@
 
 <div class="formulario">
   <h2>Formulario para agregar productos</h2>
-  <form>
-    <input type="text" id="title" placeholder="Titulo">
-    <input type="text" id="description" placeholder="Descripcion">
-    <input type="number" id="price" placeholder="Precio">
+  <form id="addProductForm">
+    <input type="text" id="title" placeholder="Titulo" required>
+    <input type="text" id="description" placeholder="Descripcion" required>
+    <input type="number" id="price" placeholder="Precio" required>
     <input type="text" id="img" value="Sin Imagen">
-    <input type="text" id="code" placeholder="Código">
-    <input type="number" id="stock" placeholder="Stock">
-    <input type="text" id="category" placeholder="Categoria">
+    <input type="text" id="code" placeholder="Código" required>
+    <input type="number" id="stock" placeholder="Stock" required>
+    <input type="text" id="category" placeholder="Categoria" required>
     <select id="status">
       <option value="true">Activo</option>
       <option value="false">Inactivo</option>
     </select>
-    <button type="button" id="btnEnviar">Enviar</button>
+    <button type="submit">Enviar</button>
   </form>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  const socket = io();
+  const socket = io({
+    transports: ['websocket'],
+    upgrade: false,
+    reconnection: false
+  });
 
-  // Para Cargar los productos existentes al ingresar a la página
-  socket.emit('getProducts');
+  socket.on('connect', () => {
+    console.log('Conectado al servidor');
+    socket.emit('getProducts');
+  });
 
-  //  evento 'productos' para recibir los productos actualizados
   socket.on('productos', (productos) => {
     const contenedorProductos = document.getElementById('contenedorProductos');
     contenedorProductos.innerHTML = '';
@@ -63,20 +68,19 @@
         <button class="eliminar-btn" data-id="${producto._id}">Eliminar</button>
       `;
       contenedorProductos.appendChild(productoElement);
+    });
 
-
-      const eliminarBtn = productoElement.querySelector('.eliminar-btn');
-      eliminarBtn.addEventListener('click', () => {
-        const productoId = producto._id;
-        socket.emit('eliminarProducto', productoId);
+    document.querySelectorAll('.eliminar-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        socket.emit('eliminarProducto', btn.dataset.id);
       });
     });
 
     console.log('Productos actualizados:', productos);
   });
 
-  const btnEnviar = document.getElementById('btnEnviar');
-  btnEnviar.addEventListener('click', () => {
+  document.getElementById('addProductForm').addEventListener('submit', (e) => {
+    e.preventDefault();
     const producto = {
       title: document.getElementById('title').value,
       description: document.getElementById('description').value,
@@ -89,8 +93,21 @@
     };
 
     socket.emit('agregarProducto', producto);
-    console.log('Producto agregado:', producto);
-    alert('Producto agregado exitosamente');
+    e.target.reset();
+  });
+
+  socket.on('productoAgregado', (mensaje) => {
+    alert(mensaje);
+    socket.emit('getProducts');
+  });
+
+  socket.on('productoEliminado', (mensaje) => {
+    alert(mensaje);
+    socket.emit('getProducts');
+  });
+
+  socket.on('error', (error) => {
+    alert(error.message);
   });
 </script>
 

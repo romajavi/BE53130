@@ -1,0 +1,15 @@
+<h1>Error en la Compra</h1>
+<p>Lo sentimos, no se pudo procesar su compra.</p>
+{{#if failedProducts.length}}
+<div>
+    <h2>Productos no procesados</h2>
+    <ul>
+    {{#each failedProducts}}
+        <li>{{this}}</li>
+    {{/each}}
+    </ul>
+    <p>Estos productos permanecerán en su carrito.</p>
+</div>
+{{/if}}
+<a href="/carts/{{cartId}}">Volver al carrito</a>
+<a href="/products">Volver a la tienda</a>

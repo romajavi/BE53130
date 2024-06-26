@@ -20,6 +20,14 @@ const ticketSchema = new mongoose.Schema({
     },
 });
 
+ticketSchema.pre('save', async function(next) {
+    if (this.isNew) {
+        const count = await this.constructor.countDocuments();
+        this.code = `TICKET-${count + 1}`;
+    }
+    next();
+});
+
 const Ticket = mongoose.model('Ticket', ticketSchema);
 
 module.exports = Ticket;

@@ -1,122 +1,86 @@
-const socket = io();
+// Configuración de Socket.IO para evitar reconexiones innecesarias
+const socket = io({
+  transports: ['websocket'],
+  upgrade: false,
+  reconnection: false
+});
 
-if (window.location.pathname === '/products' || window.location.pathname === '/realtimeproducts') {
-  socket.on('productos', (productos) => {
-    const contenedorProductos = document.getElementById('contenedorProductos');
-    contenedorProductos.innerHTML = '';
-
-    productos.forEach((producto) => {
-      const productoElement = document.createElement('div');
-      productoElement.classList.add('product-card');
-      productoElement.innerHTML = `
-        <h3>${producto.title}</h3>
-        <p>${producto.description}</p>
-        <p>Precio: $${producto.price}</p>
-        <p>Categoría: ${producto.category}</p>
-        <p>Stock: ${producto.stock}</p>
-        <input type="number" class="quantity-input" data-id="${producto._id}" value="1" min="1" max="${producto.stock}">
-        <button class="add-to-cart" data-id="${producto._id}">Agregar al carrito</button>
-      `;
-      contenedorProductos.appendChild(productoElement);
-
-      const agregarAlCarritoButton = productoElement.querySelector('.add-to-cart');
-      agregarAlCarritoButton.addEventListener('click', () => {
-        const productoId = agregarAlCarritoButton.dataset.id;
-        const cantidad = productoElement.querySelector(`.quantity-input[data-id="${productoId}"]`).value;
-        addToCart(productoId, cantidad);
-      });
-    });
-  });
-}
-
+// Función para agregar un producto al carrito
 async function addToCart(productId, quantity) {
   try {
-    const addToCartResponse = await fetch('/api/carts/add-product', {
+    const response = await fetch('/api/carts/add-product', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ productId, quantity }),
     });
 
-    if (addToCartResponse.ok) {
+    if (response.ok) {
+      const result = await response.json();
       console.log('Producto agregado al carrito');
       alert('Producto agregado al carrito exitosamente');
-
-      // Actualizar el contador del carrito
-      const cartCounter = document.getElementById('cart-counter');
-      const currentCount = parseInt(cartCounter.innerText);
-      cartCounter.innerText = currentCount + parseInt(quantity);
+      updateCartCounter(result.cart.products.length);
     } else {
-      console.error('Error al agregar el producto al carrito');
-      alert('Error al agregar el producto al carrito.');
+      throw new Error('Error al agregar el producto al carrito');
     }
   } catch (error) {
-    console.error('Error al agregar el producto al carrito', error);
+    console.error('Error:', error);
     alert('Error al agregar el producto al carrito.');
   }
 }
 
+function updateCartCounter(count) {
+  const cartCounter = document.getElementById('cart-counter');
+  if (cartCounter) {
+    cartCounter.innerText = count;
+  }
+}
 
+// Evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
-  const btnEnviar = document.getElementById('btnEnviar');
-  if (btnEnviar) {
-    btnEnviar.addEventListener('click', () => {
-      agregarProducto();
+  // Agregar eventos a los botones "Agregar al carrito"
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.id;
+      const quantityInput = button.closest('form').querySelector('input[name="quantity"]');
+      const quantity = quantityInput ? quantityInput.value : 1;
+      addToCart(productId, quantity);
     });
+  });
+
+  // Manejo del chat (si estamos en la página de chat)
+  if (window.location.pathname === '/chat') {
+    const messageForm = document.getElementById("message-form");
+    const messageInput = document.getElementById("message");
+    const messageHistory = document.getElementById("message-history");
+
+    messageForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const message = messageInput.value.trim();
+      if (message !== "") {
+        socket.emit("message", { message: message });
+        messageInput.value = "";
+      }
+    });
+
+    socket.on("message", (data) => {
+      const messageElement = document.createElement("p");
+      messageElement.textContent = `${data.user} dice: ${data.message}`;
+      messageHistory.appendChild(messageElement);
+      messageHistory.scrollTop = messageHistory.scrollHeight;
+    });
+
+    socket.on("messageHistory", (messages) => {
+      messageHistory.innerHTML = '';
+      messages.forEach((message) => {
+        const messageElement = document.createElement("p");
+        messageElement.textContent = `${message.user.first_name} dice: ${message.message}`;
+        messageHistory.appendChild(messageElement);
+      });
+    });
+
+    // historial de mensajes al conectarse
+    socket.emit("getMessages");
   }
 });
 
-const agregarProducto = () => {
-  const producto = {
-    title: document.getElementById("title").value,
-    description: document.getElementById("description").value,
-    price: parseFloat(document.getElementById("price").value),
-    img: document.getElementById("img").value,
-    code: document.getElementById("code").value,
-    stock: parseInt(document.getElementById("stock").value),
-    category: document.getElementById("category").value,
-    status: document.getElementById("status").value === "true"
-  };
-  console.log("Enviando solicitud para agregar producto:", producto);
-  socket.emit("agregarProducto", producto);
-};
-
-// Manejo del chat
-if (window.location.pathname === '/chat') {
-  let userFirstName;
-
-  // Recibir detalles del usuario
-  socket.on("userDetails", (data) => {
-    userFirstName = data.firstName;
-  });
-
-  document.getElementById("message-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const messageInput = document.getElementById("message");
-    const message = messageInput.value.trim();
-    if (message !== "") {
-      socket.emit("message", { message: message });
-      messageInput.value = "";
-    }
-  });
-
-  socket.on("message", (data) => {
-    const messageElement = document.createElement("p");
-    messageElement.textContent = `${data.user.first_name} dice: ${data.message}`;
-    messageHistory.appendChild(messageElement);
-    messageHistory.scrollTop = messageHistory.scrollHeight;
-  });
-
-  socket.on("messageHistory", (messages) => {
-    const messageHistory = document.getElementById("message-history");
-    messages.forEach((message) => {
-      const messageElement = document.createElement("p");
-      messageElement.textContent = `${message.user.first_name} dice: ${message.message}`;
-      messageHistory.appendChild(messageElement);
-    });
-  });
-
-  // Solicitar historial de mensajes al conectarse
-  socket.on("connect", () => {
-    socket.emit("getMessages");
-  });
-}

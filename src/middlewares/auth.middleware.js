@@ -3,6 +3,16 @@ const User = require('../models/user.model');
 const authMiddleware = async (req, res, next) => {
   const userEmail = req.cookies.userEmail;
 
+  if (userEmail === 'adminCoder@coder.com') {
+    req.user = {
+      _id: 'admin',
+      email: 'adminCoder@coder.com',
+      role: 'admin',
+      first_name: 'Admin'
+    };
+    return next();
+  }
+
   if (userEmail) {
     try {
       const user = await User.findOne({ email: userEmail });
@@ -26,4 +36,20 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = authMiddleware;
+const isUser = (req, res, next) => {
+  if (req.user && req.user.role === 'usuario') {
+    next();
+  } else {
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol de usuario." });
+  }
+};
+
+const isAdmin = (req, res, next) => {
+  if (req.user && (req.user.role === 'admin' || req.user.email === 'adminCoder@coder.com')) {
+    next();
+  } else {
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol de administrador." });
+  }
+};
+
+module.exports = { authMiddleware, isUser, isAdmin };
