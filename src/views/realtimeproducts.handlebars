@@ -1,60 +1,85 @@
 <div class="linea-horizontal"></div>
 
 <div class="menu-container">
-  <div class="logo">
-    <a href="/">
-      <img src="/img/2.png" alt="Logo de la empresa">
-    </a>
-  </div>
-  <div class="menu">
-    <span class="separator">|</span>
-    <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
-    <span class="separator">|</span>
-    <a href="/chat" class="menu-item">Chat en Vivo</a>
-    <span class="separator">|</span>
-    <a href="/profile" class="menu-item">Perfil</a>
-    <span class="separator">|</span>
-    <a href="/logout" class="menu-item">Cerrar Sesión</a>
-    <span class="separator">|</span>
-  </div>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/2.png" alt="Logo de la empresa">
+        </a>
+    </div>
+    <div class="menu">
+        <span class="separator">|</span>
+        <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
+        <span class="separator">|</span>
+        <a href="/chat" class="menu-item">Chat en Vivo</a>
+        <span class="separator">|</span>
+        <a href="/profile" class="menu-item">Perfil</a>
+        <span class="separator">|</span>
+        <a href="/logout" class="menu-item">Cerrar Sesión</a>
+        <span class="separator">|</span>
+    </div>
 </div>
 
 <h1>Productos en tiempo real</h1>
 
 <div id="product-list">
     {{#if productos.length}}
-        {{#each productos}}
-            <div>
-                <h3>{{this.title}}</h3>
-                <p>Precio: {{this.price}}</p>
-                <p>Stock: {{this.stock}}</p>
-                <br>
-                <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
-            </div>
-        {{/each}}
+    {{#each productos}}
+    <div>
+        <h3>{{this.title}}</h3>
+        <p>Precio: {{this.price}}</p>
+        <p>Stock: {{this.stock}}</p>
+        <br>
+        <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+    </div>
+    {{/each}}
     {{else}}
-        <p>No hay productos disponibles.</p>
+    <p>No hay productos disponibles.</p>
     {{/if}}
 </div>
 
+<div class="pagination">
+    {{#if pagination.hasPrevPage}}
+    <a href="/products?page=1&limit={{limit}}">Primera</a>
+    <a href="/products?page={{pagination.prevPage}}&limit={{limit}}">Anterior</a>
+    {{else}}
+    <span class="disabled">Primera</span>
+    <span class="disabled">Anterior</span>
+    {{/if}}
+
+    <span>Página {{pagination.page}} de {{pagination.totalPages}}</span>
+
+    {{#if pagination.hasNextPage}}
+    <a href="/products?page={{pagination.nextPage}}&limit={{limit}}">Siguiente</a>
+    <a href="/products?page={{pagination.totalPages}}&limit={{limit}}">Última</a>
+    {{else}}
+    <span class="disabled">Siguiente</span>
+    <span class="disabled">Última</span>
+    {{/if}}
+</div>
+
+<div class="page-info">
+    Mostrando {{products.length}} de {{pagination.totalDocs}} productos
+</div>
+
+
 <div class="formulario">
-  <h2 id="form-title">Agregar nuevo producto</h2>
-  <form id="product-form">
-    <input type="hidden" id="product-id">
-    <input type="text" id="title" placeholder="Titulo" required>
-    <input type="text" id="description" placeholder="Descripcion" required>
-    <input type="number" id="price" placeholder="Precio" required>
-    <input type="text" id="img" placeholder="URL de la imagen">
-    <input type="text" id="code" placeholder="Código" required>
-    <input type="number" id="stock" placeholder="Stock" required>
-    <input type="text" id="category" placeholder="Categoria" required>
-    <select id="status">
-      <option value="true">Activo</option>
-      <option value="false">Inactivo</option>
-    </select>
-    <button type="submit" id="submit-btn">Agregar</button>
-    <button type="button" id="cancel-btn" style="display: none;">Cancelar</button>
-  </form>
+    <h2 id="form-title">Agregar nuevo producto</h2>
+    <form id="product-form">
+        <input type="hidden" id="product-id">
+        <input type="text" id="title" placeholder="Titulo" required>
+        <input type="text" id="description" placeholder="Descripcion" required>
+        <input type="number" id="price" placeholder="Precio" required>
+        <input type="text" id="img" placeholder="URL de la imagen">
+        <input type="text" id="code" placeholder="Código" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <input type="text" id="category" placeholder="Categoria" required>
+        <select id="status">
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+        <button type="submit" id="submit-btn">Agregar</button>
+        <button type="button" id="cancel-btn" style="display: none;">Cancelar</button>
+    </form>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -109,7 +134,7 @@
         document.getElementById('stock').value = product.stock;
         document.getElementById('category').value = product.category;
         document.getElementById('status').value = product.status.toString();
-        
+
         formTitle.textContent = 'Editar producto';
         submitBtn.textContent = 'Actualizar';
         cancelBtn.style.display = 'inline-block';

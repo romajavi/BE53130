@@ -3,17 +3,15 @@ const router = express.Router();
 const ProductManager = require('../services/product.service');
 const productManager = new ProductManager();
 const { authMiddleware, isAdmin, isUser } = require('../middlewares/auth.middleware');
+const { generateMockProducts } = require('../utils/mockingModule');
+const { CustomError } = require('../utils/errorHandler');
 
-
-
-// Mideware para redirigir usuarios no autorizados
-router.use((req, res, next) => {
-    if (req.user && req.user.role === 'admin') {
-        next();
-    } else {
-        res.status(403).json({ error: "Acceso denegado. Se requiere rol de administrador." });
-    }
+// GET /api/products/mockingproducts (sin autenticación)
+router.get('/mockingproducts', (req, res) => {
+    const mockProducts = generateMockProducts();
+    res.json(mockProducts);
 });
+
 
 // GET /api/products
 router.get('/', isUser, async (req, res) => {
@@ -43,13 +41,33 @@ router.get('/:pid', async (req, res) => {
 });
 
 // POST /api/products
-router.post('/', authMiddleware, isAdmin, async (req, res) => {
+router.post('/', async (req, res, next) => {
     try {
-        const newProduct = await productManager.addProduct(req.body);
+        const { title, description, price, img, code, stock, category, status } = req.body;
+
+        if (!title || !price) {
+            throw new CustomError('Title and price are required', 400, {
+                required: {
+                    title: 'string',
+                    price: 'number'
+                }
+            });
+        }
+
+        const newProduct = await productManager.addProduct({
+            title,
+            description,
+            price,
+            img,
+            code,
+            stock,
+            category,
+            status
+        });
+
         res.status(201).json(newProduct);
     } catch (error) {
-        console.error('Error al crear el producto:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
+        next(error);
     }
 });
 

@@ -278,46 +278,57 @@ h1 {
 /* 
 
 
-
 /* Estilos específicos para la página de chat */
 .chat-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-  }
-  
-  .message-history {
-    height: 300px;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-  }
-  
-  .message-form input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .message-form button {
-    width: 18%;
-    padding: 10px;
-    background-color: #2B7A78;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .message-form button:hover {
-    background-color: #17252a;
-  }
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.message-history {
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* Ajustes para el formulario y sus elementos */
+#chat-form {
+  display: flex;
+  align-items: center;
+}
+
+#message-input {
+  flex: 1; /* El campo de entrada ocupa todo el espacio disponible */
+  width: 100%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Para incluir el padding en el ancho total */
+}
+
+#chat-form button {
+  padding: 10px 20px; /* Ajusta el padding vertical y horizontal */
+  background-color: #2B7A78;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#chat-form button:hover {
+  background-color: #17252a;
+}
+
+
+
+
 
   /* Estilos para la paginación */
 .pagination {
@@ -444,7 +455,8 @@ html body {
 /* Estilo para el botón del formulario */
 .botones {
   text-align: center; 
-  margin-top: 20px;  
+  margin-top: 20px;
+  margin-bottom: 50px;  
 }
 
 .botones button {
@@ -471,11 +483,9 @@ html body {
 
 /*CARRITO*/
 
-
-
 /* Contenedor del carrito */
 .cart-file {
-  width: 80%;
+  width: 35%;
   margin: 30px auto;
   padding: 20px;
   background-color: #f5f5f5;
@@ -494,8 +504,8 @@ html body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  list-style-type: none; /* Elimina las viñetas */
-  height: 80px; /* Reduce la altura de las tarjetas */
+  list-style-type: none;
+  height: 80px;
   box-sizing: border-box;
 }
 
@@ -507,20 +517,42 @@ html body {
   color: #2B7A78;
   font-size: 16px;
   margin-bottom: 5px;
+  flex: 2;
 }
 
 .cart-file li p {
   margin-bottom: 5px;
   font-size: 14px;
+  flex: 1;
+}
+
+/* Ajuste de alineación para Precio y Cantidad */
+.cart-file li p:nth-child(2) {
+  text-align: right;
+}
+
+.cart-file li p:nth-child(3) {
+  text-align: right;
 }
 
 /* Totales */
-.cart-file p:nth-last-child(3),
-.cart-file p:nth-last-child(2) {
+.totals {
   text-align: right;
-  font-weight: bold;
-  font-size: 20px; /* Aumenta el tamaño de fuente */
   margin: 10px 0;
+}
+
+.totals p {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Contenedor de botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 /* Botones de "Eliminar", "Vaciar Carrito" y "Finalizar Compra" */
@@ -543,26 +575,21 @@ html body {
   background-color: #c0392b;
 }
 
-.cart-file form:nth-child(4) button,
-.cart-file form:nth-child(5) button {
-  display: inline-block; /* Coloca los botones en línea */
-}
-
-.cart-file form:nth-child(4) button {
+.cart-file .empty-cart {
   background-color: #2B7A78;
   color: #fff;
 }
 
-.cart-file form:nth-child(4) button:hover {
+.cart-file .empty-cart:hover {
   background-color: #17252a;
 }
 
-.cart-file form:nth-child(5) button {
+.cart-file .finalize-purchase {
   background-color: #ab8262;
   color: #fff;
 }
 
-.cart-file form:nth-child(5) button:hover {
+.cart-file .finalize-purchase:hover {
   background-color: #8d6a4e;
 }
 
@@ -581,6 +608,7 @@ html body {
 .cart-file .botones:hover {
   background-color: #2b8a86;
 }
+
 
 
 /* Ticker de compra */

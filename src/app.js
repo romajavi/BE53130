@@ -19,6 +19,7 @@ const { authMiddleware, isUser, isAdmin } = require('./middlewares/auth.middlewa
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const { sendMessage } = require('./controllers/chat.controller');
+const { errorHandler } = require('./utils/errorHandler');
 
 // importación de las rutas
 const productsRouter = require("./routes/products.router.js");
@@ -234,6 +235,9 @@ app.use((err, req, res, next) => {
   const message = err.message || 'Error interno del servidor';
   res.status(status).json({ error: message });
 });
+
+// milddeware errores
+app.use(errorHandler);
 
 // Puerto
 const PORT = config.PORT;

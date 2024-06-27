@@ -34,23 +34,27 @@
         {{/each}}
     </ul>
 
-    <p>Total de productos: <span id="totalProducts">{{cart.products.length}}</span></p>
-    <p>Precio total: $<span id="totalPrice">{{totalPrice}}</span></p>
+    <div class="totals">
+        <p>Total de productos: <span id="totalProducts">{{cart.products.length}}</span></p>
+        <p>Precio total: $<span id="totalPrice">{{totalPrice}}</span></p>
+    </div>
 
-    <form action="/api/carts/{{cart._id}}/empty" method="POST">
-        <button type="submit">Vaciar Carrito</button>
-    </form>
+    <div class="button-container">
+        <form action="/api/carts/{{cart._id}}/empty" method="POST">
+            <button type="submit" class="empty-cart">Vaciar Carrito</button>
+        </form>
 
-    <form action="/api/orders/create" method="POST">
-        <input type="hidden" name="cartId" value="{{cart._id}}">
-        <button type="submit">Finalizar Compra</button>
-    </form>
-
+        <form action="/api/orders/create" method="POST">
+            <input type="hidden" name="cartId" value="{{cart._id}}">
+            <button type="submit" class="finalize-purchase">Finalizar Compra</button>
+        </form>
+    </div>
 
     {{else}}
     <p>No hay productos en el carrito.</p>
     {{/if}}
 </div>
+
 
 <div class="botones">
     <a href="/products">

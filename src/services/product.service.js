@@ -18,10 +18,10 @@ class ProductManager {
             });
             await newProduct.save();
             console.log('Producto agregado correctamente:', newProduct);
-            return { status: 'success', message: 'Producto agregado correctamente', product: newProduct };
+            return newProduct;
         } catch (error) {
             console.error('Error al agregar producto:', error.message);
-            return { status: 'error', message: 'Error al agregar producto', error: error.message };
+            throw new Error('Error al agregar producto: ' + error.message);
         }
     }
 
