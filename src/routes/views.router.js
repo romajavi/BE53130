@@ -62,7 +62,8 @@ router.get('/products', authMiddleware, (req, res, next) => {
 
 router.get('/realtimeproducts', authMiddleware, isAdmin, async (req, res) => {
     try {
-        const result = await productManager.getProducts(0);
+        const result = await productManager.getProducts(0); // 0 para obtener todos los productos
+        console.log('Productos obtenidos para realtimeproducts:', result.payload);
         res.render('realtimeproducts', {
             productos: result.payload,
             user: req.user

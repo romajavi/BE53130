@@ -141,6 +141,7 @@ h1 {
 /* Estilo para el botón del formulario */
 .formulario button {
     width: 30%;
+    margin: 5px 0;
     padding: 10px;
     background-color: #2B7A78;
     color: #fff;
@@ -199,68 +200,69 @@ h1 {
     margin-bottom: 20px;
   }
 
-/* Estilo para el contenedor de productos */
-#contenedorProductos {
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    margin-top: 50px; 
+/* Estilo para los contenedores de productos */
+#contenedorProductos, #product-list {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  margin-top: 50px; 
 }
 
-/* Estilo para cada elemento dentro del contenedor de productos */
-#contenedorProductos > div {
-    width: 400px; 
-    height: 230px; 
-    margin: 10px;
-    padding: 20px; 
-    border: 1px solid #ccc; 
-    border-radius: 10px; 
-    background-color: #f5f5f5; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    transition: transform 0.3s ease;
+/* Estilo para cada elemento dentro de los contenedores de productos */
+#contenedorProductos > div, #product-list > div {
+  width: 400px; 
+  height: 230px; 
+  margin: 10px;
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  background-color: #f5f5f5; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  transition: transform 0.3s ease;
 }
 
 /* Estilo para el texto dentro de las tarjetas */
-#contenedorProductos > div p {
-    margin-bottom: 10px; 
+#contenedorProductos > div p, #product-list > div p {
+  margin-bottom: 10px; 
 }
 
-/* Estilo para el botón dentro de las tarjetas */
-#contenedorProductos > div button {
-    padding: 10px 20px; 
-    background-color: #2B7A78; 
-    color: #fff; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer;
-    transition: background-color 0.3s; 
+/* Estilo para los botones dentro de las tarjetas */
+#contenedorProductos > div button, #product-list > div button {
+  padding: 10px 20px; 
+  background-color: #2B7A78; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  transition: background-color 0.3s; 
+  margin: 5px 0; /* Añadir margen vertical entre botones */
 }
 
 /* Estilo al pasar el cursor sobre una tarjeta */
-#contenedorProductos > div:hover {
-    transform: translateY(-5px);
+#contenedorProductos > div:hover, #product-list > div:hover {
+  transform: translateY(-5px);
 }
 
-/* Estilo al pasar el cursor sobre el botón */
-#contenedorProductos > div button:hover {
-    background-color: #17252a; 
+/* Estilo al pasar el cursor sobre los botones */
+#contenedorProductos > div button:hover, #product-list > div button:hover {
+  background-color: #17252a; 
 }
-
 
 /* Estilo para el contenedor del botón */
 .container-btn {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* Estilo para el botón */
 .container-btn button {
-    padding: 10px 20px; 
+  padding: 10px 20px; 
 }
+
 
 /* Estilos para el contenedor de bienvenida */
 .welcome-container {
@@ -579,3 +581,86 @@ html body {
 .cart-file .botones:hover {
   background-color: #2b8a86;
 }
+
+
+/* Ticker de compra */
+
+/* Estilos para la tarjeta de usuario */
+.ticket-container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  height: auto; 
+  margin: 20px; 
+}
+
+.detalle-ticket {
+  width: 80%; 
+  max-width: 800px; 
+  padding: 20px;
+  margin-bottom: 20px; 
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.detalle-ticket p {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.detalle-ticket ul {
+  list-style: none; 
+  padding: 0;
+}
+
+.detalle-ticket li {
+  font-size: 18px; 
+  margin-bottom: 10px; 
+}
+
+
+/* estilos del icono del carrito de compras */
+
+.carrito {
+  position: fixed;
+  top: 300px;
+  right: 50px;
+  background-color: #2B7A78;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.carrito a {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.carrito a:hover {
+  background-color: #17252a;
+  border-radius: 50px;
+  padding: 10px 20px;
+}
+
+.carrito i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.carrito span {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #3aafa9;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+

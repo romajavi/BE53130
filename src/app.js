@@ -4,11 +4,8 @@ const app = express();
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const http = require("http").Server(app);
-const io = require("socket.io")(http, {
-  transports: ['websocket'],
-  pingTimeout: 60000,
-  pingInterval: 25000
-});
+const socketIo = require('socket.io');
+const io = socketIo(http);
 const path = require("path");
 const passport = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
@@ -18,10 +15,10 @@ const productManager = new ProductManager();
 const Message = require('./models/message.model');
 const User = require('./models/user.model');
 const bcrypt = require('bcrypt');
-const sharedsession = require("express-socket.io-session");
 const { authMiddleware, isUser, isAdmin } = require('./middlewares/auth.middleware');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
+const { sendMessage } = require('./controllers/chat.controller');
 
 // importación de las rutas
 const productsRouter = require("./routes/products.router.js");
@@ -44,9 +41,6 @@ const sessionMiddleware = session({
 });
 
 app.use(sessionMiddleware);
-io.use(sharedsession(sessionMiddleware, {
-  autoSave: true
-}));
 
 // Inici. Passport.js
 app.use(passport.initialize());
@@ -146,93 +140,90 @@ app.get("/logout", (req, res) => {
 });
 
 // Configuración de Socket.IO
-io.use((socket, next) => {
-  const session = socket.request.session;
-  if (session && session.user) {
-    socket.user = session.user;
-    next();
-  } else {
-    next(new Error('Authentication error'));
-  }
+io.on('connection', (socket) => {
+  console.log('Nuevo cliente conectado');
+
+  //para chat
+  socket.on('chatMessage', async (msg) => {
+    console.log('Mensaje recibido:', msg); // dep
+    try {
+      const { userId, message } = msg;
+      if (!userId) {
+        throw new Error('UserId no proporcionado');
+      }
+      console.log('Buscando usuario con ID:', userId); // dep
+      const user = await User.findById(userId);
+      if (!user) {
+        throw new Error('Usuario no encontrado');
+      }
+      console.log('Usuario encontrado:', user); // dep
+      const savedMessage = await Message.create({
+        user: user._id,
+        message: message
+      });
+      const populatedMessage = await Message.findById(savedMessage._id).populate('user', 'first_name');
+      io.emit('message', {
+        user: populatedMessage.user.first_name,
+        message: populatedMessage.message
+      });
+    } catch (error) {
+      console.error('Error al procesar el mensaje:', error);
+    }
+  });
+
+  socket.on('getMessages', async () => {
+    try {
+      const messages = await Message.find().populate('user', 'first_name').sort({ timestamp: 1 });
+      socket.emit('loadMessages', messages);
+    } catch (error) {
+      console.error('Error al obtener los mensajes:', error);
+    }
+  });
+
+
+  //para productos en tiempo real
+  socket.on('getProducts', async () => {
+    try {
+        const result = await productManager.getProducts(0);
+        socket.emit('products', result.payload);
+    } catch (error) {
+        console.error('Error al obtener productos:', error);
+        socket.emit('products', []);
+    }
 });
 
-io.on('connection', async (socket) => {
-  console.log('Usuario conectado:', socket.user ? socket.user.email : 'No autenticado');
-
-  if (socket.user && (socket.user.role === 'admin' || socket.user.email === 'adminCoder@coder.com')) {
-    console.log('Administrador conectado');
-
-    socket.on('getProducts', async () => {
-      try {
-        const productos = await productManager.getProducts(0);
-        socket.emit('productos', productos.payload);
-      } catch (error) {
-        console.error('Error al obtener productos:', error);
-        socket.emit('error', { message: 'Error al obtener productos' });
-      }
-    });
-
-    socket.on('agregarProducto', async (producto) => {
-      try {
-        console.log("Recibida solicitud para agregar producto:", producto);
-        const result = await productManager.addProduct(producto);
-        if (result.status === 'success') {
-          io.emit('productoAgregado', 'Producto agregado exitosamente');
-          const productos = await productManager.getProducts(0);
-          io.emit('productos', productos.payload);
-        } else {
-          socket.emit('error', result);
-        }
-      } catch (error) {
+socket.on('addProduct', async (product) => {
+    try {
+        await productManager.addProduct(product);
+        const updatedResult = await productManager.getProducts(0);
+        io.emit('products', updatedResult.payload);
+    } catch (error) {
         console.error('Error al agregar producto:', error);
-        socket.emit('error', { status: 'error', message: 'Error al agregar producto', error: error.message });
-      }
-    });
+    }
+});
 
-    socket.on('eliminarProducto', async (productoId) => {
-      try {
-        await productManager.deleteProduct(productoId);
-        io.emit('productoEliminado', 'Producto eliminado exitosamente');
-        const productos = await productManager.getProducts(0);
-        io.emit('productos', productos.payload);
-      } catch (error) {
+socket.on('updateProduct', async ({ id, ...productData }) => {
+    try {
+        await productManager.updateProduct(id, productData);
+        const updatedResult = await productManager.getProducts(0);
+        io.emit('products', updatedResult.payload);
+    } catch (error) {
+        console.error('Error al actualizar producto:', error);
+    }
+});
+
+socket.on('deleteProduct', async (productId) => {
+    try {
+        await productManager.deleteProduct(productId);
+        const updatedResult = await productManager.getProducts(0);
+        io.emit('products', updatedResult.payload);
+    } catch (error) {
         console.error('Error al eliminar producto:', error);
-        socket.emit('error', { status: 'error', message: 'Error al eliminar producto', error: error.message });
-      }
-    });
-  }
-
-  // Chat
-  if (socket.user) {
-    socket.on('getMessages', async () => {
-      try {
-        const messages = await Message.find().populate('user', 'first_name').lean();
-        socket.emit('messageHistory', messages);
-      } catch (error) {
-        console.error('Error al obtener los mensajes:', error);
-        socket.emit('error', { message: 'Error al obtener los mensajes' });
-      }
-    });
-
-    socket.on('message', async (data) => {
-      try {
-        const newMessage = new Message({
-          user: socket.user._id,
-          message: data.message,
-        });
-        await newMessage.save();
-
-        const populatedMessage = await Message.findById(newMessage._id).populate('user', 'first_name');
-        io.emit('message', { user: populatedMessage.user.first_name, message: data.message });
-      } catch (error) {
-        console.error('Error al guardar el mensaje:', error);
-        socket.emit('error', { message: 'Error al guardar el mensaje' });
-      }
-    });
-  }
+    }
+});
 
   socket.on('disconnect', () => {
-    console.log('Usuario desconectado');
+    console.log('Cliente desconectado');
   });
 });
 

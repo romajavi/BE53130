@@ -1,4 +1,4 @@
-// Configuración de Socket.IO para evitar reconexiones innecesarias
+// Configuración de Socket.IO para evitar reconexiones 
 const socket = io({
   transports: ['websocket'],
   upgrade: false,

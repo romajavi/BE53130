@@ -1,5 +1,6 @@
 const Product = require('../models/product');
-const { ObjectId } = require('mongodb');
+const productDao = require('../daos/product.dao');
+
 
 class ProductManager {
     async addProduct({ title, description, price, img, code, stock, category, status = true }) {
@@ -28,11 +29,11 @@ class ProductManager {
         try {
             const options = {
                 page: parseInt(page),
-                limit: parseInt(limit),
+                limit: limit === 0 ? undefined : parseInt(limit), // Si limit es 0, no aplicamos límite
                 sort: sort === 'desc' ? { price: -1 } : sort === 'asc' ? { price: 1 } : undefined,
                 lean: true
             };
-
+    
             let queryFilter = {};
             if (query) {
                 queryFilter = {
@@ -42,9 +43,14 @@ class ProductManager {
                     ],
                 };
             }
-
+    
+            console.log('Opciones de consulta:', options);
+            console.log('Filtro de consulta:', queryFilter);
+    
             const result = await Product.paginate(queryFilter, options);
-
+    
+            console.log('Resultado de la consulta:', result);
+    
             return {
                 status: 'success',
                 payload: result.docs,
@@ -78,7 +84,7 @@ class ProductManager {
 
     async updateProduct(id, updatedProduct) {
         try {
-            const product = await Product.findByIdAndUpdate(id, updatedProduct, { new: true }).lean();
+            const product = await Product.findByIdAndUpdate(id, updatedProduct, { new: true, runValidators: true }).lean();
             if (!product) {
                 console.log('Producto no encontrado');
                 return null;

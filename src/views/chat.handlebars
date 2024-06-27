@@ -1,77 +1,73 @@
-<link rel="stylesheet" href="/css/styles.css">
+<div class="linea-horizontal"></div>
 
-<div class="container">
-  <div class="linea-horizontal"></div>
-  <div class="menu-container">
-    <div class="logo">
-      <a href="/">
-        <img src="/img/2.png" alt="Logo de la empresa">
-      </a>
-    </div>
-    <div class="menu">
-      <span class="separator">|</span>
-      <a href="/chat" class="menu-item">Chat en Vivo</a>
-      <span class="separator">|</span>
-      <a href="/profile" class="menu-item">Perfil</a>
-      <span class="separator">|</span>
-      <a href="/logout" class="menu-item">Cerrar Sesión</a>
-      <span class="separator">|</span>
-    </div>
+<div class="menu-container">
+  <div class="logo">
+    <a href="/">
+      <img src="/img/2.png" alt="Logo de la empresa">
+    </a>
   </div>
-
-  <div class="chat-container">
-    <h1>Bienvenido al Chat</h1>
-    <div id="message-history" class="message-history">
-      {{#each messages}}
-      <p>{{this.user.first_name}} dice: {{this.message}}</p>
-      {{/each}}
-    </div>
-
-    <form id="message-form" class="message-form">
-      <input type="text" id="message" name="message" placeholder="Escribe tu mensaje aquí" required>
-      <button type="submit">Enviar</button>
-    </form>
+  <div class="menu">
+    <span class="separator">|</span>
+    <a href="/chat" class="menu-item">Chat en Vivo</a>
+    <span class="separator">|</span>
+    <a href="/profile" class="menu-item">Perfil</a>
+    <span class="separator">|</span>
+    <a href="/logout" class="menu-item">Cerrar Sesión</a>
+    <span class="separator">|</span>
   </div>
-
-  <div class="linea-horizontal2"></div>
 </div>
+
+<h1>Bienvenido al Chat</h1>
+
+<div class="chat-container">
+  <div id="chat-messages" class="message-history"></div>
+  <form id="chat-form">
+    <input type="text" id="message-input" required>
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  const socket = io({
-    transports: ['websocket'],
-    upgrade: false
-  });
+  const socket = io();
+  const chatForm = document.getElementById('chat-form');
+  const messageInput = document.getElementById('message-input');
+  const chatMessages = document.getElementById('chat-messages');
+  const userId = '{{user._id}}';
+  
+  console.log('UserId en el cliente:', userId); // dep
 
-  const messageForm = document.getElementById("message-form");
-  const messageInput = document.getElementById("message");
-  const messageHistory = document.getElementById("message-history");
-
-  messageForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const message = messageInput.value.trim();
-    if (message !== "") {
-      socket.emit("message", { message: message });
-      messageInput.value = "";
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('Enviando mensaje. UserId:', userId, 'Mensaje:', messageInput.value); // Para depuración
+    if (messageInput.value && userId) {
+      socket.emit('chatMessage', { userId: userId, message: messageInput.value });
+      messageInput.value = '';
+    } else {
+      console.error('UserId no disponible o mensaje vacío');
     }
   });
-
-  socket.on("message", (data) => {
-    const messageElement = document.createElement("p");
+  
+  socket.on('message', (data) => {
+    const messageElement = document.createElement('p');
     messageElement.textContent = `${data.user} dice: ${data.message}`;
-    messageHistory.appendChild(messageElement);
-    messageHistory.scrollTop = messageHistory.scrollHeight;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   });
 
-  socket.on("messageHistory", (messages) => {
-    messageHistory.innerHTML = '';
-    messages.forEach((message) => {
-      const messageElement = document.createElement("p");
-      messageElement.textContent = `${message.user.first_name} dice: ${message.message}`;
-      messageHistory.appendChild(messageElement);
+  socket.on('loadMessages', (messages) => {
+    chatMessages.innerHTML = '';
+    messages.forEach((msg) => {
+      const messageElement = document.createElement('p');
+      messageElement.textContent = `${msg.user.first_name} dice: ${msg.message}`;
+      chatMessages.appendChild(messageElement);
     });
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   });
 
-  // Solicitar historial de mensajes al conectarse
-  socket.emit("getMessages");
+  // cargar mensajes en página
+  socket.emit('getMessages');
 </script>
+
+<link rel="stylesheet" href="/css/styles.css">

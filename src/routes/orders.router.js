@@ -5,6 +5,7 @@ const cartManager = new CartManager();
 const { authMiddleware } = require('../middlewares/auth.middleware');
 const { isUser } = require('../middlewares/auth.middleware');
 
+// get para pagina de orden
 router.post('/create', authMiddleware, isUser, async (req, res) => {
     try {
         const userId = req.user._id;

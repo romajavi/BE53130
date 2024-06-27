@@ -14,7 +14,7 @@ router.post('/', loginUser);
 // Ruta para iniciar sesión con GitHub
 router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
 
-// Ruta de callback para autenticación con GitHub
+// GET de callback para autenticación con GitHub
 router.get('/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
@@ -22,7 +22,7 @@ router.get('/github/callback',
   }
 );
 
-// Ruta para cerrar sesión
+// GET para cerrar sesión
 router.get('/logout', (req, res) => {
   console.log('Cerrando sesión...');
   req.session.destroy((err) => {

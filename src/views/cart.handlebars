@@ -17,9 +17,8 @@
     </div>
 </div>
 
+<h1>Carrito de compras</h1>
 <div class="cart-file">
-    <h1>Carrito de compras</h1>
-
     {{#if cart.products.length}}
     <ul id="cartProductList">
         {{#each cart.products}}
@@ -53,58 +52,63 @@
     {{/if}}
 </div>
 
-<button><a href="/products" class="botones">Volver a la Tienda</a></button>
+<div class="botones">
+    <a href="/products">
+        <button>Volver a la Tienda</button>
+    </a>
+</div>
+
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const cartProductList = document.getElementById('cartProductList');
-    const totalProductsSpan = document.getElementById('totalProducts');
-    const totalPriceSpan = document.getElementById('totalPrice');
+    document.addEventListener('DOMContentLoaded', function () {
+        const cartProductList = document.getElementById('cartProductList');
+        const totalProductsSpan = document.getElementById('totalProducts');
+        const totalPriceSpan = document.getElementById('totalPrice');
 
-    function updateTotals() {
-        let totalProducts = 0;
-        let totalPrice = 0;
-        const productItems = cartProductList.querySelectorAll('li');
-        
-        productItems.forEach(item => {
-            const quantity = parseInt(item.querySelector('.product-quantity').textContent);
-            const price = parseFloat(item.dataset.productPrice);
-            totalProducts += quantity;
-            totalPrice += quantity * price;
+        function updateTotals() {
+            let totalProducts = 0;
+            let totalPrice = 0;
+            const productItems = cartProductList.querySelectorAll('li');
+
+            productItems.forEach(item => {
+                const quantity = parseInt(item.querySelector('.product-quantity').textContent);
+                const price = parseFloat(item.dataset.productPrice);
+                totalProducts += quantity;
+                totalPrice += quantity * price;
+            });
+
+            totalProductsSpan.textContent = totalProducts;
+            totalPriceSpan.textContent = totalPrice.toFixed(2);
+        }
+
+        cartProductList.addEventListener('submit', async function (e) {
+            if (e.target.classList.contains('delete-form')) {
+                e.preventDefault();
+                const form = e.target;
+                const cartId = form.dataset.cartId;
+                const productId = form.dataset.productId;
+
+                try {
+                    const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        form.closest('li').remove();
+                        updateTotals();
+                    } else {
+                        console.error('Error al eliminar el producto');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
         });
 
-        totalProductsSpan.textContent = totalProducts;
-        totalPriceSpan.textContent = totalPrice.toFixed(2);
-    }
-
-    cartProductList.addEventListener('submit', async function(e) {
-        if (e.target.classList.contains('delete-form')) {
-            e.preventDefault();
-            const form = e.target;
-            const cartId = form.dataset.cartId;
-            const productId = form.dataset.productId;
-
-            try {
-                const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
-                    method: 'DELETE'
-                });
-
-                if (response.ok) {
-                    form.closest('li').remove();
-                    updateTotals();
-                } else {
-                    console.error('Error al eliminar el producto');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+        //  totales 
+        updateTotals();
     });
-
-    //  totales 
-    updateTotals();
-});
 </script>
 
 
