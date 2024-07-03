@@ -15,7 +15,7 @@
 .linea-horizontal {
     height: 15px;
     width: 100%;
-    background-color: #3aafa9; /
+    background-color: #3aafa9;
 }
 
 /*  para el logo */
@@ -35,8 +35,6 @@ h1 {
     color: #ab8262;
     margin-bottom: 20px;
 }
-
-
 
 /*  para el contenedor del menú */
 .menu-container {
@@ -66,7 +64,7 @@ h1 {
 
 /* para los enlaces del menú al pasar el ratón por encima */
 .menu-item:hover {
-    color: #ab8262; /
+    color: #ab8262;
 }
 
 /* para el separador */
@@ -92,7 +90,7 @@ h1 {
 
 .bienvenida {
     position: absolute;
-    bottom: 20px; /* Ajusta esta cantidad según tu preferencia */
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center; 
@@ -103,27 +101,25 @@ h1 {
 }
 
 .userBienvenida {
-  position: relative;
-  bottom: 10px; 
-  width: 15%; 
-  padding: 20px; 
-  background-color: #ffffff; 
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-  font-size: large;
+    position: relative;
+    bottom: 10px; 
+    width: 15%; 
+    padding: 20px; 
+    background-color: #ffffff; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    font-size: large;
 }
-
 
 /* para el formulario */
 .formulario {
     width: 20%;
-    margin: 0 auto;
+    margin: 50px auto;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
+    border: 1px solid #ccc; 
     background-color: #f5f5f5;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 /* para los elementos del formulario */
@@ -136,7 +132,6 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 
 /* Estilo para el botón del formulario */
 .formulario button {
@@ -156,419 +151,409 @@ h1 {
     background-color: #17252a;
 }
 
-
 /* Estilo para los grupos de elementos del formulario */
 .form-group {
     margin-bottom: 20px;
-  }
-  
-  /* Estilo para las etiquetas del formulario */
-  .formulario label {
+}
+
+/* Estilo para las etiquetas del formulario */
+.formulario label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-  }
-  
-  /* Estilo para los campos de entrada del formulario */
-  .formulario input {
+}
+
+/* Estilo para los campos de entrada del formulario */
+.formulario input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+}
+
+/* Estilo para el título del formulario */
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los contenedores de productos */
+#contenedorProductos, #product-list {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    margin-top: 50px; 
+}
+
+/* Estilo para cada elemento dentro de los contenedores de productos */
+#contenedorProductos > div, #product-list > div {
+  width: 300px;
+  height: auto;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+  overflow: hidden; 
   
-  /* Estilo para el botón del formulario */
-  .formulario button {
+}
+
+#contenedorProductos > div img, #product-list > div img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain; /* Cambiado de 'cover' a 'contain' */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Estilo para el texto dentro de las tarjetas */
+#contenedorProductos > div p, #product-list > div p {
+    margin-bottom: 10px; 
+    text-align: center;
+}
+
+/* Estilo para los botones dentro de las tarjetas */
+#contenedorProductos > div button, #product-list > div button {
+    padding: 5px 10px; 
+    background-color: #2B7A78; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    margin: 5px 0;
+}
+
+/* Estilo al pasar el cursor sobre una tarjeta */
+#contenedorProductos > div:hover, #product-list > div:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilo al pasar el cursor sobre los botones */
+#contenedorProductos > div button:hover, #product-list > div button:hover {
+    background-color: #17252a; 
+}
+
+/* Estilo para el input de cantidad */
+#contenedorProductos > div input[type="number"], #product-list > div input[type="number"] {
+    width: 60px;
+    padding: 2px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+/* Estilo al pasar el cursor sobre el input */
+#contenedorProductos > div input[type="number"]:hover, #product-list > div input[type="number"]:focus {
+    border-color: #3aafa9;
+    outline: none;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 40px; /* Aumentado de 20px a 40px */
+}
+
+/* Estilo para las imágenes de productos */
+.product-image, .cart-product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el contenedor del botón */
+.container-btn {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el botón */
+.container-btn button {
+    padding: 10px 20px; 
+}
+
+/* Estilos para el contenedor de bienvenida */
+.welcome-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Estilos para el mensaje de bienvenida */
+.welcome-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilos específicos para la página de chat */
+.chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    border: 1px solid #ccc; 
+}
+
+.message-history {
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Ajustes para el formulario y sus elementos */
+#chat-form {
+    display: flex;
+    align-items: center;
+}
+
+#message-input {
+    flex: 1;
     width: 100%;
     padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#chat-form button {
+    padding: 10px 20px;
     background-color: #2B7A78;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  /* Estilo para el botón al pasar el cursor */
-  .formulario button:hover {
-    background-color: #17252a;
-  }
-  
-  /* Estilo para el título del formulario */
-  .formulario h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-/* Estilo para los contenedores de productos */
-#contenedorProductos, #product-list {
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: center; 
-  margin-top: 50px; 
-}
-
-/* Estilo para cada elemento dentro de los contenedores de productos */
-#contenedorProductos > div, #product-list > div {
-  width: 400px; 
-  height: 230px; 
-  margin: 10px;
-  padding: 20px; 
-  border: 1px solid #ccc; 
-  border-radius: 10px; 
-  background-color: #f5f5f5; 
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  transition: transform 0.3s ease;
-}
-
-/* Estilo para el texto dentro de las tarjetas */
-#contenedorProductos > div p, #product-list > div p {
-  margin-bottom: 10px; 
-}
-
-/* Estilo para los botones dentro de las tarjetas */
-#contenedorProductos > div button, #product-list > div button {
-  padding: 10px 20px; 
-  background-color: #2B7A78; 
-  color: #fff; 
-  border: none; 
-  border-radius: 5px; 
-  cursor: pointer;
-  transition: background-color 0.3s; 
-  margin: 5px 0; /* Añadir margen vertical entre botones */
-}
-
-/* Estilo al pasar el cursor sobre una tarjeta */
-#contenedorProductos > div:hover, #product-list > div:hover {
-  transform: translateY(-5px);
-}
-
-/* Estilo al pasar el cursor sobre los botones */
-#contenedorProductos > div button:hover, #product-list > div button:hover {
-  background-color: #17252a; 
-}
-
-/* Estilo para el contenedor del botón */
-.container-btn {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Estilo para el botón */
-.container-btn button {
-  padding: 10px 20px; 
-}
-
-
-/* Estilos para el contenedor de bienvenida */
-.welcome-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-/* Estilos para el mensaje de bienvenida */
-.welcome-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-/* 
-
-
-/* Estilos específicos para la página de chat */
-.chat-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-}
-
-.message-history {
-  height: 300px;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-}
-
-/* Ajustes para el formulario y sus elementos */
-#chat-form {
-  display: flex;
-  align-items: center;
-}
-
-#message-input {
-  flex: 1; /* El campo de entrada ocupa todo el espacio disponible */
-  width: 100%;
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* Para incluir el padding en el ancho total */
-}
-
-#chat-form button {
-  padding: 10px 20px; /* Ajusta el padding vertical y horizontal */
-  background-color: #2B7A78;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 #chat-form button:hover {
-  background-color: #17252a;
+    background-color: #17252a;
 }
 
-
-
-
-
-  /* Estilos para la paginación */
+/* Estilos para la paginación */
 .pagination {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .pagination a {
-  margin: 0 5px;
+    margin: 0 5px;
 }
 
-
-
-
-
-
-/* Estilos para el formulario */
+/* Estilos para el formulario de login */
 .formularioLogin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8); 
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
-  width: 20%;
-  margin: 0 auto;
-  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
 }
 
-/* Estilos para los elementos del formulario */
 .formularioLogin input[type="text"],
 .formularioLogin input[type="number"],
+.formularioLogin input[type="email"],
+.formularioLogin input[type="password"],
 .formularioLogin select {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-/* Estilo para el botón del formulario */
 .formularioLogin button {
-  width: 30%;
-  padding: 10px;
-  background-color: #2B7A78;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    width: 30%;
+    padding: 10px;
+    background-color: #2B7A78;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Estilo para el botón al pasar el cursor */
 .formularioLogin button:hover {
-  background-color: #17252a;
+    background-color: #17252a;
 }
 
-/* Estilo para los grupos de elementos del formulario */
 .formularioLogin .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-/* Estilo para las etiquetas del formulario */
 .formularioLogin label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-/* Estilo para los campos de entrada del formulario */
-.formularioLogin input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Estilo para el título del formulario */
 .formularioLogin h2 {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Estilos adicionales para el fondo */
-html body {
-  height: 100%;
-  overflow: auto; 
+html, body {
+    height: 100%;
+    overflow: auto; 
 }
 
 #carouselExampleControls {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
 }
 
 /* Estilos para la tarjeta de usuario */
+
+
 .user-info-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; 
 }
 
 .user-card {
-  width: 30%; 
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    width: 30%; 
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc; 
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .user-card p {
-  font-size: 24px;
-  margin-bottom: 15px; 
+    font-size: 24px;
+    margin-bottom: 15px; 
 }
 
-
-/* Estilo para el botón del formulario */
+/* Estilo para los botones */
 .botones {
-  text-align: center; 
-  margin-top: 20px;
-  margin-bottom: 50px;  
+    text-align: center; 
+    margin-top: 20px;
+    margin-bottom: 50px;  
 }
 
 .botones button {
-  width: 10%;  
-  padding: 10px;  
-  background-color: #2B7A78; 
-  color: #fff;  
-  border: none; 
-  border-radius: 5px;  
-  cursor: pointer; 
-  transition: background-color 0.3s;  
-  margin-top: 0;
+    width: 10%;  
+    padding: 10px;  
+    background-color: #2B7A78; 
+    color: #fff;  
+    border: none; 
+    border-radius: 5px;  
+    cursor: pointer; 
+    transition: background-color 0.3s;  
+    margin-top: 0;
 }
 
-/* Estilo para el botón al pasar el cursor */
 .botones button:hover {
-  background-color: #17252a;  
-  
+    background-color: #17252a;  
 }
 
-
-
-
-
-/*CARRITO*/
-
-/* Contenedor del carrito */
+/* Estilos para el carrito */
 .cart-file {
-  width: 35%;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 35%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    border: 1px solid #ccc; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Lista de productos */
 .cart-file li {
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-  height: 80px;
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.cart-file li:last-child {
-  border-bottom: none;
+.cart-file li img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
 }
 
-.cart-file li h3 {
-  color: #2B7A78;
-  font-size: 16px;
-  margin-bottom: 5px;
-  flex: 2;
+.cart-file li .product-info {
+    flex-grow: 1;
 }
 
-.cart-file li p {
-  margin-bottom: 5px;
-  font-size: 14px;
-  flex: 1;
+.cart-file li .product-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
 }
 
-/* Ajuste de alineación para Precio y Cantidad */
-.cart-file li p:nth-child(2) {
-  text-align: right;
+.cart-file li .product-info p {
+    margin: 0;
+    font-size: 14px;
 }
 
-.cart-file li p:nth-child(3) {
-  text-align: right;
+.cart-file li .remove-item {
+    align-self: flex-start;
 }
 
-/* Totales */
 .totals {
-  text-align: right;
-  margin: 10px 0;
+    text-align: right;
+    margin: 10px 0;
 }
 
 .totals p {
-  font-weight: bold;
-  font-size: 18px;
-  margin: 5px 0;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0;
 }
 
-/* Contenedor de botones */
 .button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/* Botones de "Eliminar", "Vaciar Carrito" y "Finalizar Compra" */
 .cart-file button {
-  padding: 8px 16px;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
 }
 
 .cart-file .remove-item {
-  background-color: #e74c3c;
-  color: #fff;
+    background-color: #e74c3c;
+    color: #fff;
 }
 
 .cart-file .remove-item:hover {
@@ -593,7 +578,6 @@ html body {
   background-color: #8d6a4e;
 }
 
-/* Botón "Volver a la Tienda" */
 .cart-file .botones {
   display: inline-block;
   padding: 8px 16px;
@@ -609,11 +593,7 @@ html body {
   background-color: #2b8a86;
 }
 
-
-
-/* Ticker de compra */
-
-/* Estilos para la tarjeta de usuario */
+/* Ticket de compra */
 .ticket-container {
   display: flex;
   flex-direction: column; 
@@ -649,9 +629,7 @@ html body {
   margin-bottom: 10px; 
 }
 
-
-/* estilos del icono del carrito de compras */
-
+/* Estilos del icono del carrito de compras */
 .carrito {
   position: fixed;
   top: 300px;
@@ -691,4 +669,3 @@ html body {
   padding: 5px 10px;
   border-radius: 12px;
 }
-

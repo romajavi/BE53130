@@ -19,16 +19,24 @@
     </div>
 </div>
 
+<div class="userBienvenida">
+    {{#if user}}
+    <p>Bienvenido, {{user.first_name}}!</p>
+    <p>Rol: {{user.role}}</p>
+    {{/if}}
+</div>
+
 <h1>Productos en tiempo real</h1>
 
 <div id="product-list">
     {{#if productos.length}}
     {{#each productos}}
-    <div>
+    <div class="product-card" data-id="{{this._id}}">
         <h3>{{this.title}}</h3>
-        <p>Precio: {{this.price}}</p>
+        <img src="{{this.img}}" alt="{{this.title}}" class="product-image">
+        <p>Precio: ${{this.price}}</p>
         <p>Stock: {{this.stock}}</p>
-        <br>
+        <button onclick="editProduct('{{this._id}}')">Editar</button>
         <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
     </div>
     {{/each}}
@@ -39,8 +47,8 @@
 
 <div class="pagination">
     {{#if pagination.hasPrevPage}}
-    <a href="/products?page=1&limit={{limit}}">Primera</a>
-    <a href="/products?page={{pagination.prevPage}}&limit={{limit}}">Anterior</a>
+    <a href="/realtimeproducts?page=1&limit={{limit}}">Primera</a>
+    <a href="/realtimeproducts?page={{pagination.prevPage}}&limit={{limit}}">Anterior</a>
     {{else}}
     <span class="disabled">Primera</span>
     <span class="disabled">Anterior</span>
@@ -49,18 +57,15 @@
     <span>Página {{pagination.page}} de {{pagination.totalPages}}</span>
 
     {{#if pagination.hasNextPage}}
-    <a href="/products?page={{pagination.nextPage}}&limit={{limit}}">Siguiente</a>
-    <a href="/products?page={{pagination.totalPages}}&limit={{limit}}">Última</a>
+    <a href="/realtimeproducts?page={{pagination.nextPage}}&limit={{limit}}">Siguiente</a>
+    <a href="/realtimeproducts?page={{pagination.totalPages}}&limit={{limit}}">Última</a>
     {{else}}
     <span class="disabled">Siguiente</span>
     <span class="disabled">Última</span>
     {{/if}}
 </div>
 
-<div class="page-info">
-    Mostrando {{products.length}} de {{pagination.totalDocs}} productos
-</div>
-
+<div class="page-info"></div>
 
 <div class="formulario">
     <h2 id="form-title">Agregar nuevo producto</h2>
@@ -94,13 +99,45 @@
 
     socket.on('connect', () => {
         console.log('Conectado al servidor');
-        socket.emit('getProducts');
+        const params = getUrlParams();
+        socket.emit('getProducts', params);
     });
 
-    socket.on('products', (products) => {
-        console.log('Productos recibidos:', products);
-        updateProductList(products);
+    socket.on('products', (result) => {
+        console.log('Productos recibidos:', result);
+        updateProductList(result.payload);
+        updatePagination(result);
     });
+
+    socket.on('productAdded', (newProduct) => {
+        alert(`Producto agregado correctamente`);
+        refreshProductList();
+    });
+
+    socket.on('productUpdated', () => {
+        alert('Producto actualizado correctamente');
+        refreshProductList();
+    });
+
+    socket.on('productDeleted', () => {
+        alert('Producto eliminado correctamente');
+        refreshProductList();
+    });
+
+    function refreshProductList() {
+        const params = getUrlParams();
+        socket.emit('getProducts', params);
+    }
+
+    function getUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            page: params.get('page') || 1,
+            limit: params.get('limit') || 10,
+            sort: params.get('sort') || '',
+            query: params.get('query') || ''
+        };
+    }
 
     function updateProductList(products) {
         productList.innerHTML = '';
@@ -109,13 +146,13 @@
                 const item = document.createElement('div');
                 item.className = 'product-card';
                 item.innerHTML = `
-                    <h3>${product.title}</h3>
-                    <p>Precio: $${product.price}</p>
-                    <p>Stock: ${product.stock}</p>
-                    <button onclick="editProduct('${product._id}')">Editar</button>
-                    <button onclick="deleteProduct('${product._id}')">Eliminar</button>
-                `;
-                item.addEventListener('click', () => fillForm(product));
+                <h3>${product.title}</h3>
+                <img src="${product.img}" alt="${product.title}" class="product-image">
+                <p>Precio: $${product.price}</p>
+                <p>Stock: ${product.stock}</p>
+                <button onclick="editProduct('${product._id}')">Editar</button>
+                <button onclick="deleteProduct('${product._id}')">Eliminar</button>
+            `;
                 productList.appendChild(item);
             });
         } else {
@@ -123,7 +160,36 @@
         }
     }
 
+    function updatePagination(result) {
+        const paginationDiv = document.querySelector('.pagination');
+        const pageInfoDiv = document.querySelector('.page-info');
+        const params = getUrlParams();
+
+        paginationDiv.innerHTML = `
+            ${result.hasPrevPage ? `
+                <a href="/realtimeproducts?page=1&limit=${params.limit}">Primera</a>
+                <a href="/realtimeproducts?page=${result.prevPage}&limit=${params.limit}">Anterior</a>
+            ` : `
+                <span class="disabled">Primera</span>
+                <span class="disabled">Anterior</span>
+            `}
+
+            <span>Página ${result.page} de ${result.totalPages}</span>
+
+            ${result.hasNextPage ? `
+                <a href="/realtimeproducts?page=${result.nextPage}&limit=${params.limit}">Siguiente</a>
+                <a href="/realtimeproducts?page=${result.totalPages}&limit=${params.limit}">Última</a>
+            ` : `
+                <span class="disabled">Siguiente</span>
+                <span class="disabled">Última</span>
+            `}
+        `;
+
+
+    }
+
     function fillForm(product) {
+        console.log('Llenando formulario con:', product);
         editingProductId = product._id;
         document.getElementById('product-id').value = product._id;
         document.getElementById('title').value = product.title;
@@ -181,7 +247,16 @@
     }
 
     function editProduct(productId) {
+        console.log('Editando producto:', productId);
+        socket.emit('getProductDetails', productId);
     }
+
+
+
+    socket.on('productDetails', (product) => {
+        console.log('Detalles del producto recibidos:', product);
+        fillForm(product);
+    });
 </script>
 
 <link rel="stylesheet" href="/css/styles.css">

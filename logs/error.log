@@ -1,0 +1,11 @@
+2024-06-29 12:10:49:1049 [31merror[39m: [31mlog de error[39m
+2024-06-29 13:23:28:2328 [31merror[39m: [31mError al eliminar producto del carrito: No matching document found for id "667dd908cea6732adce5bdec" version 5 modifiedPaths "products"[39m
+2024-06-29 13:27:11:2711 [31merror[39m: [31mError en autenticación de GitHub: Cannot read properties of null (reading 'split')[39m
+2024-06-29 13:27:11:2711 [31merror[39m: [31mError en el servidor: Cannot read properties of null (reading 'split')[39m
+2024-07-01 15:59:55:5955 [31merror[39m: [31mError en autenticación de GitHub: Cannot read properties of null (reading 'split')[39m
+2024-07-01 15:59:55:5955 [31merror[39m: [31mError en el servidor: Cannot read properties of null (reading 'split')[39m
+2024-07-01 16:50:18:5018 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-01 16:50:18:5018 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Product validation failed: img: Path `img` is required.[39m
+2024-07-01 21:18:28:1828 [31merror[39m: [31mError en autenticación de GitHub: Cannot read properties of null (reading 'split')[39m
+2024-07-01 21:18:28:1828 [31merror[39m: [31mError en el servidor: Cannot read properties of null (reading 'split')[39m
+2024-07-02 09:29:00:290 [31merror[39m: [31mError en el servidor: showErrorAlert is not a function[39m

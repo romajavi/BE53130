@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const logger = require('../utils/logger');
 
 const authMiddleware = async (req, res, next) => {
   const userEmail = req.cookies.userEmail;

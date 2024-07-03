@@ -27,6 +27,12 @@
   </form>
 </div>
 
+<div class="botones">
+  <a href="/products">
+    <button>Ir a la Tienda</button>
+  </a>
+</div>
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -35,35 +41,33 @@
   const messageInput = document.getElementById('message-input');
   const chatMessages = document.getElementById('chat-messages');
   const userId = '{{user._id}}';
-  
-  console.log('UserId en el cliente:', userId); // dep
 
   chatForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('Enviando mensaje. UserId:', userId, 'Mensaje:', messageInput.value); // Para depuración
     if (messageInput.value && userId) {
       socket.emit('chatMessage', { userId: userId, message: messageInput.value });
       messageInput.value = '';
-    } else {
-      console.error('UserId no disponible o mensaje vacío');
     }
   });
-  
-  socket.on('message', (data) => {
-    const messageElement = document.createElement('p');
-    messageElement.textContent = `${data.user} dice: ${data.message}`;
-    chatMessages.appendChild(messageElement);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  socket.on('connect', () => {
+    socket.emit('getMessages');
   });
 
   socket.on('loadMessages', (messages) => {
     chatMessages.innerHTML = '';
-    messages.forEach((msg) => {
-      const messageElement = document.createElement('p');
-      messageElement.textContent = `${msg.user.first_name} dice: ${msg.message}`;
-      chatMessages.appendChild(messageElement);
-    });
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    messages.forEach(appendMessage);
+  });
+
+  function appendMessage(msg) {
+    const messageElement = document.createElement('p');
+    const userName = msg.user && msg.user.first_name ? msg.user.first_name : 'Usuario desconocido';
+    messageElement.textContent = `${userName} dice: ${msg.message}`;
+    chatMessages.appendChild(messageElement);
+  }
+
+  socket.on('message', (msg) => {
+    appendMessage(msg);
   });
 
   // cargar mensajes en página

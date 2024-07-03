@@ -23,9 +23,12 @@
     <ul id="cartProductList">
         {{#each cart.products}}
         <li data-product-id="{{this.product._id}}" data-product-price="{{this.product.price}}">
-            <h3>{{this.product.title}}</h3>
-            <p>Precio: ${{this.product.price}}</p>
-            <p>Cantidad: <span class="product-quantity">{{this.quantity}}</span></p>
+            <img src="{{this.product.img}}" alt="{{this.product.title}}" class="cart-product-image">
+            <div class="product-info">
+                <h3>{{this.product.title}}</h3>
+                <p>Precio: ${{this.product.price}}</p>
+                <p>Cantidad: <span class="product-quantity">{{this.quantity}}</span></p>
+            </div>
             <form class="delete-form" data-cart-id="{{../cart._id}}" data-product-id="{{this.product._id}}">
                 <input type="hidden" name="_method" value="DELETE">
                 <button type="submit" class="remove-item">Eliminar</button>

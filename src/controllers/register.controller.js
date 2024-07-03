@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
+const logger = require('../utils/logger');
+
 
 const registerUser = async (req, res) => {
   try {
@@ -28,7 +30,7 @@ const registerUser = async (req, res) => {
     });
     await newUser.save();
 
-    // para crear un nuevo carrito para el usuario después de guardar el usuario
+    // para crear un nuevo carrito para el usuario despues de guardar el usuario
     const newCart = await cartManager.createCart(newUser._id);
     const cartId = newCart._id.toString();
 
@@ -37,7 +39,7 @@ const registerUser = async (req, res) => {
 
     res.redirect('/login');
   } catch (error) {
-    console.error("Error al registrar usuario:", error);
+    logger.error("Error al registrar usuario:", error);
     res.status(500).json({ message: "Error al registrar usuario." });
   }
 };

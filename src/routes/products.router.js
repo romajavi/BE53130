@@ -5,6 +5,8 @@ const productManager = new ProductManager();
 const { authMiddleware, isAdmin, isUser } = require('../middlewares/auth.middleware');
 const { generateMockProducts } = require('../utils/mockingModule');
 const { CustomError } = require('../utils/errorHandler');
+const logger = require('../utils/logger');
+
 
 // GET /api/products/mockingproducts (sin autenticación)
 router.get('/mockingproducts', (req, res) => {
@@ -14,13 +16,18 @@ router.get('/mockingproducts', (req, res) => {
 
 
 // GET /api/products
-router.get('/', isUser, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const { limit = 10, page = 1, sort, query } = req.query;
         const result = await productManager.getProducts(limit, page, sort, query);
-        res.json(result);
+        // Asegúrate de que cada producto tenga el campo img
+        const productsWithImages = result.payload.map(product => ({
+            ...product,
+            img: product.img || '/path/to/default/image.jpg' // Proporciona una imagen por defecto si no hay una
+        }));
+        res.json({...result, payload: productsWithImages});
     } catch (error) {
-        console.error('Error al obtener los productos:', error);
+        logger.error('Error al obtener los productos:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
@@ -35,7 +42,7 @@ router.get('/:pid', async (req, res) => {
             res.status(404).json({ error: 'Producto no encontrado' });
         }
     } catch (error) {
-        console.error('Error al obtener el producto:', error);
+        logger.error('Error al obtener el producto:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
@@ -81,7 +88,7 @@ router.put('/:pid', authMiddleware, isAdmin, async (req, res) => {
             res.status(404).json({ error: 'Producto no encontrado' });
         }
     } catch (error) {
-        console.error('Error al actualizar el producto:', error);
+        logger.error('Error al actualizar el producto:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
@@ -96,7 +103,7 @@ router.delete('/:pid', authMiddleware, isAdmin, async (req, res) => {
             res.status(404).json({ error: 'Producto no encontrado' });
         }
     } catch (error) {
-        console.error('Error al eliminar el producto:', error);
+        logger.error('Error al eliminar el producto:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });

@@ -1,3 +1,4 @@
+// app.js
 const express = require('express');
 const { engine } = require('express-handlebars');
 const app = express();
@@ -21,6 +22,10 @@ const methodOverride = require('method-override');
 const { sendMessage } = require('./controllers/chat.controller');
 const { errorHandler } = require('./utils/errorHandler');
 
+// logger y el middleware de logger
+const logger = require('./utils/logger');
+const loggerMiddleware = require('./middlewares/logger.middleware');
+
 // importación de las rutas
 const productsRouter = require("./routes/products.router.js");
 const cartsRouter = require("./routes/carts.router.js");
@@ -43,13 +48,16 @@ const sessionMiddleware = session({
 
 app.use(sessionMiddleware);
 
+// para gregar el middleware de logger
+app.use(loggerMiddleware);
+
 // Inici. Passport.js
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new GitHubStrategy({
-  clientID: "Ov23li5icwdaAon1zX0A",
-  clientSecret: "026522e557223f62c8d94ae57b27135f7315a4ca",
+  clientID: config.GITHUB_CLIENT_ID,
+  clientSecret: config.GITHUB_CLIENT_SECRET,
   callbackURL: "http://localhost:8080/login/github/callback"
 }, async (accessToken, refreshToken, profile, done) => {
   try {
@@ -64,7 +72,7 @@ passport.use(new GitHubStrategy({
     }
     return done(null, user);
   } catch (error) {
-    console.error('Error en la estrategia de autenticación de GitHub:', error);
+    logger.error('Error en autenticación de GitHub:', error);
     return done(error);
   }
 }));
@@ -97,8 +105,8 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   if (req.method === 'POST' && req.path === '/login') {
-    console.log('Recibida petición POST a /login');
-    console.log('req.body:', req.body);
+    logger.debug('Recibida petición POST a /login');
+    logger.debug('req.body:', req.body);
   }
   next();
 });
@@ -133,45 +141,29 @@ app.use('/api/orders', ordersRouter);
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      console.error('Error al cerrar sesión:', err);
+      logger.error('Error al cerrar sesión:', err);
     }
     res.clearCookie('connect.sid');
     res.redirect('/login');
   });
 });
 
+// endpoint para probar el logger
+app.get('/test-logger', (req, res) => {
+  logger.error('log de error');  // Log de error:  para registrar errores críticos edel sistema
+  logger.warn('log de advertencia');  // Log de advertencia: registrar advertencias que no interrumpen la ejecución pero que requieren atención
+  logger.info('log de información');  // Log de información: registrar eventos sobre  operación normal del sistema
+  logger.http(' log de HTTP');  // Log de HTTP: registrar información sobre las solicitudes HTTP recibidas
+  logger.debug('log de depuración');  // Log de depuración: registrar información detallada util para la depuracion del código.
+  res.send('Prueba del logger completa. Revisar la consola y los archivos de log.');  // para respuesta al cliente indicando que la prueba del logger ha sido completada.
+
+});
+
 // Configuración de Socket.IO
 io.on('connection', (socket) => {
-  console.log('Nuevo cliente conectado');
+  logger.info('Nuevo cliente conectado');
 
   //para chat
-  socket.on('chatMessage', async (msg) => {
-    console.log('Mensaje recibido:', msg); // dep
-    try {
-      const { userId, message } = msg;
-      if (!userId) {
-        throw new Error('UserId no proporcionado');
-      }
-      console.log('Buscando usuario con ID:', userId); // dep
-      const user = await User.findById(userId);
-      if (!user) {
-        throw new Error('Usuario no encontrado');
-      }
-      console.log('Usuario encontrado:', user); // dep
-      const savedMessage = await Message.create({
-        user: user._id,
-        message: message
-      });
-      const populatedMessage = await Message.findById(savedMessage._id).populate('user', 'first_name');
-      io.emit('message', {
-        user: populatedMessage.user.first_name,
-        message: populatedMessage.message
-      });
-    } catch (error) {
-      console.error('Error al procesar el mensaje:', error);
-    }
-  });
-
   socket.on('getMessages', async () => {
     try {
       const messages = await Message.find().populate('user', 'first_name').sort({ timestamp: 1 });
@@ -181,62 +173,104 @@ io.on('connection', (socket) => {
     }
   });
 
+  socket.on('chatMessage', async (data) => {
+    try {
+      const user = await User.findById(data.userId);
+      if (!user) {
+        throw new Error('Usuario no encontrado');
+      }
+      const message = new Message({
+        user: user._id,
+        message: data.message
+      });
+      await message.save();
+      const populatedMessage = await Message.findById(message._id).populate('user', 'first_name');
+      io.emit('message', populatedMessage);
+    } catch (error) {
+      console.error('Error al procesar el mensaje:', error);
+    }
+  });
 
   //para productos en tiempo real
-  socket.on('getProducts', async () => {
+  socket.on('getProducts', async (params) => {
     try {
-        const result = await productManager.getProducts(0);
-        socket.emit('products', result.payload);
+      const result = await productManager.getProducts(
+        params.limit,
+        params.page,
+        params.sort,
+        params.query
+      );
+      socket.emit('products', result);
     } catch (error) {
-        console.error('Error al obtener productos:', error);
-        socket.emit('products', []);
+      console.error('Error al obtener productos:', error);
+      socket.emit('error', { message: 'Error al obtener productos' });
     }
-});
+  });
 
-socket.on('addProduct', async (product) => {
+  socket.on('getProductDetails', async (productId) => {
     try {
-        await productManager.addProduct(product);
-        const updatedResult = await productManager.getProducts(0);
-        io.emit('products', updatedResult.payload);
+      const product = await productManager.getProductById(productId);
+      if (product) {
+        socket.emit('productDetails', product);
+      } else {
+        socket.emit('error', { message: 'Producto no encontrado' });
+      }
     } catch (error) {
-        console.error('Error al agregar producto:', error);
+      console.error('Error al obtener detalles del producto:', error);
+      socket.emit('error', { message: 'Error al obtener detalles del producto' });
     }
-});
+  });
 
-socket.on('updateProduct', async ({ id, ...productData }) => {
+  socket.on('addProduct', async (product) => {
     try {
-        await productManager.updateProduct(id, productData);
-        const updatedResult = await productManager.getProducts(0);
-        io.emit('products', updatedResult.payload);
+      const newProduct = await productManager.addProduct(product);
+      const updatedResult = await productManager.getProducts(10, 1);
+      io.emit('products', updatedResult);
+      socket.emit('productAdded', newProduct);
     } catch (error) {
-        console.error('Error al actualizar producto:', error);
+      logger.error('Error al agregar producto:', error);
+      socket.emit('error', { message: 'Error al agregar producto' });
     }
-});
+  });
 
-socket.on('deleteProduct', async (productId) => {
+  socket.on('updateProduct', async ({ id, ...productData }) => {
     try {
-        await productManager.deleteProduct(productId);
-        const updatedResult = await productManager.getProducts(0);
-        io.emit('products', updatedResult.payload);
+      await productManager.updateProduct(id, productData);
+      const updatedResult = await productManager.getProducts(10, 1);
+      io.emit('products', updatedResult);
+      socket.emit('productUpdated');
     } catch (error) {
-        console.error('Error al eliminar producto:', error);
+      logger.error('Error al actualizar producto:', error);
+      socket.emit('error', { message: 'Error al actualizar producto' });
     }
-});
+  });
+
+  socket.on('deleteProduct', async (productId) => {
+    try {
+      await productManager.deleteProduct(productId);
+      const updatedResult = await productManager.getProducts(10, 1); 
+      io.emit('products', updatedResult);
+      socket.emit('productDeleted');
+    } catch (error) {
+      logger.error('Error al eliminar producto:', error);
+      socket.emit('error', { message: 'Error al eliminar producto' });
+    }
+  });
 
   socket.on('disconnect', () => {
-    console.log('Cliente desconectado');
+    logger.info('Cliente desconectado');
   });
 });
 
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
-  console.error('Error en el servidor:', err);
+  logger.error('Error en el servidor:', err);
   const status = err.status || 500;
   const message = err.message || 'Error interno del servidor';
   res.status(status).json({ error: message });
 });
 
-// milddeware errores
+// middleware errores
 app.use(errorHandler);
 
 // Puerto
@@ -245,7 +279,7 @@ const db = require('./database');
 
 db.once('open', () => {
   http.listen(PORT, () => {
-    console.log(`Servidor Express iniciado en el puerto: ${PORT}`);
+    logger.info(`Servidor Express iniciado en el puerto: ${PORT}`);
   });
 });
 

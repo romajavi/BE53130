@@ -5,6 +5,8 @@ const productManager = new ProductManager();
 const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
 const { authMiddleware, isUser, isAdmin } = require('../middlewares/auth.middleware');
+const logger = require('../utils/logger');
+
 
 router.get('/', (req, res) => {
     res.render('home');
@@ -55,22 +57,32 @@ router.get('/products', authMiddleware, (req, res, next) => {
             limit
         });
     } catch (error) {
-        console.error('Error al obtener los productos:', error);
+        logger.error('Error al obtener los productos:', error);
         res.status(500).render('error', { error: 'Error al cargar los productos' });
     }
 });
 
 router.get('/realtimeproducts', authMiddleware, isAdmin, async (req, res) => {
     try {
-        const result = await productManager.getProducts(0); // 0 para obtener todos los productos
-        console.log('Productos obtenidos para realtimeproducts:', result.payload);
+        const { limit = 10, page = 1, sort, query } = req.query;
+        const result = await productManager.getProducts(limit, page, sort, query);
         res.render('realtimeproducts', {
             productos: result.payload,
-            user: req.user
+            pagination: {
+                totalPages: result.totalPages,
+                prevPage: result.prevPage,
+                nextPage: result.nextPage,
+                page: result.page,
+                hasPrevPage: result.hasPrevPage,
+                hasNextPage: result.hasNextPage,
+                totalDocs: result.totalDocs
+            },
+            user: req.user,
+            limit
         });
     } catch (error) {
         console.error('Error al obtener los productos:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
+        res.status(500).render('error', { error: 'Error al cargar los productos' });
     }
 });
 
@@ -94,7 +106,7 @@ router.get('/carts/:cid', authMiddleware, async (req, res) => {
 
         res.render('cart', { cart, totalPrice, user: req.user });
     } catch (error) {
-        console.error('Error al obtener el carrito:', error);
+        logger.error('Error al obtener el carrito:', error);
         res.status(500).render('error', { error: 'Error al cargar el carrito' });
     }
 });

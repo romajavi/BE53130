@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/config');
+const logger = require('../utils/logger');
+
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -27,9 +29,9 @@ const sendPurchaseConfirmationEmail = async (email, ticket, totalAmount) => {
 
     try {
         await transporter.sendMail(mailOptions);
-        console.log('Correo de confirmación enviado');
+        logger.info('Correo de confirmación enviado');
     } catch (error) {
-        console.error('Error al enviar correo de confirmación:', error);
+        logger.error('Error al enviar correo de confirmación:', error);
     }
 };
 

@@ -15,7 +15,7 @@ const getById = async (cartId, userId) => {
             cart = await Cart.findOne({ user: userId }).populate('products.product');
         }
         if (!cart) {
-            return null; // Retornar null si no se encuentra el carrito
+            return null; //null si no se encuentra el carrito
         }
         return cart;
     } catch (error) {

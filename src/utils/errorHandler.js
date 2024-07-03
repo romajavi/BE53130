@@ -1,3 +1,6 @@
+const logger = require('../utils/logger');
+
+
 class CustomError extends Error {
     constructor(message, statusCode, details = {}) {
         super(message);
@@ -7,7 +10,7 @@ class CustomError extends Error {
 }
 
 function errorHandler(err, req, res, next) {
-    console.error(err);
+    logger.error(err);
 
     if (err instanceof CustomError) {
         return res.status(err.statusCode).json({

@@ -1,11 +1,11 @@
-// Configuración de Socket.IO para evitar reconexiones 
+// conf  de Socket.IO para evitar reconexiones 
 const socket = io({
   transports: ['websocket'],
   upgrade: false,
   reconnection: false
 });
 
-// Función para agregar un producto al carrito
+// función para agregar un producto al carrito
 async function addToCart(productId, quantity) {
   try {
     const response = await fetch('/api/carts/add-product', {
@@ -60,7 +60,6 @@ async function processPurchase(cartId) {
 
 // Evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
-  // Agregar eventos a los botones "Agregar al carrito"
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
   addToCartButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -80,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Manejo del chat (si estamos en la página de chat)
+  // Manejo del chat cuando este ahí
   if (window.location.pathname === '/chat') {
     const socket = io();
     const messageForm = document.getElementById("message-form");
@@ -115,3 +114,52 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.emit("getMessages");
   }
 });
+
+//manejo de prodcutos
+socket.on('connect', () => {
+  console.log('Conectado al servidor');
+  const params = getUrlParams();
+  socket.emit('getProducts', params);
+});
+
+socket.on('products', (result) => {
+  console.log('Productos recibidos:', result);
+  updateProductList(result.payload);
+  updatePagination(result);
+});
+
+function getUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+      page: params.get('page') || 1,
+      limit: params.get('limit') || 10,
+      sort: params.get('sort') || '',
+      query: params.get('query') || ''
+  };
+}
+
+function updateProductList(products) {
+  const productList = document.getElementById('product-list');
+  productList.innerHTML = '';
+  products.forEach(product => {
+      const productElement = document.createElement('div');
+      productElement.innerHTML = `
+          <h3>${product.title}</h3>
+          <p>Precio: $${product.price}</p>
+          <p>Stock: ${product.stock}</p>
+          <button onclick="editProduct('${product._id}')">Editar</button>
+          <button onclick="deleteProduct('${product._id}')">Eliminar</button>
+      `;
+      productList.appendChild(productElement);
+  });
+}
+
+function updatePagination(result) {
+  const paginationDiv = document.querySelector('.pagination');
+  paginationDiv.innerHTML = `
+      ${result.hasPrevPage ? `<a href="?page=${result.prevPage}">Anterior</a>` : ''}
+      <span>Página ${result.page} de ${result.totalPages}</span>
+      ${result.hasNextPage ? `<a href="?page=${result.nextPage}">Siguiente</a>` : ''}
+  `;
+}
+

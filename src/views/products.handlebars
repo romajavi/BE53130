@@ -19,7 +19,7 @@
 
 <div class="userBienvenida">
   {{#if user}}
-  <p>Bienvenido, {{user.email}}!</p>
+  <p>Bienvenido, {{user.first_name}}!</p>
   <p>Rol: {{user.role}}</p>
   {{/if}}
 </div>
@@ -39,6 +39,7 @@
   <div class="product-card">
     <h3>{{this.title}}</h3>
     <br>
+    <img src="{{this.img}}" alt="{{this.title}}">
     <p>{{this.description}}</p>
     <p>Precio: ${{this.price}}</p>
     <p>Categoría: {{this.category}}</p>
@@ -74,9 +75,6 @@
   {{/if}}
 </div>
 
-<div class="page-info">
-  Mostrando {{products.length}} de {{pagination.totalDocs}} productos
-</div>
 
 
 <script>

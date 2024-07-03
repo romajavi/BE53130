@@ -3,12 +3,12 @@ const User = require("../models/user.model");
 const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
 const Cart = require('../models/cart');
+const logger = require('../utils/logger');
 
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log('Datos enviados:', { email, password });
-
+    
     // usuario adminCoder
     if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
       req.session.user = {
@@ -19,7 +19,7 @@ const loginUser = async (req, res) => {
       };
 
       res.cookie('userEmail', 'adminCoder@coder.com', { httpOnly: true, maxAge: 3600000 });
-      console.log('Usuario admin autenticado:', req.session.user);
+      logger.info('Usuario admin autenticado:', req.session.user);
       return res.redirect('/realtimeproducts');
     }
 
@@ -35,7 +35,7 @@ const loginUser = async (req, res) => {
 
     req.session.user = user;
     res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 3600000 });
-    console.log('Usuario autenticado:', req.session.user);
+    logger.info('Usuario autenticado:', req.session.user);
 
     let cart = await Cart.findOne({ user: user._id });
     if (!cart) {
@@ -43,11 +43,11 @@ const loginUser = async (req, res) => {
     }
     req.session.cartId = cart._id.toString();
     res.locals.cartId = cart._id.toString();
-    console.log('CartId almacenado en la sesión:', req.session.cartId);
+    logger.debug('CartId almacenado en la sesión:', req.session.cartId);
 
     res.redirect('/products');
   } catch (error) {
-    console.error("Error al iniciar sesión:", error);
+    logger.error("Error al iniciar sesión:", error);
     res.status(500).render('login', { error: 'Error al iniciar sesión.' });
   }
 };
