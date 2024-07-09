@@ -9,3 +9,4 @@
 2024-07-01 21:18:28:1828 [31merror[39m: [31mError en autenticación de GitHub: Cannot read properties of null (reading 'split')[39m
 2024-07-01 21:18:28:1828 [31merror[39m: [31mError en el servidor: Cannot read properties of null (reading 'split')[39m
 2024-07-02 09:29:00:290 [31merror[39m: [31mError en el servidor: showErrorAlert is not a function[39m
+2024-07-03 13:37:26:3726 [31merror[39m: [31mlog de error[39m
