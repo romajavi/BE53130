@@ -9,7 +9,6 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     
-    // usuario adminCoder
     if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
       req.session.user = {
         _id: 'admin',
@@ -17,7 +16,7 @@ const loginUser = async (req, res) => {
         role: 'admin',
         first_name: 'Admin'
       };
-
+    
       res.cookie('userEmail', 'adminCoder@coder.com', { httpOnly: true, maxAge: 3600000 });
       logger.info('Usuario admin autenticado:', req.session.user);
       return res.redirect('/realtimeproducts');
@@ -25,11 +24,14 @@ const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email: email });
     if (!user) {
+      logger.warn(`Intento de inicio de sesión fallido: usuario no encontrado (${email})`);
       return res.status(401).render('login', { error: 'Usuario no encontrado.' });
     }
 
+    logger.debug(`Comparando contraseñas para el usuario: ${email}`);
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
+      logger.warn(`Intento de inicio de sesión fallido: contraseña incorrecta (${email})`);
       return res.status(401).render('login', { error: 'Contraseña incorrecta.' });
     }
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
-// Definir el esquema para los productos
+// esquema para los productos
 const productSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -36,6 +36,10 @@ const productSchema = new mongoose.Schema({
     required: true,
     default: true 
   },
+  owner: {
+    type: String,
+    default: 'admin'
+}
 });
 
 productSchema.plugin(mongoosePaginate);

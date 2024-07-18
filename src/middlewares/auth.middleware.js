@@ -24,33 +24,51 @@ const authMiddleware = async (req, res, next) => {
         }
         next();
       } else {
-        console.log('Usuario no encontrado en la base de datos (authMiddleware)');
+        logger.warn('Usuario no encontrado en la base de datos (authMiddleware)');
         res.redirect('/login');
       }
     } catch (error) {
-      console.error('Error al obtener el usuario (authMiddleware):', error);
+      logger.error('Error al obtener el usuario (authMiddleware):', error);
       res.redirect('/login');
     }
   } else {
-    console.log('No se encontró la cookie userEmail (authMiddleware)');
+    logger.info('No se encontró la cookie userEmail (authMiddleware)');
     res.redirect('/login');
   }
 };
 
 const isUser = (req, res, next) => {
-  if (req.user && req.user.role === 'usuario') {
+  if (req.user && (req.user.role === 'user' || req.user.role === 'premium')) {
     next();
   } else {
-    res.status(403).json({ error: "Acceso denegado. Se requiere rol de usuario." });
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol de usuario o premium." });
   }
 };
 
 const isAdmin = (req, res, next) => {
+  logger.debug('Verificando rol de admin para:', req.user);
   if (req.user && (req.user.role === 'admin' || req.user.email === 'adminCoder@coder.com')) {
     next();
   } else {
+    logger.warn('Acceso denegado a ruta de admin para:', req.user);
     res.status(403).json({ error: "Acceso denegado. Se requiere rol de administrador." });
   }
 };
 
-module.exports = { authMiddleware, isUser, isAdmin };
+const isPremiumOrAdmin = (req, res, next) => {
+  if (req.user && (req.user.role === 'premium' || req.user.role === 'admin')) {
+    next();
+  } else {
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol premium o admin." });
+  }
+};
+
+const isPremium = (req, res, next) => {
+  if (req.user && req.user.role === 'premium') {
+    next();
+  } else {
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol premium." });
+  }
+};
+
+module.exports = { authMiddleware, isAdmin, isUser, isPremiumOrAdmin, isPremium };

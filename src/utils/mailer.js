@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/config');
-const logger = require('../utils/logger');
-
+const logger = require('./logger');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -35,4 +34,28 @@ const sendPurchaseConfirmationEmail = async (email, ticket, totalAmount) => {
     }
 };
 
-module.exports = { sendPurchaseConfirmationEmail };
+const sendPasswordResetEmail = async (email, resetUrl) => {
+    const mailOptions = {
+        from: config.EMAIL_USER,
+        to: email,
+        subject: 'Restablecimiento de Contraseña',
+        html: `
+            <h1>Restablecimiento de Contraseña</h1>
+            <p>Has solicitado restablecer tu contraseña.</p>
+            <p>Haz clic en el siguiente enlace para continuar:</p>
+            <a href="${resetUrl}">Restablecer Contraseña</a>
+            <p>Este enlace expirará en 1 hora.</p>
+            <p>Si no solicitaste este cambio, puedes ignorar este correo.</p>
+        `
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        logger.info('Correo de restablecimiento de contraseña enviado');
+    } catch (error) {
+        logger.error('Error al enviar correo de restablecimiento de contraseña:', error);
+        throw error;
+    }
+};
+
+module.exports = { sendPurchaseConfirmationEmail, sendPasswordResetEmail };

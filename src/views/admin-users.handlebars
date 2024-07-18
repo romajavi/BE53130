@@ -1,0 +1,103 @@
+<div class="linea-horizontal"></div>
+
+<div class="menu-container">
+    <div class="logo">
+        <a href="/">
+            <img src="/img/2.png" alt="Logo de la empresa">
+        </a>
+    </div>
+    <div class="menu">
+        <span class="separator">|</span>
+        <a href="/chat" class="menu-item">Chat en Vivo</a>
+        <span class="separator">|</span>
+        <a href="/profile" class="menu-item">Perfil</a>
+        <span class="separator">|</span>
+        <a href="/logout" class="menu-item">Cerrar Sesión</a>
+        <span class="separator">|</span>
+    </div>
+</div>
+
+<h1>Administración de Usuarios</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Rol Actual</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <td>{{this.email}}</td>
+            <td>{{this.role}}</td>
+            <td>
+                <button onclick="changeRole('{{this._id}}')">
+                    Cambiar a {{#if (eq this.role 'user')}}Premium{{else}}User{{/if}}
+                </button>
+                <button onclick="deleteUser('{{this._id}}')">Eliminar Usuario</button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script>
+    function changeRole(userId) {
+        fetch(`/api/users/premium/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
+            .then(response => {
+                if (response.status === 403) {
+                    throw new Error('No tienes permisos para realizar esta acción');
+                }
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(data.message);
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
+    }
+
+    function deleteUser(userId) {
+        if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+            fetch(`/api/users/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            })
+                .then(response => {
+                    if (response.status === 403) {
+                        throw new Error('No tienes permisos para realizar esta acción');
+                    }
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta del servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(data.message);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                });
+        }
+    }
+</script>
+
+<link rel="stylesheet" href="/css/styles.css">

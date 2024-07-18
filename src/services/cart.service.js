@@ -2,9 +2,9 @@ const Cart = require('../models/cart');
 const cartDao = require('../daos/cart.dao');
 const ticketService = require('./ticket.service');
 const User = require('../models/user.model');
+const Product = require('../models/product');
 const { sendPurchaseConfirmationEmail } = require('../utils/mailer');
 const logger = require('../utils/logger');
-
 
 class CartManager {
     async getOrCreateCart(userId) {
@@ -18,6 +18,12 @@ class CartManager {
 
     async addProductToCart(userId, productId, quantity) {
         const cart = await this.getOrCreateCart(userId);
+        const user = await User.findById(userId);
+        const product = await Product.findById(productId);
+
+        if (user.role === 'premium' && product.owner === user.email) {
+            throw new Error('No puedes agregar tu propio producto al carrito');
+        }
 
         const productIndex = cart.products.findIndex(item => item.product.toString() === productId);
         if (productIndex !== -1) {
@@ -44,7 +50,7 @@ class CartManager {
         try {
             const cart = await Cart.findOne({ _id: cartId, user: userId }).populate({
                 path: 'products.product',
-                select: 'title description price img code stock category status'
+                select: 'title description price img code stock category status owner'
             });
             if (!cart) {
                 throw new Error('Carrito no encontrado');

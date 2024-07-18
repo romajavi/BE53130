@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const { engine } = require('express-handlebars');
 const app = express();
@@ -34,6 +33,8 @@ const registerRouter = require("./routes/register.router.js");
 const loginRouter = require("./routes/login.router.js");
 const chatRouter = require("./routes/chat.router.js");
 const ordersRouter = require('./routes/orders.router');
+const passwordRouter = require('./routes/password.router');
+const usersRouter = require('./routes/users.router');
 
 // Middleware de inicializacion de sesiones
 const sessionMiddleware = session({
@@ -48,10 +49,10 @@ const sessionMiddleware = session({
 
 app.use(sessionMiddleware);
 
-// para gregar el middleware de logger
+// para agregar el middleware de logger
 app.use(loggerMiddleware);
 
-// Inici. Passport.js
+// Inicialización Passport.js
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -119,6 +120,9 @@ app.engine('handlebars', engine({
     },
     formatNumber: (number) => {
       return number.toFixed(2);
+    },
+    eq: function (a, b) {
+      return a === b;
     }
   },
   runtimeOptions: {
@@ -137,6 +141,9 @@ app.use("/api/carts", cartsRouter);
 app.use("/chat", authMiddleware, isUser, chatRouter);
 app.use("/", viewsRouter);
 app.use('/api/orders', ordersRouter);
+app.use('/', passwordRouter);
+app.use('/api/users', authMiddleware, usersRouter);
+
 
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
@@ -150,20 +157,19 @@ app.get("/logout", (req, res) => {
 
 // endpoint para probar el logger
 app.get('/test-logger', (req, res) => {
-  logger.error('log de error');  // Log de error:  para registrar errores críticos edel sistema
-  logger.warn('log de advertencia');  // Log de advertencia: registrar advertencias que no interrumpen la ejecución pero que requieren atención
-  logger.info('log de información');  // Log de información: registrar eventos sobre  operación normal del sistema
-  logger.http(' log de HTTP');  // Log de HTTP: registrar información sobre las solicitudes HTTP recibidas
-  logger.debug('log de depuración');  // Log de depuración: registrar información detallada util para la depuracion del código.
-  res.send('Prueba del logger completa. Revisar la consola y los archivos de log.');  // para respuesta al cliente indicando que la prueba del logger ha sido completada.
-
+  logger.error('log de error');
+  logger.warn('log de advertencia');
+  logger.info('log de información');
+  logger.http('log de HTTP');
+  logger.debug('log de depuración');
+  res.send('Prueba del logger completa. Revisar la consola y los archivos de log.');
 });
 
 // Configuración de Socket.IO
 io.on('connection', (socket) => {
   logger.info('Nuevo cliente conectado');
 
-  //para chat
+  // para chat
   socket.on('getMessages', async () => {
     try {
       const messages = await Message.find().populate('user', 'first_name').sort({ timestamp: 1 });
@@ -191,7 +197,7 @@ io.on('connection', (socket) => {
     }
   });
 
-  //para productos en tiempo real
+  // para productos en tiempo real
   socket.on('getProducts', async (params) => {
     try {
       const result = await productManager.getProducts(

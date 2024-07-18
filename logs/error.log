@@ -10,3 +10,11 @@
 2024-07-01 21:18:28:1828 [31merror[39m: [31mError en el servidor: Cannot read properties of null (reading 'split')[39m
 2024-07-02 09:29:00:290 [31merror[39m: [31mError en el servidor: showErrorAlert is not a function[39m
 2024-07-03 13:37:26:3726 [31merror[39m: [31mlog de error[39m
+2024-07-18 13:01:28:128 [31merror[39m: [31mError al solicitar restablecimiento de contraseña: User validation failed: role: `usuario` is not a valid enum value for path `role`.[39m
+2024-07-18 13:17:43:1743 [31merror[39m: [31mError al solicitar restablecimiento de contraseña: User validation failed: role: `usuario` is not a valid enum value for path `role`.[39m
+2024-07-18 13:20:54:2054 [31merror[39m: [31mError al registrar usuario: User validation failed: role: `usuario` is not a valid enum value for path `role`.[39m
+2024-07-18 13:24:23:2423 [31merror[39m: [31mError al registrar usuario: User validation failed: role: `usuario` is not a valid enum value for path `role`.[39m
+2024-07-18 14:56:58:5658 [31merror[39m: [31mError en el servidor: #if requires exactly one argument[39m
+2024-07-18 14:57:12:5712 [31merror[39m: [31mError en el servidor: #if requires exactly one argument[39m
+2024-07-18 16:18:18:1818 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
+2024-07-18 16:18:43:1843 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m

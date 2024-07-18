@@ -2,11 +2,10 @@ const express = require('express');
 const router = express.Router();
 const ProductManager = require('../services/product.service');
 const productManager = new ProductManager();
-const { authMiddleware, isAdmin, isUser } = require('../middlewares/auth.middleware');
+const { authMiddleware, isAdmin, isUser, isPremiumOrAdmin } = require('../middlewares/auth.middleware');
 const { generateMockProducts } = require('../utils/mockingModule');
 const { CustomError } = require('../utils/errorHandler');
 const logger = require('../utils/logger');
-
 
 // GET /api/products/mockingproducts (sin autenticación)
 router.get('/mockingproducts', (req, res) => {
@@ -14,13 +13,12 @@ router.get('/mockingproducts', (req, res) => {
     res.json(mockProducts);
 });
 
-
 // GET /api/products
 router.get('/', async (req, res) => {
     try {
         const { limit = 10, page = 1, sort, query } = req.query;
         const result = await productManager.getProducts(limit, page, sort, query);
-        // Asegúrate de que cada producto tenga el campo img
+
         const productsWithImages = result.payload.map(product => ({
             ...product,
             img: product.img || '/path/to/default/image.jpg' // Proporciona una imagen por defecto si no hay una
@@ -48,7 +46,7 @@ router.get('/:pid', async (req, res) => {
 });
 
 // POST /api/products
-router.post('/', async (req, res, next) => {
+router.post('/', authMiddleware, isPremiumOrAdmin, async (req, res, next) => {
     try {
         const { title, description, price, img, code, stock, category, status } = req.body;
 
@@ -69,7 +67,8 @@ router.post('/', async (req, res, next) => {
             code,
             stock,
             category,
-            status
+            status,
+            owner: req.user.role === 'premium' ? req.user.email : 'admin'
         });
 
         res.status(201).json(newProduct);
@@ -79,8 +78,17 @@ router.post('/', async (req, res, next) => {
 });
 
 // PUT /api/products/:pid
-router.put('/:pid', authMiddleware, isAdmin, async (req, res) => {
+router.put('/:pid', authMiddleware, isPremiumOrAdmin, async (req, res) => {
     try {
+        const product = await productManager.getProductById(req.params.pid);
+        if (!product) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+
+        if (req.user.role === 'premium' && product.owner !== req.user.email) {
+            return res.status(403).json({ error: 'No tienes permiso para modificar este producto' });
+        }
+
         const updatedProduct = await productManager.updateProduct(req.params.pid, req.body);
         if (updatedProduct) {
             res.json(updatedProduct);
@@ -94,8 +102,17 @@ router.put('/:pid', authMiddleware, isAdmin, async (req, res) => {
 });
 
 // DELETE /api/products/:pid
-router.delete('/:pid', authMiddleware, isAdmin, async (req, res) => {
+router.delete('/:pid', authMiddleware, isPremiumOrAdmin, async (req, res) => {
     try {
+        const product = await productManager.getProductById(req.params.pid);
+        if (!product) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+
+        if (req.user.role === 'premium' && product.owner !== req.user.email) {
+            return res.status(403).json({ error: 'No tienes permiso para eliminar este producto' });
+        }
+
         const deletedProduct = await productManager.deleteProduct(req.params.pid);
         if (deletedProduct) {
             res.json({ message: 'Producto eliminado correctamente' });

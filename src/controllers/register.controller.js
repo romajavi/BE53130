@@ -4,7 +4,6 @@ const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
 const logger = require('../utils/logger');
 
-
 const registerUser = async (req, res) => {
   try {
     const { first_name, last_name, email, age, password } = req.body;
@@ -18,7 +17,9 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: "El email ya está en uso." });
     }
 
+    logger.debug(`Intentando hashear la contraseña: ${password}`);
     const hashedPassword = await bcrypt.hash(password, 10);
+    logger.debug(`Contraseña hasheada: ${hashedPassword}`);
 
     const newUser = new User({
       first_name,
@@ -26,15 +27,14 @@ const registerUser = async (req, res) => {
       email,
       age,
       password: hashedPassword,
-      role: 'usuario'
+      role: 'user'
     });
     await newUser.save();
+    logger.info(`Usuario registrado: ${email}`);
 
-    // para crear un nuevo carrito para el usuario despues de guardar el usuario
     const newCart = await cartManager.createCart(newUser._id);
     const cartId = newCart._id.toString();
 
-    // Actualizar el campo cartId del usuario con el ID del carrito recién creado
     await User.findByIdAndUpdate(newUser._id, { cartId });
 
     res.redirect('/login');

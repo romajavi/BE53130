@@ -6,7 +6,7 @@ const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
 const { authMiddleware, isUser, isAdmin } = require('../middlewares/auth.middleware');
 const logger = require('../utils/logger');
-
+const User = require('../models/user.model');
 
 router.get('/', (req, res) => {
     res.render('home');
@@ -81,7 +81,7 @@ router.get('/realtimeproducts', authMiddleware, isAdmin, async (req, res) => {
             limit
         });
     } catch (error) {
-        console.error('Error al obtener los productos:', error);
+        logger.error('Error al obtener los productos:', error);
         res.status(500).render('error', { error: 'Error al cargar los productos' });
     }
 });
@@ -108,6 +108,17 @@ router.get('/carts/:cid', authMiddleware, async (req, res) => {
     } catch (error) {
         logger.error('Error al obtener el carrito:', error);
         res.status(500).render('error', { error: 'Error al cargar el carrito' });
+    }
+});
+
+// nueva ruta para la vista de administración de roles
+router.get('/admin/users', authMiddleware, isAdmin, async (req, res) => {
+    try {
+        const users = await User.find({}).lean();
+        res.render('admin-users', { users, user: req.user });
+    } catch (error) {
+        logger.error('Error al cargar usuarios:', error);
+        res.status(500).render('error', { error: 'Error al cargar usuarios' });
     }
 });
 
