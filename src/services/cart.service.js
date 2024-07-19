@@ -21,6 +21,10 @@ class CartManager {
         const user = await User.findById(userId);
         const product = await Product.findById(productId);
 
+        if (!product) {
+            throw new Error('Producto no encontrado');
+        }
+
         if (user.role === 'premium' && product.owner === user.email) {
             throw new Error('No puedes agregar tu propio producto al carrito');
         }

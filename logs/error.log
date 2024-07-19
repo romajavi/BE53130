@@ -18,3 +18,14 @@
 2024-07-18 14:57:12:5712 [31merror[39m: [31mError en el servidor: #if requires exactly one argument[39m
 2024-07-18 16:18:18:1818 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
 2024-07-18 16:18:43:1843 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
+2024-07-19 14:01:26:126 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
+2024-07-19 14:03:10:310 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
+2024-07-19 15:00:51:051 [31merror[39m: [31mError en el servidor: Missing helper: "and"[39m
+2024-07-19 15:01:39:139 [31merror[39m: [31mError en el servidor: Missing helper: "and"[39m
+2024-07-19 15:25:15:2515 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-19 15:25:15:2515 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Product validation failed: img: Path `img` is required.[39m
+2024-07-19 15:29:08:298 [31merror[39m: [31mError al obtener el carrito por ID: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-19 15:29:08:298 [31merror[39m: [31mError al obtener el carrito: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-19 15:29:08:298 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
+2024-07-19 15:47:12:4712 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-19 15:47:12:4712 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Cannot read properties of undefined (reading 'role')[39m

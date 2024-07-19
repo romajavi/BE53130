@@ -14,17 +14,14 @@ async function addToCart(productId, quantity) {
       body: JSON.stringify({ productId, quantity }),
     });
 
-    if (response.ok) {
-      const result = await response.json();
-      console.log('Producto agregado al carrito');
-      alert('Producto agregado al carrito exitosamente');
-      updateCartCounter(result.cart.products.reduce((total, product) => total + product.quantity, 0));
-    } else {
-      throw new Error('Error al agregar el producto al carrito');
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error);
     }
+
+    alert('Producto agregado al carrito exitosamente');
   } catch (error) {
-    console.error('Error:', error);
-    alert('Error al agregar el producto al carrito.');
+    alert(error.message);
   }
 }
 

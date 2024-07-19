@@ -6,13 +6,7 @@
     </a>
   </div>
   <div class="menu">
-    <span class="separator">|</span>
-    <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
-    <span class="separator">|</span>
-    <a href="/chat" class="menu-item">Chat en Vivo</a>
-    <span class="separator">|</span>
-    <a href="/logout" class="menu-item">Cerrar Sesión</a>
-    <span class="separator">|</span>
+    {{> menu}}
   </div>
 </div>
 
@@ -20,14 +14,14 @@
 
 <div class="user-info-container">
   <div class="user-card">
-      {{#if user}}
-          <p>Nombre: {{user.first_name}} {{user.last_name}}</p>
-          <p>Email: {{user.email}}</p>
-          <p>Edad: {{user.age}}</p>
-          <p>Rol: {{user.role}}</p>
-      {{else}}
-          <p>Debes iniciar sesión para ver tu perfil.</p>
-      {{/if}}
+    {{#if user}}
+    <p>Nombre: {{user.first_name}} {{user.last_name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Edad: {{user.age}}</p>
+    <p>Rol: {{user.role}}</p>
+    {{else}}
+    <p>Debes iniciar sesión para ver tu perfil.</p>
+    {{/if}}
   </div>
 </div>
 <div class="botones">
@@ -35,4 +29,3 @@
     <button>Ir a la Tienda</button>
   </a>
 </div>
-

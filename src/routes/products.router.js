@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ProductManager = require('../services/product.service');
 const productManager = new ProductManager();
-const { authMiddleware, isAdmin, isUser, isPremiumOrAdmin } = require('../middlewares/auth.middleware');
+const { authMiddleware, isPremiumOrAdmin } = require('../middlewares/auth.middleware');
 const { generateMockProducts } = require('../utils/mockingModule');
 const { CustomError } = require('../utils/errorHandler');
 const logger = require('../utils/logger');
@@ -21,9 +21,9 @@ router.get('/', async (req, res) => {
 
         const productsWithImages = result.payload.map(product => ({
             ...product,
-            img: product.img || '/path/to/default/image.jpg' // Proporciona una imagen por defecto si no hay una
+            img: product.img || '/path/to/default/image.jpg' // imagen por defecto si no hay una
         }));
-        res.json({...result, payload: productsWithImages});
+        res.json({ ...result, payload: productsWithImages });
     } catch (error) {
         logger.error('Error al obtener los productos:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
@@ -48,32 +48,16 @@ router.get('/:pid', async (req, res) => {
 // POST /api/products
 router.post('/', authMiddleware, isPremiumOrAdmin, async (req, res, next) => {
     try {
-        const { title, description, price, img, code, stock, category, status } = req.body;
-
-        if (!title || !price) {
-            throw new CustomError('Title and price are required', 400, {
-                required: {
-                    title: 'string',
-                    price: 'number'
-                }
-            });
+        const productData = req.body;
+        if (!req.user) {
+            throw new Error('Usuario no autenticado');
         }
-
-        const newProduct = await productManager.addProduct({
-            title,
-            description,
-            price,
-            img,
-            code,
-            stock,
-            category,
-            status,
-            owner: req.user.role === 'premium' ? req.user.email : 'admin'
-        });
-
+        productData.owner = req.user.role === 'admin' ? 'admin' : req.user.email;
+        const newProduct = await productManager.addProduct(productData);
         res.status(201).json(newProduct);
     } catch (error) {
-        next(error);
+        logger.error('Error al agregar producto:', error);
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -84,17 +68,11 @@ router.put('/:pid', authMiddleware, isPremiumOrAdmin, async (req, res) => {
         if (!product) {
             return res.status(404).json({ error: 'Producto no encontrado' });
         }
-
         if (req.user.role === 'premium' && product.owner !== req.user.email) {
             return res.status(403).json({ error: 'No tienes permiso para modificar este producto' });
         }
-
         const updatedProduct = await productManager.updateProduct(req.params.pid, req.body);
-        if (updatedProduct) {
-            res.json(updatedProduct);
-        } else {
-            res.status(404).json({ error: 'Producto no encontrado' });
-        }
+        res.json(updatedProduct);
     } catch (error) {
         logger.error('Error al actualizar el producto:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
@@ -108,17 +86,11 @@ router.delete('/:pid', authMiddleware, isPremiumOrAdmin, async (req, res) => {
         if (!product) {
             return res.status(404).json({ error: 'Producto no encontrado' });
         }
-
         if (req.user.role === 'premium' && product.owner !== req.user.email) {
             return res.status(403).json({ error: 'No tienes permiso para eliminar este producto' });
         }
-
-        const deletedProduct = await productManager.deleteProduct(req.params.pid);
-        if (deletedProduct) {
-            res.json({ message: 'Producto eliminado correctamente' });
-        } else {
-            res.status(404).json({ error: 'Producto no encontrado' });
-        }
+        await productManager.deleteProduct(req.params.pid);
+        res.json({ message: 'Producto eliminado correctamente' });
     } catch (error) {
         logger.error('Error al eliminar el producto:', error);
         res.status(500).json({ error: 'Error interno del servidor' });

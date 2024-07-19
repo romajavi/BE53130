@@ -56,10 +56,10 @@ const isAdmin = (req, res, next) => {
 };
 
 const isPremiumOrAdmin = (req, res, next) => {
-  if (req.user && (req.user.role === 'premium' || req.user.role === 'admin')) {
+  if (req.user && (req.user.role === 'admin' || req.user.role === 'premium')) {
     next();
   } else {
-    res.status(403).json({ error: "Acceso denegado. Se requiere rol premium o admin." });
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol de administrador o premium." });
   }
 };
 

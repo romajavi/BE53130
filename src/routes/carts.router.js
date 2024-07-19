@@ -16,7 +16,7 @@ router.get('/:cid', authMiddleware, async (req, res) => {
         if (!cart) {
             return res.status(404).json({ error: 'Carrito no encontrado' });
         }
-        // Asegúrate de que los productos del carrito tengan todos sus campos, incluida la imagen
+
         const populatedCart = await cart.populate('products.product');
         res.json(populatedCart);
     } catch (error) {
@@ -26,18 +26,19 @@ router.get('/:cid', authMiddleware, async (req, res) => {
 });
 
 // POST /api/carts/add-product
-router.post('/add-product', authMiddleware, isUser, async (req, res) => {
+router.post('/add-product', authMiddleware, async (req, res) => {
     try {
         const { productId, quantity } = req.body;
         const userId = req.user._id;
-        const cart = await cartManager.addProductToCart(userId, productId, quantity);
-        res.json({ message: 'Producto agregado al carrito', cart });
+        await cartManager.addProductToCart(userId, productId, quantity);
+        res.json({ message: 'Producto agregado al carrito' });
     } catch (error) {
-        logger.error('Error al agregar producto al carrito:', error);
+        if (error.message === 'No puedes agregar tu propio producto al carrito') {
+            return res.status(403).json({ error: error.message });
+        }
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
-
 // PUT /api/carts/:cid/products/:pid
 router.put('/:cid/products/:pid', authMiddleware, isUser, async (req, res) => {
     try {

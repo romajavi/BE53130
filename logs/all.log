@@ -4879,3 +4879,1852 @@
 2024-07-18 16:58:50:5850 [35mhttp[39m: [35mGET /js/main.js[39m
 2024-07-18 16:58:50:5850 [35mhttp[39m: [35mGET /img/2.png[39m
 2024-07-18 16:58:50:5850 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-18 17:02:07:27 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-18 17:02:07:27 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-18 17:02:07:27 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-18 17:02:11:211 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-18 17:02:13:213 [35mhttp[39m: [35mGET /login[39m
+2024-07-18 17:02:13:213 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-18 17:02:13:213 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-18 17:02:13:213 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-18 17:02:13:213 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-18 17:02:13:213 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-18 17:02:30:230 [35mhttp[39m: [35mPOST /login[39m
+2024-07-18 17:02:30:230 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-18 17:02:30:230 [37mdebug[39m: [37mreq.body:[39m
+2024-07-18 17:02:30:230 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-18 17:02:30:230 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-18 17:02:30:230 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-18 17:02:31:231 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-18 17:02:31:231 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-18 17:02:31:231 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-18 17:02:35:235 [35mhttp[39m: [35mGET /chat[39m
+2024-07-18 17:02:35:235 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-18 17:02:39:239 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-18 17:02:45:245 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-18 17:02:45:245 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-18 17:02:45:245 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-18 17:02:45:245 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-18 17:02:45:245 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /logout[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /login[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-18 17:02:56:256 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:21:11:2111 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 11:21:12:2112 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 11:21:12:2112 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:21:19:2119 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:21:20:2120 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 11:21:20:2120 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:21:20:2120 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:21:20:2120 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:21:20:2120 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:21:20:2120 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:21:34:2134 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 11:21:34:2134 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 11:21:34:2134 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 11:21:34:2134 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 11:21:35:2135 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:21:35:2135 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:21:35:2135 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:21:35:2135 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:21:36:2136 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:21:46:2146 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:21:46:2146 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:21:47:2147 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:21:47:2147 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:21:47:2147 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:21:47:2147 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:21:48:2148 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 11:21:48:2148 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:21:50:2150 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:21:52:2152 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 11:21:52:2152 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:21:52:2152 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:21:52:2152 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:21:53:2153 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:21:57:2157 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 11:21:57:2157 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:21:58:2158 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:21:59:2159 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 11:21:59:2159 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:22:00:220 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:22:00:220 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:22:00:220 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:22:05:225 [35mhttp[39m: [35mPUT /api/users/premium/669945a1e0ed4d50173aaaed[39m
+2024-07-19 11:22:05:225 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:22:07:227 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 11:22:07:227 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:22:07:227 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:22:07:227 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:22:24:2224 [35mhttp[39m: [35mPUT /api/users/premium/669945a1e0ed4d50173aaaed[39m
+2024-07-19 11:22:24:2224 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:22:26:2226 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 11:22:26:2226 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:22:27:2227 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:22:27:2227 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:00:230 [35mhttp[39m: [35mDELETE /api/users/66996cf115179c5a0dbe146e[39m
+2024-07-19 11:23:00:230 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:23:02:232 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 11:23:02:232 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:23:02:232 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:02:232 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:08:238 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 11:23:12:2312 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 11:23:12:2312 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:12:2312 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:13:2313 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:23:13:2313 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:23:13:2313 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:23:14:2314 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:14:2314 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:14:2314 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:23:20:2320 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 11:23:25:2325 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 11:23:25:2325 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:23:25:2325 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:23:25:2325 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:25:2325 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:25:2325 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:23:30:2330 [35mhttp[39m: [35mGET /realtimeproducts?page=1&limit=10[39m
+2024-07-19 11:23:30:2330 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:23:30:2330 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:23:30:2330 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:30:2330 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:30:2330 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:23:37:2337 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 11:23:37:2337 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:23:37:2337 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:23:37:2337 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:37:2337 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:37:2337 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:23:48:2348 [35mhttp[39m: [35mGET /[39m
+2024-07-19 11:23:48:2348 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:23:48:2348 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:48:2348 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 11:23:48:2348 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:23:48:2348 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:23:49:2349 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:49:2349 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:23:50:2350 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 11:23:51:2351 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:23:51:2351 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:23:51:2351 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:23:51:2351 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:51:2351 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:23:59:2359 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 11:23:59:2359 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 11:23:59:2359 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 11:23:59:2359 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:23:59:2359 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 11:23:59:2359 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 11:23:59:2359 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:23:59:2359 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:23:59:2359 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:23:59:2359 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:24:00:240 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 11:24:01:241 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:24:01:241 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:24:03:243 [35mhttp[39m: [35mGET /forgot-password[39m
+2024-07-19 11:24:03:243 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:24:03:243 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:24:05:245 [35mhttp[39m: [35mPOST /forgot-password[39m
+2024-07-19 11:24:10:2410 [32minfo[39m: [32mCorreo de restablecimiento de contraseña enviado[39m
+2024-07-19 11:24:10:2410 [32minfo[39m: [32mCorreo de restablecimiento enviado a: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:24:10:2410 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:24:10:2410 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:24:57:2457 [35mhttp[39m: [35mGET /reset-password/3f88cfd55d6e3769991f921ad362bf1fe63b3a3f[39m
+2024-07-19 11:24:57:2457 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:24:57:2457 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:25:16:2516 [35mhttp[39m: [35mPOST /reset-password/3f88cfd55d6e3769991f921ad362bf1fe63b3a3f[39m
+2024-07-19 11:25:16:2516 [37mdebug[39m: [37mComparando nueva contraseña con la anterior para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:25:16:2516 [37mdebug[39m: [37mHasheando nueva contraseña para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:25:16:2516 [32minfo[39m: [32mContraseña restablecida exitosamente para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:25:17:2517 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:25:17:2517 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:25:17:2517 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:25:17:2517 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:25:17:2517 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:25:35:2535 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 11:25:35:2535 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 11:25:35:2535 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 11:25:35:2535 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:25:35:2535 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 11:25:35:2535 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 11:25:35:2535 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:25:36:2536 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:25:36:2536 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:25:36:2536 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:25:36:2536 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:25:42:2542 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 11:25:42:2542 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:25:42:2542 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:25:42:2542 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:25:42:2542 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:26:12:2612 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:26:13:2613 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:26:13:2613 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:26:13:2613 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:26:13:2613 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:26:14:2614 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:26:20:2620 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 11:26:23:2623 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 11:26:27:2627 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 11:26:27:2627 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:26:27:2627 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:26:27:2627 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:26:37:2637 [35mhttp[39m: [35mPOST /api/carts/669945a1e0ed4d50173aaaef/empty[39m
+2024-07-19 11:26:37:2637 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 11:26:38:2638 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:26:38:2638 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:26:39:2639 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:26:39:2639 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:26:39:2639 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:26:39:2639 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:26:40:2640 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:26:45:2645 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 11:26:51:2651 [35mhttp[39m: [35mGET /products?page=2&limit=5[39m
+2024-07-19 11:26:51:2651 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:26:52:2652 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:26:52:2652 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:26:52:2652 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:26:52:2652 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:27:12:2712 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 11:27:15:2715 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 11:27:18:2718 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 11:27:18:2718 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:27:18:2718 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:27:18:2718 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:27:23:2723 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:27:23:2723 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:27:23:2723 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:27:23:2723 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:27:23:2723 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:37:14:3714 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 11:37:14:3714 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:37:14:3714 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:37:14:3714 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:37:14:3714 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:37:14:3714 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:37:18:3718 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 11:37:18:3718 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 11:37:18:3718 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 11:37:18:3718 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 11:37:19:3719 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 11:37:19:3719 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 11:37:19:3719 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 11:37:19:3719 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:37:19:3719 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:37:19:3719 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 11:37:19:3719 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:37:25:3725 [35mhttp[39m: [35mGET /[39m
+2024-07-19 11:37:25:3725 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 11:37:25:3725 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:37:25:3725 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:37:25:3725 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:37:26:3726 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:37:26:3726 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:37:27:3727 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:37:27:3727 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:37:27:3727 [33mwarn[39m: [33mAcceso denegado a ruta de admin para:[39m
+2024-07-19 11:37:27:3727 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:37:51:3751 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:39:07:397 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:39:07:397 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:39:07:397 [33mwarn[39m: [33mAcceso denegado a ruta de admin para:[39m
+2024-07-19 11:39:07:397 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:40:39:4039 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:40:39:4039 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:40:39:4039 [33mwarn[39m: [33mAcceso denegado a ruta de admin para:[39m
+2024-07-19 11:40:39:4039 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:40:53:4053 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:40:54:4054 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 11:40:55:4055 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:40:55:4055 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:40:55:4055 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:40:55:4055 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:40:57:4057 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:40:57:4057 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:40:58:4058 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 11:40:59:4059 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:40:59:4059 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:40:59:4059 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:41:01:411 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:41:28:4128 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 11:41:28:4128 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:41:28:4128 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:41:28:4128 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:41:30:4130 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 11:41:31:4131 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 11:41:31:4131 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:41:31:4131 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:41:31:4131 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 11:41:31:4131 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 11:41:31:4131 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 11:41:41:4141 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 11:41:41:4141 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 11:41:41:4141 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 11:41:41:4141 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 11:41:41:4141 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 11:41:41:4141 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:41:42:4142 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:41:42:4142 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:41:42:4142 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 11:42:09:429 [37mdebug[39m: [37mIntentando agregar producto:[39m
+2024-07-19 11:42:09:429 [32minfo[39m: [32mProducto agregado correctamente:[39m
+2024-07-19 11:42:13:4213 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 11:42:13:4213 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 11:42:13:4213 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 11:42:13:4213 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 11:42:13:4213 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 11:42:13:4213 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 12:21:09:219 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 13:35:01:351 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 13:35:02:352 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 13:35:02:352 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 13:35:29:3529 [35mhttp[39m: [35mGET /[39m
+2024-07-19 13:35:29:3529 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 13:35:29:3529 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 13:35:29:3529 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 13:35:30:3530 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 13:35:30:3530 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 13:35:30:3530 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 13:35:31:3531 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 13:35:31:3531 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 13:35:31:3531 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 13:35:31:3531 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 13:35:32:3532 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 13:35:32:3532 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 13:35:37:3537 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 13:35:37:3537 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 13:35:37:3537 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 13:35:37:3537 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 13:35:37:3537 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 13:35:37:3537 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 13:35:38:3538 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 13:35:38:3538 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 13:35:38:3538 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 13:35:38:3538 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 13:35:38:3538 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 13:35:41:3541 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 13:35:41:3541 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 13:35:41:3541 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 13:35:41:3541 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 13:35:44:3544 [35mhttp[39m: [35mPOST /api/orders/create[39m
+2024-07-19 13:35:47:3547 [32minfo[39m: [32mCorreo de confirmación enviado[39m
+2024-07-19 13:35:48:3548 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 13:35:48:3548 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 13:40:58:4058 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 13:40:59:4059 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 13:40:59:4059 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 13:41:11:4111 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 13:41:12:4112 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 13:41:12:4112 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 13:41:12:4112 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 13:41:12:4112 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:01:13:113 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:01:15:115 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:01:15:115 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:01:18:118 [35mhttp[39m: [35mGET /[39m
+2024-07-19 14:01:19:119 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:01:19:119 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:01:19:119 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:01:19:119 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:01:19:119 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:01:19:119 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 14:01:20:120 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:01:20:120 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:01:20:120 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:01:20:120 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:01:21:121 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:01:21:121 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:01:26:126 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:01:26:126 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:01:26:126 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:01:26:126 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 14:01:26:126 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:01:26:126 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:01:26:126 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:01:26:126 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:02:06:26 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:02:08:28 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:02:08:28 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:08:28 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:02:08:28 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:02:08:28 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:02:08:28 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:30:230 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:02:30:230 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:02:30:230 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:02:30:230 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 14:02:30:230 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:02:30:230 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:30:230 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:30:230 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:02:34:234 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:02:34:234 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:02:34:234 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:02:34:234 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:34:234 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:37:237 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:02:40:240 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:02:40:240 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:40:240 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:45:245 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:02:45:245 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:02:45:245 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:45:245 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:45:245 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:02:48:248 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 14:02:52:252 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:02:52:252 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:02:52:252 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:52:252 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:52:252 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:02:53:253 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:02:53:253 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:02:53:253 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:53:253 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:54:254 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:02:54:254 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:02:54:254 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:54:254 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:02:54:254 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:02:58:258 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:02:58:258 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:02:58:258 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:02:58:258 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:02:58:258 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:03:02:32 [35mhttp[39m: [35mPUT /api/users/premium/669945a1e0ed4d50173aaaed[39m
+2024-07-19 14:03:02:32 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:03:03:33 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:03:03:33 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:03:03:33 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:03:03:33 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:03:05:35 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:03:09:39 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:03:09:39 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:03:09:39 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:03:09:39 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 14:03:09:39 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:03:09:39 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:03:09:39 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:03:10:310 [31merror[39m: [31mError en el servidor: Missing helper: "or"[39m
+2024-07-19 14:06:19:619 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:06:20:620 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:06:20:620 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:06:38:638 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:06:39:639 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:06:39:639 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:06:39:639 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:06:39:639 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:06:39:639 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:06:39:639 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:06:43:643 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:06:43:643 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:06:43:643 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:06:43:643 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 14:06:43:643 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:06:43:643 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:06:44:644 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:06:45:645 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:06:45:645 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:06:45:645 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:06:45:645 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:14:714 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:07:14:714 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:17:717 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:20:720 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:07:20:720 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:20:720 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:20:720 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:20:720 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:28:728 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:07:29:729 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:29:729 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:29:729 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:29:729 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:07:29:729 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:31:731 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:07:32:732 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:32:732 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:32:732 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:32:732 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:39:739 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:07:39:739 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:39:739 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:39:739 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:39:739 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:07:40:740 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:45:745 [35mhttp[39m: [35mGET /products?page=2&limit=5[39m
+2024-07-19 14:07:46:746 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:46:746 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:46:746 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:07:46:746 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:46:746 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:48:748 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 14:07:48:748 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:48:748 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:48:748 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:49:749 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:07:50:750 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:50:750 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:07:50:750 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:50:750 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:07:55:755 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 14:07:58:758 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:07:58:758 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:07:58:758 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:07:58:758 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:07:58:758 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:07:58:758 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:08:01:81 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:08:01:81 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:08:01:81 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:08:01:81 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:08:01:81 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:09:26:926 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:09:26:926 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:09:26:926 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:27:927 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:29:929 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:09:29:929 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:29:929 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:29:929 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:09:30:930 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:09:31:931 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:09:31:931 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:09:40:940 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:09:40:940 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:09:40:940 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:09:40:940 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 14:09:40:940 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:09:40:940 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:40:940 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:40:940 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:09:42:942 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:09:42:942 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:09:42:942 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:09:42:942 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:42:942 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:44:944 [35mhttp[39m: [35mPUT /api/users/premium/669945a1e0ed4d50173aaaed[39m
+2024-07-19 14:09:44:944 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:09:46:946 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:09:46:946 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:09:46:946 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:46:946 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:47:947 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:09:48:948 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:09:48:948 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:48:948 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:48:948 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:09:48:948 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:09:48:948 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:09:53:953 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:09:53:953 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:09:53:953 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:09:53:953 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 14:09:53:953 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:09:53:953 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:09:53:953 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:09:53:953 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:09:53:953 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:09:53:953 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:09:53:953 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:01:101 [35mhttp[39m: [35mGET /products?page=2&limit=5[39m
+2024-07-19 14:10:01:101 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:01:101 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:01:101 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:01:101 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:10:02:102 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:02:102 [35mhttp[39m: [35mGET /products?page=3&limit=5[39m
+2024-07-19 14:10:03:103 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:03:103 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:03:103 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:10:03:103 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:03:103 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:05:105 [35mhttp[39m: [35mGET /products?page=4&limit=5[39m
+2024-07-19 14:10:05:105 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:05:105 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:05:105 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:05:105 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:10:05:105 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:06:106 [35mhttp[39m: [35mGET /products?page=3&limit=5[39m
+2024-07-19 14:10:07:107 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:07:107 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:07:107 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:07:107 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:10:07:107 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:08:108 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:10:08:108 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:08:108 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:08:108 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:08:108 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:10:1010 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 14:10:19:1019 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:10:19:1019 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:19:1019 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:19:1019 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:19:1019 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:10:25:1025 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:10:25:1025 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:10:27:1027 [35mhttp[39m: [35mGET /forgot-password[39m
+2024-07-19 14:10:27:1027 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:27:1027 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:10:32:1032 [35mhttp[39m: [35mGET /register[39m
+2024-07-19 14:10:32:1032 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:10:32:1032 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:12:38:1238 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:12:38:1238 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:12:38:1238 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:12:38:1238 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:12:38:1238 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:12:38:1238 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:12:42:1242 [35mhttp[39m: [35mGET /register[39m
+2024-07-19 14:12:42:1242 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:12:42:1242 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mPOST /register[39m
+2024-07-19 14:12:51:1251 [37mdebug[39m: [37mIntentando hashear la contraseña: 1234[39m
+2024-07-19 14:12:51:1251 [37mdebug[39m: [37mContraseña hasheada: $2b$10$RMyGYc2W6vXb59Z2RmnCqugyd0gA.2EXSzeLDCp4nsbl1TsyeR3xG[39m
+2024-07-19 14:12:51:1251 [32minfo[39m: [32mUsuario registrado: uno@uno.com[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:12:51:1251 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:12:55:1255 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:12:55:1255 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:12:55:1255 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:12:55:1255 [37mdebug[39m: [37mComparando contraseñas para el usuario: uno@uno.com[39m
+2024-07-19 14:12:55:1255 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:12:55:1255 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:12:55:1255 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:12:56:1256 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:12:56:1256 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:12:56:1256 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:12:56:1256 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:12:58:1258 [35mhttp[39m: [35mGET /products?page=2&limit=5[39m
+2024-07-19 14:12:58:1258 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:12:59:1259 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:12:59:1259 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:12:59:1259 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:12:59:1259 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:00:130 [35mhttp[39m: [35mGET /products?page=3&limit=5[39m
+2024-07-19 14:13:00:130 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:00:130 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:00:130 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:00:130 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:13:00:130 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:02:132 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:13:02:132 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:02:132 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:02:132 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:02:132 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:13:02:132 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:03:133 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:13:04:134 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:04:134 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:04:134 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:04:134 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:07:137 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:13:07:137 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:08:138 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:08:138 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:09:139 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:13:10:1310 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:10:1310 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:13:10:1310 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:10:1310 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:15:1315 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:13:16:1316 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:13:16:1316 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:16:1316 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:16:1316 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:16:1316 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:13:16:1316 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:13:16:1316 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:13:19:1319 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:13:19:1319 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:13:19:1319 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:13:19:1319 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 14:13:19:1319 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:13:19:1319 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:13:20:1320 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:13:20:1320 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:20:1320 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:20:1320 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:13:20:1320 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:22:1322 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:13:22:1322 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:22:1322 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:22:1322 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:22:1322 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:23:1323 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:13:24:1324 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:24:1324 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:24:1324 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:24:1324 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:25:1325 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:13:25:1325 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:25:1325 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:25:1325 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:27:1327 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:13:27:1327 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:27:1327 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:27:1327 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:29:1329 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:13:29:1329 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:29:1329 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:29:1329 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:30:1330 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:13:30:1330 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:30:1330 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:30:1330 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:13:31:1331 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:13:31:1331 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:13:31:1331 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:31:1331 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:32:1332 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:13:32:1332 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:13:32:1332 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:13:32:1332 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:14:03:143 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:14:03:143 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:14:03:143 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:14:03:143 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:14:03:143 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:15:29:1529 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:15:29:1529 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:15:29:1529 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:29:1529 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:31:1531 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:15:31:1531 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:15:31:1531 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:31:1531 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:31:1531 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:15:33:1533 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 14:15:33:1533 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:15:33:1533 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:33:1533 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:45:1545 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:15:45:1545 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:45:1545 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:15:45:1545 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:45:1545 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:15:47:1547 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:15:47:1547 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:15:47:1547 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:47:1547 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:47:1547 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:15:51:1551 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:15:51:1551 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:15:51:1551 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:51:1551 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:53:1553 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:15:53:1553 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:53:1553 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:53:1553 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:15:53:1553 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:15:57:1557 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:15:58:1558 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:15:58:1558 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:15:58:1558 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:15:58:1558 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:15:58:1558 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:15:58:1558 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:15:58:1558 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:16:05:165 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:16:05:165 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:16:05:165 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:16:05:165 [37mdebug[39m: [37mComparando contraseñas para el usuario: uno@uno.com[39m
+2024-07-19 14:16:05:165 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:16:05:165 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:16:05:165 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:16:05:165 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:16:05:165 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:16:05:165 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:16:05:165 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:17:53:1753 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:17:54:1754 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:17:54:1754 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:17:54:1754 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:17:54:1754 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:17:54:1754 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:17:55:1755 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:17:55:1755 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:17:55:1755 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:17:55:1755 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:17:55:1755 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:17:55:1755 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:17:57:1757 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:17:57:1757 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:17:57:1757 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:17:57:1757 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:17:57:1757 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:17:57:1757 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:00:180 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:18:00:180 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:00:180 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:00:180 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:00:180 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:18:00:180 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:01:181 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:18:01:181 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:01:181 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:01:181 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:01:181 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:02:182 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:18:02:182 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:02:182 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:02:182 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:04:184 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:18:04:184 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:04:184 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:05:185 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:18:05:185 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:05:185 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:18:05:185 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:05:185 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:05:185 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:05:185 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:06:186 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:18:06:186 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:06:186 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:06:186 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:18:07:187 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:18:33:1833 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:18:33:1833 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:18:33:1833 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:18:33:1833 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 14:18:33:1833 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:18:33:1833 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:33:1833 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:33:1833 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:37:1837 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:18:38:1838 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:38:1838 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:38:1838 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:38:1838 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:39:1839 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:18:39:1839 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:39:1839 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:39:1839 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:41:1841 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:18:41:1841 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:18:41:1841 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:41:1841 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:41:1841 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:42:1842 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:18:42:1842 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:42:1842 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:42:1842 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:18:42:1842 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:18:43:1843 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:18:44:1844 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:18:44:1844 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:18:44:1844 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:18:44:1844 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:18:44:1844 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:19:29:1929 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:19:29:1929 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:19:29:1929 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:19:29:1929 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:19:31:1931 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:19:31:1931 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:19:31:1931 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:19:32:1932 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:19:32:1932 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:19:32:1932 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:19:32:1932 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:19:32:1932 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:19:33:1933 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:19:33:1933 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:19:33:1933 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:19:33:1933 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:04:214 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:21:04:214 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:04:214 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:06:216 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:21:06:216 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:06:216 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:06:216 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:14:2114 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:21:14:2114 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:14:2114 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:14:2114 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:14:2114 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:16:2116 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:21:17:2117 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:17:2117 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:17:2117 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:17:2117 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:17:2117 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:21:17:2117 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:17:2117 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:17:2117 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:18:2118 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 14:21:18:2118 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 14:21:19:2119 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:19:2119 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:21:2121 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:21:21:2121 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:22:2122 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:22:2122 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:27:2127 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 14:21:30:2130 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 14:21:39:2139 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:21:39:2139 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:39:2139 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:39:2139 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:41:2141 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:21:41:2141 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:21:41:2141 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:41:2141 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:41:2141 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:21:44:2144 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:21:44:2144 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:21:49:2149 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:21:49:2149 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:21:49:2149 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:21:49:2149 [37mdebug[39m: [37mComparando contraseñas para el usuario: uno@uno.com[39m
+2024-07-19 14:21:49:2149 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:21:49:2149 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:21:49:2149 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:21:49:2149 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:49:2149 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:49:2149 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:21:49:2149 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:52:2152 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:21:52:2152 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:52:2152 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:52:2152 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:53:2153 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:54:2154 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:21:54:2154 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:54:2154 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:54:2154 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:21:54:2154 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:54:2154 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:56:2156 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:21:56:2156 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:56:2156 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:56:2156 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:57:2157 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:21:57:2157 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 14:21:57:2157 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:21:57:2157 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:57:2157 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:58:2158 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:21:59:2159 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:21:59:2159 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:21:59:2159 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:21:59:2159 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:21:59:2159 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:21:59:2159 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:22:11:2211 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:22:11:2211 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:22:11:2211 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:22:11:2211 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 14:22:11:2211 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:22:11:2211 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:22:11:2211 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:22:11:2211 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:22:16:2216 [35mhttp[39m: [35mGET /chat[39m
+2024-07-19 14:22:16:2216 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:47:14:4714 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:47:16:4716 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:47:16:4716 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:47:16:4716 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:47:17:4717 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:47:17:4717 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:47:17:4717 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:47:17:4717 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:47:17:4717 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:47:21:4721 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:47:21:4721 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:47:21:4721 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:47:21:4721 [37mdebug[39m: [37mComparando contraseñas para el usuario: uno@uno.com[39m
+2024-07-19 14:47:21:4721 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:47:21:4721 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:47:21:4721 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:47:21:4721 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:47:21:4721 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:47:21:4721 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:47:21:4721 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:47:29:4729 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:47:29:4729 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:47:32:4732 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 14:47:38:4738 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 14:47:38:4738 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:47:42:4742 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 14:47:42:4742 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 14:47:42:4742 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 14:47:42:4742 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 14:47:42:4742 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 14:47:42:4742 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 14:47:42:4742 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 14:47:43:4743 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:47:43:4743 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:47:43:4743 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 14:47:43:4743 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:47:46:4746 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 14:47:46:4746 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:47:46:4746 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:47:46:4746 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:47:46:4746 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:47:51:4751 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 14:47:52:4752 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 14:47:52:4752 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 14:47:52:4752 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 14:47:52:4752 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:47:55:4755 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 14:48:00:480 [32minfo[39m: [32mProducto actualizado correctamente[39m
+2024-07-19 14:48:04:484 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 14:54:38:5438 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:54:38:5438 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:54:38:5438 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:54:39:5439 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:54:59:5459 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:55:00:550 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:55:00:550 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:55:01:551 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:55:19:5519 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:55:20:5520 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:55:20:5520 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:55:20:5520 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:56:00:560 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:56:01:561 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:56:01:561 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:56:04:564 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 14:58:40:5840 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 14:58:41:5841 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 14:58:41:5841 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 14:58:43:5843 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:00:35:035 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:00:36:036 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:00:36:036 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:00:36:036 [35mhttp[39m: [35mGET /[39m
+2024-07-19 15:00:36:036 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:00:36:036 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:00:36:036 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:00:36:036 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:00:37:037 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:00:37:037 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 15:00:38:038 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:00:38:038 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:00:38:038 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:00:38:038 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:00:38:038 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:00:38:038 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:00:39:039 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:00:42:042 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:00:42:042 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:00:42:042 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:00:42:042 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:00:42:042 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:00:42:042 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:00:42:042 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:00:42:042 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:00:42:042 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:00:42:042 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:00:42:042 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:00:46:046 [35mhttp[39m: [35mGET /carts/669945a1e0ed4d50173aaaef[39m
+2024-07-19 15:00:47:047 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:00:47:047 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:00:47:047 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:00:48:048 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:00:49:049 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:00:49:049 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:00:49:049 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:00:49:049 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:00:50:050 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:00:51:051 [31merror[39m: [31mError en el servidor: Missing helper: "and"[39m
+2024-07-19 15:00:51:051 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:01:06:16 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:01:07:17 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:01:07:17 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:01:15:115 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:01:15:115 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:01:15:115 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:01:15:115 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:01:15:115 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:01:15:115 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:01:15:115 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:01:15:115 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:01:18:118 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 15:01:20:120 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:01:20:120 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:01:20:120 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:01:20:120 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:01:20:120 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:01:25:125 [32minfo[39m: [32mProducto eliminado correctamente[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:01:32:132 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:01:32:132 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:01:37:137 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:01:37:137 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:01:37:137 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:01:37:137 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:01:37:137 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:01:37:137 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:01:37:137 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:01:38:138 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:01:38:138 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:01:38:138 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:01:38:138 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:01:39:139 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:01:39:139 [31merror[39m: [31mError en el servidor: Missing helper: "and"[39m
+2024-07-19 15:01:39:139 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:04:18:418 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:04:19:419 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:04:19:419 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:04:22:422 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 15:04:24:424 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:04:24:424 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:04:24:424 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:04:24:424 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:04:24:424 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:04:24:424 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:04:28:428 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:04:28:428 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:04:28:428 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:04:28:428 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:04:28:428 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:04:28:428 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:04:28:428 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:04:28:428 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:04:28:428 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:04:28:428 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:04:28:428 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:04:31:431 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:04:32:432 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:04:32:432 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:04:32:432 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:04:32:432 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:04:39:439 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:04:40:440 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:04:40:440 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:04:40:440 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:04:40:440 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:05:21:521 [35mhttp[39m: [35mGET /realtimeproducts?page=1&limit=10[39m
+2024-07-19 15:05:21:521 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:05:21:521 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:05:21:521 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:05:21:521 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:05:23:523 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:05:23:523 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:05:23:523 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:05:23:523 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:05:24:524 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:05:26:526 [35mhttp[39m: [35mGET /realtimeproducts?page=1&limit=10[39m
+2024-07-19 15:05:26:526 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:05:26:526 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:05:26:526 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:05:26:526 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:05:34:534 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:05:34:534 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:05:47:547 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:05:47:547 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:05:47:547 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:05:47:547 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:05:47:547 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:05:48:548 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:05:48:548 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:05:48:548 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:05:50:550 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:05:50:550 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:05:51:551 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:05:51:551 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:05:51:551 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:06:20:620 [35mhttp[39m: [35mGET /realtimeproducts?page=1&limit=10[39m
+2024-07-19 15:06:20:620 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:06:20:620 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:06:20:620 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:06:21:621 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:06:25:625 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:06:25:625 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:06:25:625 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:06:25:625 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:06:25:625 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:06:49:649 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 15:07:04:74 [37mdebug[39m: [37mProducto obtenido por ID:[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:07:07:77 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:07:07:77 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:07:15:715 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:07:15:715 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:07:15:715 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:07:15:715 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:07:15:715 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:07:15:715 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:07:15:715 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:07:15:715 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:07:15:715 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:07:15:715 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:07:16:716 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:07:18:718 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:07:18:718 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:07:18:718 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:07:18:718 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:07:18:718 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:07:20:720 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:07:20:720 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:07:20:720 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:07:20:720 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:07:20:720 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:10:19:1019 [33mwarn[39m: [33mUsuario no encontrado en la base de datos (authMiddleware)[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:10:19:1019 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:10:19:1019 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:10:23:1023 [35mhttp[39m: [35mGET /register[39m
+2024-07-19 15:10:23:1023 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:10:23:1023 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:10:34:1034 [35mhttp[39m: [35mPOST /register[39m
+2024-07-19 15:10:34:1034 [37mdebug[39m: [37mIntentando hashear la contraseña: 1234[39m
+2024-07-19 15:10:34:1034 [37mdebug[39m: [37mContraseña hasheada: $2b$10$JuhKuC/45lsg5bOZxQ.VnukxVvUxjh7c/RfaOTqnKWp9x/KyCrZ7a[39m
+2024-07-19 15:10:34:1034 [32minfo[39m: [32mUsuario registrado: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:10:35:1035 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:10:35:1035 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:10:35:1035 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:10:35:1035 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:10:35:1035 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:10:35:1035 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:16:02:162 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:16:03:163 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:16:03:163 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:16:37:1637 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:16:37:1637 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:16:37:1637 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:16:39:1639 [35mhttp[39m: [35mGET /[39m
+2024-07-19 15:16:39:1639 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:16:39:1639 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:16:39:1639 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:16:39:1639 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:16:40:1640 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 15:16:40:1640 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:16:41:1641 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:16:41:1641 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:16:41:1641 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:16:41:1641 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:16:41:1641 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:16:42:1642 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:16:46:1646 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:16:47:1647 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:16:47:1647 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:16:47:1647 [33mwarn[39m: [33mIntento de inicio de sesión fallido: usuario no encontrado (adminCoder@coder.com)[39m
+2024-07-19 15:16:47:1647 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:16:47:1647 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:16:47:1647 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:16:47:1647 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:16:47:1647 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:17:00:170 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:17:00:170 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:17:00:170 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:17:00:170 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:17:00:170 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:17:00:170 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:00:170 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:01:171 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:17:07:177 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:17:07:177 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:17:08:178 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:08:178 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:08:178 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:17:25:1725 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:17:25:1725 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:17:29:1729 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:17:29:1729 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:17:29:1729 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:17:30:1730 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:17:30:1730 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:17:30:1730 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:17:30:1730 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:17:31:1731 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:31:1731 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:31:1731 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:17:31:1731 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:17:37:1737 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:17:37:1737 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:17:44:1744 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:17:44:1744 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:17:44:1744 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:17:44:1744 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:17:44:1744 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:17:44:1744 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:44:1744 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:45:1745 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:17:46:1746 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 15:17:46:1746 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:17:46:1746 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:17:46:1746 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:46:1746 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:49:1749 [35mhttp[39m: [35mPUT /api/users/premium/669aac1a31bd51d72ea1573e[39m
+2024-07-19 15:17:49:1749 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:17:50:1750 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 15:17:50:1750 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:17:50:1750 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:50:1750 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:17:57:1757 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:18:01:181 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:18:01:181 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:18:01:181 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:18:01:181 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:18:01:181 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:18:01:181 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:18:01:181 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:18:02:182 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:18:02:182 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:18:02:182 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:18:02:182 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:18:04:184 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:18:04:184 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:18:04:184 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:18:04:184 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:18:04:184 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:18:08:188 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:18:08:188 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:18:08:188 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:18:08:188 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:18:08:188 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:23:36:2336 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:23:36:2336 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:23:36:2336 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:23:39:2339 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:23:40:2340 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:23:40:2340 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:23:40:2340 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:23:40:2340 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:23:40:2340 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:23:41:2341 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:23:41:2341 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:23:41:2341 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:23:48:2348 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 15:23:49:2349 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:23:49:2349 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:23:49:2349 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:23:50:2350 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:23:50:2350 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:23:50:2350 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:23:50:2350 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:23:52:2352 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 15:23:52:2352 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:23:52:2352 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:23:52:2352 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:23:52:2352 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:23:55:2355 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:23:56:2356 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:23:56:2356 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:23:56:2356 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:24:04:244 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:24:04:244 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:24:04:244 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:04:244 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:04:244 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:24:09:249 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:24:09:249 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:24:12:2412 [35mhttp[39m: [35mGET /register[39m
+2024-07-19 15:24:12:2412 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:12:2412 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mPOST /register[39m
+2024-07-19 15:24:21:2421 [37mdebug[39m: [37mIntentando hashear la contraseña: 1234[39m
+2024-07-19 15:24:21:2421 [37mdebug[39m: [37mContraseña hasheada: $2b$10$GrM75G964hBA.Tm9vDKx/.mxAeIXQuLumcm/4f.43fzvQBIxrdBGC[39m
+2024-07-19 15:24:21:2421 [32minfo[39m: [32mUsuario registrado: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:24:21:2421 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:24:35:2435 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:24:35:2435 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:24:35:2435 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:24:35:2435 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:24:35:2435 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:24:35:2435 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:35:2435 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:35:2435 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:24:36:2436 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 15:24:36:2436 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:24:37:2437 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:24:37:2437 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:37:2437 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:39:2439 [35mhttp[39m: [35mPUT /api/users/premium/669aaf5509ebaddfa080c799[39m
+2024-07-19 15:24:39:2439 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:24:40:2440 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 15:24:40:2440 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:24:40:2440 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:40:2440 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:24:41:2441 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:24:45:2445 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:24:45:2445 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:24:45:2445 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:24:45:2445 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:24:45:2445 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:24:45:2445 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:24:45:2445 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:24:46:2446 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:46:2446 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:46:2446 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:24:46:2446 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:24:49:2449 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:24:49:2449 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:24:49:2449 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:49:2449 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:49:2449 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:24:51:2451 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:24:51:2451 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:24:51:2451 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:24:51:2451 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:24:51:2451 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:25:15:2515 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-19 15:25:15:2515 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Product validation failed: img: Path `img` is required.[39m
+2024-07-19 15:25:41:2541 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:26:08:268 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:26:08:268 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:26:08:268 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:26:08:268 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:08:268 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:08:268 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:26:10:2610 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 15:26:12:2612 [35mhttp[39m: [35mGET /carts/669aaf5509ebaddfa080c79b[39m
+2024-07-19 15:26:12:2612 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:26:12:2612 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:12:2612 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:13:2613 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:26:14:2614 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:14:2614 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:26:14:2614 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:14:2614 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:26:19:2619 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:26:19:2619 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:26:19:2619 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:26:19:2619 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:19:2619 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:19:2619 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:26:21:2621 [35mhttp[39m: [35mGET /carts/669aaf5509ebaddfa080c79b[39m
+2024-07-19 15:26:21:2621 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:26:21:2621 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:21:2621 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:22:2622 [35mhttp[39m: [35mPOST /api/orders/create[39m
+2024-07-19 15:26:25:2625 [32minfo[39m: [32mCorreo de confirmación enviado[39m
+2024-07-19 15:26:25:2625 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:25:2625 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:26:2626 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:26:26:2626 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:26:26:2626 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:26:26:2626 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:26:27:2627 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:27:54:2754 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:27:54:2754 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:27:54:2754 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:27:54:2754 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:27:54:2754 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:27:54:2754 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:27:54:2754 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:29:01:291 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:29:02:292 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:29:02:292 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:29:02:292 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:29:02:292 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:29:02:292 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:29:03:293 [35mhttp[39m: [35mGET /products?page=4&limit=5[39m
+2024-07-19 15:29:04:294 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:29:04:294 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:29:04:294 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:29:04:294 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:29:04:294 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:29:04:294 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:29:05:295 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 15:29:07:297 [35mhttp[39m: [35mGET /carts/669aaf5509ebaddfa080c79b[39m
+2024-07-19 15:29:07:297 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:29:07:297 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:29:07:297 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:29:07:297 [35mhttp[39m: [35mGET /carts/sin%20imagen[39m
+2024-07-19 15:29:08:298 [31merror[39m: [31mError al obtener el carrito por ID: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-19 15:29:08:298 [31merror[39m: [31mError al obtener el carrito: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-19 15:29:08:298 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
+2024-07-19 15:29:09:299 [35mhttp[39m: [35mPOST /api/orders/create[39m
+2024-07-19 15:29:13:2913 [32minfo[39m: [32mCorreo de confirmación enviado[39m
+2024-07-19 15:29:13:2913 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:29:13:2913 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:29:55:2955 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:29:56:2956 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:29:56:2956 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:29:56:2956 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:29:56:2956 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:29:56:2956 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:29:57:2957 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:29:57:2957 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:29:57:2957 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:29:57:2957 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:29:57:2957 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:30:04:304 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:30:04:304 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:35:22:3522 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:35:22:3522 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:35:22:3522 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:38:25:3825 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:38:26:3826 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:38:26:3826 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:39:02:392 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:39:02:392 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:39:02:392 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:40:39:4039 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:40:40:4040 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:40:40:4040 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:41:47:4147 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:41:48:4148 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:41:48:4148 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:45:41:4541 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:45:42:4542 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:45:42:4542 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:45:53:4553 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:45:54:4554 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:45:54:4554 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:45:54:4554 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:45:54:4554 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:45:54:4554 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:45:54:4554 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:45:59:4559 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:45:59:4559 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:45:59:4559 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:45:59:4559 [33mwarn[39m: [33mIntento de inicio de sesión fallido: usuario no encontrado (adminCoder@coder.com)[39m
+2024-07-19 15:45:59:4559 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:45:59:4559 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:45:59:4559 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:45:59:4559 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:45:59:4559 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:46:10:4610 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:46:10:4610 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:46:10:4610 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:46:10:4610 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 15:46:10:4610 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:46:10:4610 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:11:4611 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:11:4611 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:46:16:4616 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:46:16:4616 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:46:16:4616 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:16:4616 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:16:4616 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:46:17:4617 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:46:24:4624 [32minfo[39m: [32mProducto eliminado correctamente[39m
+2024-07-19 15:46:25:4625 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:46:34:4634 [35mhttp[39m: [35mGET /admin/users[39m
+2024-07-19 15:46:34:4634 [37mdebug[39m: [37mVerificando rol de admin para:[39m
+2024-07-19 15:46:34:4634 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:46:34:4634 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:34:4634 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:46:39:4639 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:46:43:4643 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 15:46:43:4643 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 15:46:43:4643 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 15:46:43:4643 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 15:46:43:4643 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 15:46:43:4643 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 15:46:43:4643 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 15:46:44:4644 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:44:4644 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 15:46:44:4644 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:44:4644 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:46:46:4646 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 15:46:47:4647 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:46:47:4647 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:47:4647 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:47:4647 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:46:50:4650 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 15:46:50:4650 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 15:46:50:4650 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:46:50:4650 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:46:50:4650 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:46:50:4650 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:46:51:4651 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:47:12:4712 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-19 15:47:12:4712 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Cannot read properties of undefined (reading 'role')[39m
+2024-07-19 15:53:21:5321 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:53:22:5322 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:53:22:5322 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:53:22:5322 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:53:22:5322 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:57:22:5722 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:57:23:5723 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:57:23:5723 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:57:23:5723 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:57:23:5723 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:58:04:584 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:58:05:585 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:58:05:585 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:58:05:585 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 15:58:06:586 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 15:59:55:5955 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-07-19 15:59:55:5955 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-07-19 15:59:55:5955 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-07-19 15:59:56:5956 [35mhttp[39m: [35mGET /[39m
+2024-07-19 15:59:57:5957 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:59:57:5957 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:59:57:5957 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 15:59:57:5957 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:59:57:5957 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 15:59:57:5957 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:59:58:5958 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 15:59:58:5958 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 15:59:58:5958 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 15:59:58:5958 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 15:59:59:5959 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 15:59:59:5959 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 16:00:00:00 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:00:01:01 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:00:09:09 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 16:00:09:09 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 16:00:09:09 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 16:00:09:09 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-07-19 16:00:09:09 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 16:00:09:09 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:00:10:010 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:00:10:010 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:00:16:016 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 16:00:16:016 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:00:16:016 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:00:16:016 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:00:16:016 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:00:16:016 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:00:16:016 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /logout[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /login[39m
+2024-07-19 16:00:26:026 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 16:00:26:026 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 16:00:30:030 [35mhttp[39m: [35mPOST /login[39m
+2024-07-19 16:00:30:030 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-07-19 16:00:30:030 [37mdebug[39m: [37mreq.body:[39m
+2024-07-19 16:00:31:031 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-07-19 16:00:31:031 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-07-19 16:00:31:031 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-07-19 16:00:31:031 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 16:00:31:031 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:00:31:031 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:00:31:031 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 16:00:31:031 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:00:33:033 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-07-19 16:00:34:034 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:00:34:034 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:00:34:034 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:00:34:034 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:00:37:037 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 16:00:37:037 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:00:37:037 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:00:37:037 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:00:37:037 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:00:37:037 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:00:38:038 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:01:06:16 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:01:11:111 [35mhttp[39m: [35mGET /realtimeproducts?page=1&limit=10[39m
+2024-07-19 16:01:11:111 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:01:11:111 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:11:111 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:11:111 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:01:16:116 [35mhttp[39m: [35mGET /realtimeproducts?page=2&limit=10[39m
+2024-07-19 16:01:16:116 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:01:16:116 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:16:116 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:01:16:116 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:16:116 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:01:16:116 [35mhttp[39m: [35mGET /sin%20imagen[39m
+2024-07-19 16:01:31:131 [35mhttp[39m: [35mGET /profile[39m
+2024-07-19 16:01:31:131 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:01:31:131 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:31:131 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:33:133 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 16:01:33:133 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:33:133 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:33:133 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 16:01:33:133 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:01:36:136 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 16:01:39:139 [35mhttp[39m: [35mGET /carts/669aaf5509ebaddfa080c79b[39m
+2024-07-19 16:01:39:139 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:01:39:139 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:39:139 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:41:141 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 16:01:41:141 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:41:141 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:41:141 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 16:01:41:141 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:01:43:143 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 16:01:43:143 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 16:01:47:147 [35mhttp[39m: [35mGET /carts/669aaf5509ebaddfa080c79b[39m
+2024-07-19 16:01:47:147 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:01:47:147 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:47:147 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:48:148 [35mhttp[39m: [35mGET /products[39m
+2024-07-19 16:01:49:149 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-07-19 16:01:49:149 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:01:49:149 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:49:149 [32minfo[39m: [32mNuevo cliente conectado[39m
+2024-07-19 16:01:51:151 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 16:01:54:154 [35mhttp[39m: [35mPOST /api/carts/add-product[39m
+2024-07-19 16:01:57:157 [35mhttp[39m: [35mGET /carts/669aaf5509ebaddfa080c79b[39m
+2024-07-19 16:01:57:157 [32minfo[39m: [32mCliente desconectado[39m
+2024-07-19 16:01:57:157 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:01:57:157 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-07-19 16:02:01:21 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m

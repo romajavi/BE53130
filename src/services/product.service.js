@@ -2,12 +2,9 @@ const Product = require('../models/product');
 const productDao = require('../daos/product.dao');
 const logger = require('../utils/logger');
 
-
-
 class ProductManager {
-    async addProduct({ title, description, price, img, code, stock, category, status = true }) {
+    async addProduct({ title, description, price, img, code, stock, category, status = true, user }) {
         try {
-            logger.debug("Intentando agregar producto:", { title, description, price, img, code, stock, category, status });
             const newProduct = new Product({
                 title,
                 description,
@@ -16,10 +13,10 @@ class ProductManager {
                 code,
                 stock,
                 category,
-                status
+                status,
+                owner: user && user.role === 'admin' ? 'admin' : user ? user.email : 'unknown'
             });
             await newProduct.save();
-            logger.info('Producto agregado correctamente:', newProduct);
             return { success: true, product: newProduct };
         } catch (error) {
             logger.error('Error al agregar producto:', error.message);
@@ -34,7 +31,7 @@ class ProductManager {
                 limit: parseInt(limit),
                 sort: sort === 'desc' ? { price: -1 } : sort === 'asc' ? { price: 1 } : undefined,
                 lean: true,
-                select: 'title description price img code stock category status' // Asegúrate de incluir 'img'
+                select: 'title description price img code stock category status owner'
             };
 
             let queryFilter = {};
@@ -85,7 +82,7 @@ class ProductManager {
         try {
             const product = await Product.findByIdAndUpdate(id, updatedProduct, { new: true, runValidators: true }).lean();
             if (!product) {
-                console.log('Producto no encontrado');
+                logger.warn('Producto no encontrado');
                 return null;
             }
             logger.info('Producto actualizado correctamente');
@@ -100,7 +97,7 @@ class ProductManager {
         try {
             const product = await Product.findByIdAndDelete(id).lean();
             if (!product) {
-                console.log('Producto no encontrado');
+                logger.warn('Producto no encontrado');
                 return null;
             }
             logger.info('Producto eliminado correctamente');

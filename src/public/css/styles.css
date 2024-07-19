@@ -20,12 +20,12 @@
 
 /*  para el logo */
 .logo {
-    float: left; 
-    margin-right: 20px; 
+    float: left;
+    margin-right: 20px;
 }
 
 .logo img {
-    width: 250px; 
+    width: 250px;
     height: auto;
 }
 
@@ -38,28 +38,28 @@ h1 {
 
 /*  para el contenedor del menú */
 .menu-container {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
 }
 
 /*  para el logo */
 .logo {
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 /* para el menú */
 .menu {
-    display: flex; 
+    display: flex;
 }
 
 /* para los elementos del menú */
 .menu-item {
-    color: #2B7A78; 
+    color: #2B7A78;
     font-size: 28px;
-    font-weight: bold; 
-    text-decoration: none; 
-    transition: color 0.3s; 
-    margin-right: 10px; 
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-right: 10px;
 }
 
 /* para los enlaces del menú al pasar el ratón por encima */
@@ -69,8 +69,8 @@ h1 {
 
 /* para el separador */
 .separator {
-    margin-right: 10px; 
-    margin-left: 10px; 
+    margin-right: 10px;
+    margin-left: 10px;
     font-size: 28px;
     color: #2B7A78;
 }
@@ -78,14 +78,14 @@ h1 {
 /* para el carrusel */
 .carousel {
     width: 100%;
-    height: 75vh; 
-    overflow: hidden; 
+    height: 75vh;
+    overflow: hidden;
 }
 
 .carousel-item img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .bienvenida {
@@ -93,20 +93,20 @@ h1 {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center; 
-    color: #ffffff; 
-    font-size: 80px; 
-    font-weight: bold; 
+    text-align: center;
+    color: #ffffff;
+    font-size: 80px;
+    font-weight: bold;
     background-color: #3aafa92f;
 }
 
 .userBienvenida {
     position: relative;
-    bottom: 10px; 
-    width: 15%; 
-    padding: 20px; 
-    background-color: #ffffff; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    bottom: 10px;
+    width: 15%;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     font-size: large;
 }
 
@@ -117,7 +117,7 @@ h1 {
     text-align: center;
     padding: 30px;
     border-radius: 10px;
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
     background-color: #f5f5f5;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -178,70 +178,79 @@ h1 {
 }
 
 /* Estilo para los contenedores de productos */
-#contenedorProductos, #product-list {
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    margin-top: 50px; 
+#contenedorProductos,
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 /* Estilo para cada elemento dentro de los contenedores de productos */
-#contenedorProductos > div, #product-list > div {
-  width: 300px;
-  height: auto;
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease;
-  overflow: hidden; 
-  
+#contenedorProductos>div,
+#product-list>div {
+    width: 300px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
 }
 
-#contenedorProductos > div img, #product-list > div img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain; /* Cambiado de 'cover' a 'contain' */
-  border-radius: 5px;
-  margin-bottom: 10px;
+#contenedorProductos>div img,
+#product-list>div img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    /* Cambiado de 'cover' a 'contain' */
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 /* Estilo para el texto dentro de las tarjetas */
-#contenedorProductos > div p, #product-list > div p {
-    margin-bottom: 10px; 
+#contenedorProductos>div p,
+#product-list>div p {
+    margin-bottom: 10px;
     text-align: center;
 }
 
 /* Estilo para los botones dentro de las tarjetas */
-#contenedorProductos > div button, #product-list > div button {
-    padding: 5px 10px; 
-    background-color: #2B7A78; 
-    color: #fff; 
-    border: none; 
-    border-radius: 5px; 
+#contenedorProductos>div button,
+#product-list>div button {
+    padding: 5px 10px;
+    background-color: #2B7A78;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
     margin: 5px 0;
 }
 
 /* Estilo al pasar el cursor sobre una tarjeta */
-#contenedorProductos > div:hover, #product-list > div:hover {
+#contenedorProductos>div:hover,
+#product-list>div:hover {
     transform: translateY(-5px);
 }
 
 /* Estilo al pasar el cursor sobre los botones */
-#contenedorProductos > div button:hover, #product-list > div button:hover {
-    background-color: #17252a; 
+#contenedorProductos>div button:hover,
+#product-list>div button:hover {
+    background-color: #17252a;
 }
 
 /* Estilo para el input de cantidad */
-#contenedorProductos > div input[type="number"], #product-list > div input[type="number"] {
+#contenedorProductos>div input[type="number"],
+#product-list>div input[type="number"] {
     width: 60px;
     padding: 2px;
     margin: 5px 0;
@@ -255,18 +264,21 @@ h1 {
 }
 
 /* Estilo al pasar el cursor sobre el input */
-#contenedorProductos > div input[type="number"]:hover, #product-list > div input[type="number"]:focus {
+#contenedorProductos>div input[type="number"]:hover,
+#product-list>div input[type="number"]:focus {
     border-color: #3aafa9;
     outline: none;
 }
 
 h3 {
-  text-align: center;
-  margin-bottom: 40px; /* Aumentado de 20px a 40px */
+    text-align: center;
+    margin-bottom: 40px;
+    /* Aumentado de 20px a 40px */
 }
 
 /* Estilo para las imágenes de productos */
-.product-image, .cart-product-image {
+.product-image,
+.cart-product-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -282,7 +294,7 @@ h3 {
 
 /* Estilo para el botón */
 .container-btn button {
-    padding: 10px 20px; 
+    padding: 10px 20px;
 }
 
 /* Estilos para el contenedor de bienvenida */
@@ -304,7 +316,7 @@ h3 {
     padding: 20px;
     background-color: #f2f2f2;
     border-radius: 5px;
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
 }
 
 .message-history {
@@ -362,10 +374,10 @@ h3 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     width: 20%;
     margin: 0 auto;
     text-align: center;
@@ -414,9 +426,10 @@ h3 {
 }
 
 /* Estilos adicionales para el fondo */
-html, body {
+html,
+body {
     height: 100%;
-    overflow: auto; 
+    overflow: auto;
 }
 
 #carouselExampleControls {
@@ -425,7 +438,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; 
+    z-index: -1;
 }
 
 /* Estilos para la tarjeta de usuario */
@@ -435,14 +448,14 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh; 
+    height: 30vh;
 }
 
 .user-card {
-    width: 30%; 
+    width: 30%;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
     background-color: #f5f5f5;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -450,30 +463,30 @@ html, body {
 
 .user-card p {
     font-size: 24px;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 
 /* Estilo para los botones */
 .botones {
-    text-align: center; 
+    text-align: center;
     margin-top: 20px;
-    margin-bottom: 50px;  
+    margin-bottom: 50px;
 }
 
 .botones button {
-    width: 10%;  
-    padding: 10px;  
-    background-color: #2B7A78; 
-    color: #fff;  
-    border: none; 
-    border-radius: 5px;  
-    cursor: pointer; 
-    transition: background-color 0.3s;  
+    width: 10%;
+    padding: 10px;
+    background-color: #2B7A78;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
     margin-top: 0;
 }
 
 .botones button:hover {
-    background-color: #17252a;  
+    background-color: #17252a;
 }
 
 /* Estilos para el carrito */
@@ -483,7 +496,7 @@ html, body {
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -557,115 +570,115 @@ html, body {
 }
 
 .cart-file .remove-item:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
 
 .cart-file .empty-cart {
-  background-color: #2B7A78;
-  color: #fff;
+    background-color: #2B7A78;
+    color: #fff;
 }
 
 .cart-file .empty-cart:hover {
-  background-color: #17252a;
+    background-color: #17252a;
 }
 
 .cart-file .finalize-purchase {
-  background-color: #ab8262;
-  color: #fff;
+    background-color: #ab8262;
+    color: #fff;
 }
 
 .cart-file .finalize-purchase:hover {
-  background-color: #8d6a4e;
+    background-color: #8d6a4e;
 }
 
 .cart-file .botones {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #3aafa9;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  margin-top: 20px;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #3aafa9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
 .cart-file .botones:hover {
-  background-color: #2b8a86;
+    background-color: #2b8a86;
 }
 
 /* Ticket de compra */
 .ticket-container {
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  height: auto; 
-  margin: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 20px;
 }
 
 .detalle-ticket {
-  width: 80%; 
-  max-width: 800px; 
-  padding: 20px;
-  margin-bottom: 20px; 
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .detalle-ticket p {
-  font-size: 24px;
-  margin-bottom: 15px;
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 
 .detalle-ticket ul {
-  list-style: none; 
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .detalle-ticket li {
-  font-size: 18px; 
-  margin-bottom: 10px; 
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 /* Estilos del icono del carrito de compras */
 .carrito {
-  position: fixed;
-  top: 300px;
-  right: 50px;
-  background-color: #2B7A78;
-  padding: 10px 20px;
-  border-radius: 50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s;
+    position: fixed;
+    top: 300px;
+    right: 50px;
+    background-color: #2B7A78;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
 }
 
 .carrito a {
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .carrito a:hover {
-  background-color: #17252a;
-  border-radius: 50px;
-  padding: 10px 20px;
+    background-color: #17252a;
+    border-radius: 50px;
+    padding: 10px 20px;
 }
 
 .carrito i {
-  font-size: 24px;
-  margin-right: 10px;
+    font-size: 24px;
+    margin-right: 10px;
 }
 
 .carrito span {
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #3aafa9;
-  color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #3aafa9;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 12px;
 }

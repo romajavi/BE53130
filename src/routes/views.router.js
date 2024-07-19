@@ -4,7 +4,7 @@ const ProductManager = require('../services/product.service');
 const productManager = new ProductManager();
 const CartManager = require('../services/cart.service');
 const cartManager = new CartManager();
-const { authMiddleware, isUser, isAdmin } = require('../middlewares/auth.middleware');
+const { authMiddleware, isAdmin, isUser, isPremiumOrAdmin } = require('../middlewares/auth.middleware');
 const logger = require('../utils/logger');
 const User = require('../models/user.model');
 
@@ -62,7 +62,7 @@ router.get('/products', authMiddleware, (req, res, next) => {
     }
 });
 
-router.get('/realtimeproducts', authMiddleware, isAdmin, async (req, res) => {
+router.get('/realtimeproducts', authMiddleware, isPremiumOrAdmin, async (req, res) => {
     try {
         const { limit = 10, page = 1, sort, query } = req.query;
         const result = await productManager.getProducts(limit, page, sort, query);

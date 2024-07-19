@@ -21,6 +21,7 @@ const methodOverride = require('method-override');
 const { sendMessage } = require('./controllers/chat.controller');
 const { errorHandler } = require('./utils/errorHandler');
 
+
 // logger y el middleware de logger
 const logger = require('./utils/logger');
 const loggerMiddleware = require('./middlewares/logger.middleware');
@@ -123,6 +124,12 @@ app.engine('handlebars', engine({
     },
     eq: function (a, b) {
       return a === b;
+    },
+    or: function () {
+      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+    },
+    and: function () {
+      return Array.prototype.slice.call(arguments, 0, -1).every(Boolean);
     }
   },
   runtimeOptions: {
@@ -130,6 +137,7 @@ app.engine('handlebars', engine({
     allowProtoMethodsByDefault: true
   }
 }));
+
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
@@ -254,7 +262,7 @@ io.on('connection', (socket) => {
   socket.on('deleteProduct', async (productId) => {
     try {
       await productManager.deleteProduct(productId);
-      const updatedResult = await productManager.getProducts(10, 1); 
+      const updatedResult = await productManager.getProducts(10, 1);
       io.emit('products', updatedResult);
       socket.emit('productDeleted');
     } catch (error) {

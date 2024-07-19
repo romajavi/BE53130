@@ -7,19 +7,7 @@
         </a>
     </div>
     <div class="menu">
-        <span class="separator">|</span>
-        <a href="/realtimeproducts" class="menu-item">Productos en Tiempo Real</a>
-        <span class="separator">|</span>
-        <a href="/chat" class="menu-item">Chat en Vivo</a>
-        <span class="separator">|</span>
-        <a href="/profile" class="menu-item">Perfil</a>
-        <span class="separator">|</span>
-        {{#if (eq user.role 'admin')}}
-        <a href="/admin/users" class="menu-item">Roles de Usuarios</a>
-        <span class="separator">|</span>
-        {{/if}}
-        <a href="/logout" class="menu-item">Cerrar Sesión</a>
-        <span class="separator">|</span>
+        {{> menu}}
     </div>
 </div>
 
@@ -40,8 +28,11 @@
         <img src="{{this.img}}" alt="{{this.title}}" class="product-image">
         <p>Precio: ${{this.price}}</p>
         <p>Stock: {{this.stock}}</p>
-        <button onclick="editProduct('{{this._id}}')">Editar</button>
-        <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+        <p>Creado por: {{this.owner}}</p>
+        {{#if (or (eq ../user.role 'admin') (and (eq ../user.role 'premium') (eq this.owner ../user.email)))}}
+            <button onclick="editProduct('{{this._id}}')">Editar</button>
+            <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+        {{/if}}
     </div>
     {{/each}}
     {{else}}
@@ -71,6 +62,7 @@
 
 <div class="page-info"></div>
 
+{{#if (or (eq user.role 'admin') (eq user.role 'premium'))}}
 <div class="formulario">
     <h2 id="form-title">Agregar nuevo producto</h2>
     <form id="product-form">
@@ -90,6 +82,7 @@
         <button type="button" id="cancel-btn" style="display: none;">Cancelar</button>
     </form>
 </div>
+{{/if}}
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -154,8 +147,11 @@
                 <img src="${product.img}" alt="${product.title}" class="product-image">
                 <p>Precio: $${product.price}</p>
                 <p>Stock: ${product.stock}</p>
-                <button onclick="editProduct('${product._id}')">Editar</button>
-                <button onclick="deleteProduct('${product._id}')">Eliminar</button>
+                <p>Creado por: ${product.owner || 'Desconocido'}</p>
+                ${canEditDelete(product) ? `
+                    <button onclick="editProduct('${product._id}')">Editar</button>
+                    <button onclick="deleteProduct('${product._id}')">Eliminar</button>
+                ` : ''}
             `;
                 productList.appendChild(item);
             });
@@ -188,8 +184,12 @@
                 <span class="disabled">Última</span>
             `}
         `;
+    }
 
-
+    function canEditDelete(product) {
+        const userRole = '{{user.role}}';
+        const userEmail = '{{user.email}}';
+        return userRole === 'admin' || (userRole === 'premium' && product.owner === userEmail);
     }
 
     function fillForm(product) {
@@ -254,8 +254,6 @@
         console.log('Editando producto:', productId);
         socket.emit('getProductDetails', productId);
     }
-
-
 
     socket.on('productDetails', (product) => {
         console.log('Detalles del producto recibidos:', product);
