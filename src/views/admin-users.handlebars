@@ -11,30 +11,32 @@
     </div>
 </div>
 
-<h1>Administración de Usuarios</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Email</th>
-            <th>Rol Actual</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each users}}
-        <tr>
-            <td>{{this.email}}</td>
-            <td>{{this.role}}</td>
-            <td>
-                <button onclick="changeRole('{{this._id}}')">
-                    Cambiar a {{#if (eq this.role 'user')}}Premium{{else}}User{{/if}}
-                </button>
-                <button onclick="deleteUser('{{this._id}}')">Eliminar Usuario</button>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<div class="admin-container">
+    <h1>Administración de Usuarios</h1>
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Rol Actual</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{this.email}}</td>
+                <td>{{this.role}}</td>
+                <td>
+                    <button onclick="changeRole('{{this._id}}')" class="change-role">
+                        Cambiar a {{#if (eq this.role 'user')}}Premium{{else}}User{{/if}}
+                    </button>
+                    <button onclick="deleteUser('{{this._id}}')" class="delete-user">Eliminar</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
 
 <script>
     function changeRole(userId) {

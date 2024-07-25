@@ -1,11 +1,9 @@
-// conf  de Socket.IO para evitar reconexiones 
 const socket = io({
   transports: ['websocket'],
   upgrade: false,
   reconnection: false
 });
 
-// función para agregar un producto al carrito
 async function addToCart(productId, quantity) {
   try {
     const response = await fetch('/api/carts/add-product', {
@@ -19,6 +17,8 @@ async function addToCart(productId, quantity) {
       throw new Error(errorData.error);
     }
 
+    const data = await response.json();
+    updateCartCounter(data.totalProducts);
     alert('Producto agregado al carrito exitosamente');
   } catch (error) {
     alert(error.message);
@@ -32,7 +32,6 @@ function updateCartCounter(count) {
   }
 }
 
-// Función para procesar la compra
 async function processPurchase(cartId) {
   try {
     const response = await fetch(`/api/carts/${cartId}/purchase`, {
@@ -55,7 +54,6 @@ async function processPurchase(cartId) {
   }
 }
 
-// Evento que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
   addToCartButtons.forEach(button => {
@@ -67,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Agregar evento al botón "Finalizar Compra"
   const purchaseButton = document.getElementById('finalize-purchase');
   if (purchaseButton) {
     purchaseButton.addEventListener('click', () => {
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Manejo del chat cuando este ahí
   if (window.location.pathname === '/chat') {
     const socket = io();
     const messageForm = document.getElementById("message-form");
@@ -112,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-//manejo de prodcutos
 socket.on('connect', () => {
   console.log('Conectado al servidor');
   const params = getUrlParams();
@@ -128,10 +123,10 @@ socket.on('products', (result) => {
 function getUrlParams() {
   const params = new URLSearchParams(window.location.search);
   return {
-      page: params.get('page') || 1,
-      limit: params.get('limit') || 10,
-      sort: params.get('sort') || '',
-      query: params.get('query') || ''
+    page: params.get('page') || 1,
+    limit: params.get('limit') || 10,
+    sort: params.get('sort') || '',
+    query: params.get('query') || ''
   };
 }
 
@@ -139,15 +134,15 @@ function updateProductList(products) {
   const productList = document.getElementById('product-list');
   productList.innerHTML = '';
   products.forEach(product => {
-      const productElement = document.createElement('div');
-      productElement.innerHTML = `
+    const productElement = document.createElement('div');
+    productElement.innerHTML = `
           <h3>${product.title}</h3>
           <p>Precio: $${product.price}</p>
           <p>Stock: ${product.stock}</p>
           <button onclick="editProduct('${product._id}')">Editar</button>
           <button onclick="deleteProduct('${product._id}')">Eliminar</button>
       `;
-      productList.appendChild(productElement);
+    productList.appendChild(productElement);
   });
 }
 
@@ -160,3 +155,8 @@ function updatePagination(result) {
   `;
 }
 
+function canEditDelete(product) {
+  const userRole = '{{user.role}}';
+  const userEmail = '{{user.email}}';
+  return userRole === 'admin' || (userRole === 'premium' && product.owner === userEmail);
+}

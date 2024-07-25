@@ -28,10 +28,10 @@
         <img src="{{this.img}}" alt="{{this.title}}" class="product-image">
         <p>Precio: ${{this.price}}</p>
         <p>Stock: {{this.stock}}</p>
-        <p>Creado por: {{this.owner}}</p>
+        <p>Creado por: {{#if (eq this.owner 'admin')}}admin{{else}}{{this.owner}}{{/if}}</p>
         {{#if (or (eq ../user.role 'admin') (and (eq ../user.role 'premium') (eq this.owner ../user.email)))}}
-            <button onclick="editProduct('{{this._id}}')">Editar</button>
-            <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+        <button onclick="editProduct('{{this._id}}')">Editar</button>
+        <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
         {{/if}}
     </div>
     {{/each}}
@@ -86,19 +86,36 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    const socket = io();
+    const socket = io({
+      withCredentials: true,
+      transportOptions: {
+        polling: {
+          extraHeaders: {
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        }
+      }
+    });
+    
+    socket.on('connect', () => {
+        console.log('Conectado a Socket.IO');
+    });
+
+    socket.on('connect_error', (error) => {
+        console.error('Error de conexión Socket.IO:', error);
+    });
+
+    const user = {
+        _id: "{{user._id}}",
+        email: "{{user.email}}",
+        role: "{{user.role}}"
+    };
     const productList = document.getElementById('product-list');
     const productForm = document.getElementById('product-form');
     const formTitle = document.getElementById('form-title');
     const submitBtn = document.getElementById('submit-btn');
     const cancelBtn = document.getElementById('cancel-btn');
     let editingProductId = null;
-
-    socket.on('connect', () => {
-        console.log('Conectado al servidor');
-        const params = getUrlParams();
-        socket.emit('getProducts', params);
-    });
 
     socket.on('products', (result) => {
         console.log('Productos recibidos:', result);
@@ -119,6 +136,10 @@
     socket.on('productDeleted', () => {
         alert('Producto eliminado correctamente');
         refreshProductList();
+    });
+
+    socket.on('error', (error) => {
+        alert(error.message);
     });
 
     function refreshProductList() {
@@ -147,7 +168,7 @@
                 <img src="${product.img}" alt="${product.title}" class="product-image">
                 <p>Precio: $${product.price}</p>
                 <p>Stock: ${product.stock}</p>
-                <p>Creado por: ${product.owner || 'Desconocido'}</p>
+                <p>Creado por: ${product.owner === 'admin' ? 'admin' : product.owner}</p>
                 ${canEditDelete(product) ? `
                     <button onclick="editProduct('${product._id}')">Editar</button>
                     <button onclick="deleteProduct('${product._id}')">Eliminar</button>
@@ -222,8 +243,9 @@
         cancelBtn.style.display = 'none';
     }
 
-    productForm.addEventListener('submit', (e) => {
+    productForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        console.log('Formulario enviado');
         const productData = {
             title: document.getElementById('title').value,
             description: document.getElementById('description').value,
@@ -233,12 +255,18 @@
             stock: document.getElementById('stock').value,
             category: document.getElementById('category').value,
             status: document.getElementById('status').value === 'true',
+            user: user
         };
+        console.log('Datos del producto:', productData);
 
         if (editingProductId) {
-            socket.emit('updateProduct', { id: editingProductId, ...productData });
+            socket.emit('updateProduct', { id: editingProductId, ...productData }, (response) => {
+                console.log('Respuesta del servidor (updateProduct):', response);
+            });
         } else {
-            socket.emit('addProduct', productData);
+            socket.emit('addProduct', productData, (response) => {
+                console.log('Respuesta del servidor (addProduct):', response);
+            });
         }
 
         resetForm();
@@ -259,6 +287,8 @@
         console.log('Detalles del producto recibidos:', product);
         fillForm(product);
     });
+
+    console.log('Script cargado');
 </script>
 
 <link rel="stylesheet" href="/css/styles.css">

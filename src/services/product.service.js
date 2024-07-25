@@ -5,6 +5,10 @@ const logger = require('../utils/logger');
 class ProductManager {
     async addProduct({ title, description, price, img, code, stock, category, status = true, user }) {
         try {
+            console.log('Intentando agregar producto con user:', user);
+            if (!user) {
+                throw new Error('Usuario no autenticado');
+            }
             const newProduct = new Product({
                 title,
                 description,
@@ -14,11 +18,14 @@ class ProductManager {
                 stock,
                 category,
                 status,
-                owner: user && user.role === 'admin' ? 'admin' : user ? user.email : 'unknown'
+                owner: user.role === 'admin' ? 'admin' : user.email
             });
+            console.log('Nuevo producto antes de guardar:', newProduct);
             await newProduct.save();
-            return { success: true, product: newProduct };
+            console.log('Producto guardado exitosamente');
+            return newProduct;
         } catch (error) {
+            console.error('Error en addProduct:', error);
             logger.error('Error al agregar producto:', error.message);
             throw new Error('Error al agregar producto: ' + error.message);
         }

@@ -64,6 +64,7 @@ router.get('/products', authMiddleware, (req, res, next) => {
 
 router.get('/realtimeproducts', authMiddleware, isPremiumOrAdmin, async (req, res) => {
     try {
+        console.log('Usuario en /realtimeproducts:', req.user);
         const { limit = 10, page = 1, sort, query } = req.query;
         const result = await productManager.getProducts(limit, page, sort, query);
         res.render('realtimeproducts', {
@@ -111,7 +112,6 @@ router.get('/carts/:cid', authMiddleware, async (req, res) => {
     }
 });
 
-// nueva ruta para la vista de administración de roles
 router.get('/admin/users', authMiddleware, isAdmin, async (req, res) => {
     try {
         const users = await User.find({}).lean();

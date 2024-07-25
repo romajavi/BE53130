@@ -30,15 +30,17 @@ router.post('/add-product', authMiddleware, async (req, res) => {
     try {
         const { productId, quantity } = req.body;
         const userId = req.user._id;
-        await cartManager.addProductToCart(userId, productId, quantity);
-        res.json({ message: 'Producto agregado al carrito' });
+        const { cart, totalProducts } = await cartManager.addProductToCart(userId, productId, quantity);
+        res.json({ message: 'Producto agregado al carrito', totalProducts });
     } catch (error) {
         if (error.message === 'No puedes agregar tu propio producto al carrito') {
             return res.status(403).json({ error: error.message });
         }
+        logger.error('Error al agregar producto al carrito:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
+
 // PUT /api/carts/:cid/products/:pid
 router.put('/:cid/products/:pid', authMiddleware, isUser, async (req, res) => {
     try {

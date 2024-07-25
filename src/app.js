@@ -1,32 +1,37 @@
+// Importaciones de módulos de terceros
 const express = require('express');
 const { engine } = require('express-handlebars');
-const app = express();
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
+const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
+const path = require("path");
+
+// Inicialización de la aplicación
+const app = express();
+
+// Creación del servidor HTTP y Socket.io después de inicializar app
 const http = require("http").Server(app);
 const socketIo = require('socket.io');
 const io = socketIo(http);
-const path = require("path");
-const passport = require('passport');
-const GitHubStrategy = require('passport-github').Strategy;
+
+// Importaciones de módulos propios
 const config = require('./config/config');
 const ProductManager = require('./services/product.service.js');
 const productManager = new ProductManager();
 const Message = require('./models/message.model');
 const User = require('./models/user.model');
-const bcrypt = require('bcrypt');
 const { authMiddleware, isUser, isAdmin } = require('./middlewares/auth.middleware');
-const cookieParser = require('cookie-parser');
-const methodOverride = require('method-override');
 const { sendMessage } = require('./controllers/chat.controller');
 const { errorHandler } = require('./utils/errorHandler');
-
-
-// logger y el middleware de logger
 const logger = require('./utils/logger');
 const loggerMiddleware = require('./middlewares/logger.middleware');
+const swaggerDocs = require('./utils/swagger');
 
-// importación de las rutas
+// Importaciones de rutas
 const productsRouter = require("./routes/products.router.js");
 const cartsRouter = require("./routes/carts.router.js");
 const viewsRouter = require("./routes/views.router.js");
@@ -37,7 +42,7 @@ const ordersRouter = require('./routes/orders.router');
 const passwordRouter = require('./routes/password.router');
 const usersRouter = require('./routes/users.router');
 
-// Middleware de inicializacion de sesiones
+// Configuración de sesión
 const sessionMiddleware = session({
   store: MongoStore.create({
     mongoUrl: config.MONGODB_URI,
@@ -48,15 +53,13 @@ const sessionMiddleware = session({
   saveUninitialized: false,
 });
 
+// Middleware de sesión y autenticación
 app.use(sessionMiddleware);
-
-// para agregar el middleware de logger
 app.use(loggerMiddleware);
-
-// Inicialización Passport.js
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Configuración de estrategia de autenticación de GitHub
 passport.use(new GitHubStrategy({
   clientID: config.GITHUB_CLIENT_ID,
   clientSecret: config.GITHUB_CLIENT_SECRET,
@@ -79,6 +82,7 @@ passport.use(new GitHubStrategy({
   }
 }));
 
+// Serialización y deserialización de usuario
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -92,19 +96,20 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// Config. de rutas
+// Configuración de middleware
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware para depurar peticiones POST a /login
+// Middleware para usuario local
 app.use((req, res, next) => {
-  res.locals.user = req.user; // Agrega el usuario a las variables locales de la respuesta
+  res.locals.user = req.user;
   next();
 });
 
+// Middleware de logging para login
 app.use((req, res, next) => {
   if (req.method === 'POST' && req.path === '/login') {
     logger.debug('Recibida petición POST a /login');
@@ -113,7 +118,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Handlebars con helpers
+// Configuración de Handlebars
 app.engine('handlebars', engine({
   helpers: {
     formatDate: (date) => {
@@ -138,10 +143,14 @@ app.engine('handlebars', engine({
   }
 }));
 
+// Configuración de Swagger 
+app.use('/api-docs', swaggerDocs.serve, swaggerDocs.setup);
+
+// Configuración de vistas
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
-// rutas
+// Configuración de rutas
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/api/products", productsRouter);
@@ -152,7 +161,7 @@ app.use('/api/orders', ordersRouter);
 app.use('/', passwordRouter);
 app.use('/api/users', authMiddleware, usersRouter);
 
-
+// Ruta de logout
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -163,7 +172,7 @@ app.get("/logout", (req, res) => {
   });
 });
 
-// endpoint para probar el logger
+// Ruta de prueba de logger
 app.get('/test-logger', (req, res) => {
   logger.error('log de error');
   logger.warn('log de advertencia');
@@ -173,11 +182,25 @@ app.get('/test-logger', (req, res) => {
   res.send('Prueba del logger completa. Revisar la consola y los archivos de log.');
 });
 
-// Configuración de Socket.IO
-io.on('connection', (socket) => {
-  logger.info('Nuevo cliente conectado');
+// Configuración de Socket.io
+io.use((socket, next) => {
+  sessionMiddleware(socket.request, {}, next);
+});
 
-  // para chat
+io.use((socket, next) => {
+  if (socket.request.session && socket.request.session.user) {
+    socket.user = socket.request.session.user;
+    next();
+  } else {
+    next(new Error('Unauthorized'));
+  }
+});
+
+// Manejo de eventos de Socket.io
+io.on('connection', (socket) => {
+  console.log('Nuevo cliente conectado. ID:', socket.id);
+  console.log('Usuario autenticado:', socket.user);
+
   socket.on('getMessages', async () => {
     try {
       const messages = await Message.find().populate('user', 'first_name').sort({ timestamp: 1 });
@@ -205,7 +228,6 @@ io.on('connection', (socket) => {
     }
   });
 
-  // para productos en tiempo real
   socket.on('getProducts', async (params) => {
     try {
       const result = await productManager.getProducts(
@@ -235,15 +257,23 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('addProduct', async (product) => {
+  socket.on('addProduct', async (product, callback) => {
+    console.log('Solicitud para agregar producto recibida:', product);
     try {
-      const newProduct = await productManager.addProduct(product);
+      if (!socket.user) {
+        throw new Error('Usuario no autenticado');
+      }
+      console.log('Usuario autenticado:', socket.user);
+      const newProduct = await productManager.addProduct({ ...product, user: socket.user });
+      console.log('Producto agregado:', newProduct);
       const updatedResult = await productManager.getProducts(10, 1);
       io.emit('products', updatedResult);
       socket.emit('productAdded', newProduct);
+      if (callback) callback({ success: true, product: newProduct });
     } catch (error) {
-      logger.error('Error al agregar producto:', error);
-      socket.emit('error', { message: 'Error al agregar producto' });
+      console.error('Error al agregar producto:', error);
+      if (callback) callback({ success: false, error: error.message });
+      socket.emit('error', { message: 'Error al agregar producto: ' + error.message });
     }
   });
 
@@ -276,7 +306,7 @@ io.on('connection', (socket) => {
   });
 });
 
-// Middleware de manejo de errores
+// Manejo de errores
 app.use((err, req, res, next) => {
   logger.error('Error en el servidor:', err);
   const status = err.status || 500;
@@ -284,10 +314,9 @@ app.use((err, req, res, next) => {
   res.status(status).json({ error: message });
 });
 
-// middleware errores
 app.use(errorHandler);
 
-// Puerto
+// Inicialización del servidor
 const PORT = config.PORT;
 const db = require('./database');
 

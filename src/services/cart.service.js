@@ -37,7 +37,11 @@ class CartManager {
         }
 
         await cart.save();
-        return cart;
+        return { cart, totalProducts: this.getTotalProductsInCart(cart) };
+    }
+
+    getTotalProductsInCart(cart) {
+        return cart.products.reduce((total, item) => total + item.quantity, 0);
     }
 
     async createCart(userId) {

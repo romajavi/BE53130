@@ -29,3 +29,37 @@
 2024-07-19 15:29:08:298 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
 2024-07-19 15:47:12:4712 [31merror[39m: [31mError al agregar producto:[39m
 2024-07-19 15:47:12:4712 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Cannot read properties of undefined (reading 'role')[39m
+2024-07-22 13:18:54:1854 [31merror[39m: [31mError al obtener producto por ID:[39m
+2024-07-22 13:18:57:1857 [31merror[39m: [31mError en el servidor: getaddrinfo ENOTFOUND ac-wrdldpb-shard-00-01.rcj2pgu.mongodb.net[39m
+2024-07-22 13:18:59:1859 [31merror[39m: [31mError en el servidor: getaddrinfo ENOTFOUND ac-wrdldpb-shard-00-01.rcj2pgu.mongodb.net[39m
+2024-07-22 16:52:09:529 [31merror[39m: [31mError al obtener el carrito por ID: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-22 16:52:09:529 [31merror[39m: [31mError al obtener el carrito: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-22 16:52:09:529 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
+2024-07-22 17:12:18:1218 [31merror[39m: [31mError al obtener el carrito por ID: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-22 17:12:18:1218 [31merror[39m: [31mError al obtener el carrito: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-22 17:12:18:1218 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
+2024-07-22 17:12:21:1221 [31merror[39m: [31mError al eliminar producto del carrito: No matching document found for id "669aaf5509ebaddfa080c79b" version 12 modifiedPaths "products"[39m
+2024-07-23 10:21:29:2129 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-23 10:21:29:2129 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Cannot read properties of undefined (reading 'role')[39m
+2024-07-23 10:23:59:2359 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-23 10:23:59:2359 [31merror[39m: [31mError al agregar producto: Error al agregar producto: Cannot read properties of undefined (reading 'role')[39m
+2024-07-23 11:17:52:1752 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-23 11:19:04:194 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-23 13:03:38:338 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-23 13:04:42:442 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-23 13:06:28:628 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-24 11:34:42:3442 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-24 15:51:51:5151 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-24 23:06:41:641 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-24 23:07:23:723 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-24 23:08:13:813 [31merror[39m: [31mError al agregar producto: Usuario no autenticado[39m
+2024-07-25 00:12:16:1216 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-25 00:18:25:1825 [31merror[39m: [31mError al agregar producto:[39m
+2024-07-25 00:20:05:205 [31merror[39m: [31mError al obtener el carrito por ID: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-25 00:20:05:205 [31merror[39m: [31mError al obtener el carrito: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-25 00:20:05:205 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
+2024-07-25 00:28:31:2831 [31merror[39m: [31mError al obtener el carrito por ID: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-25 00:28:31:2831 [31merror[39m: [31mError al obtener el carrito: Cast to ObjectId failed for value "sin imagen" (type string) at path "_id" for model "Cart"[39m
+2024-07-25 00:28:31:2831 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
+2024-07-25 10:25:16:2516 [31merror[39m: [31mError en el servidor: read ECONNRESET[39m
+2024-07-25 10:25:16:2516 [31merror[39m: [31mCannot set headers after they are sent to the client[39m

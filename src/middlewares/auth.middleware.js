@@ -14,6 +14,10 @@ const authMiddleware = async (req, res, next) => {
     return next();
   }
 
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
   if (userEmail) {
     try {
       const user = await User.findOne({ email: userEmail });
@@ -22,7 +26,7 @@ const authMiddleware = async (req, res, next) => {
         if (user.cartId) {
           req.cartId = user.cartId;
         }
-        next();
+        return next();
       } else {
         logger.warn('Usuario no encontrado en la base de datos (authMiddleware)');
         res.redirect('/login');
@@ -34,6 +38,14 @@ const authMiddleware = async (req, res, next) => {
   } else {
     logger.info('No se encontró la cookie userEmail (authMiddleware)');
     res.redirect('/login');
+  }
+};
+
+const isPremiumOrAdmin = (req, res, next) => {
+  if (req.user && (req.user.role === 'admin' || req.user.role === 'premium')) {
+    next();
+  } else {
+    res.status(403).json({ error: "Acceso denegado. Se requiere rol de administrador o premium." });
   }
 };
 
@@ -55,20 +67,4 @@ const isAdmin = (req, res, next) => {
   }
 };
 
-const isPremiumOrAdmin = (req, res, next) => {
-  if (req.user && (req.user.role === 'admin' || req.user.role === 'premium')) {
-    next();
-  } else {
-    res.status(403).json({ error: "Acceso denegado. Se requiere rol de administrador o premium." });
-  }
-};
-
-const isPremium = (req, res, next) => {
-  if (req.user && req.user.role === 'premium') {
-    next();
-  } else {
-    res.status(403).json({ error: "Acceso denegado. Se requiere rol premium." });
-  }
-};
-
-module.exports = { authMiddleware, isAdmin, isUser, isPremiumOrAdmin, isPremium };
+module.exports = { authMiddleware, isAdmin, isUser, isPremiumOrAdmin };

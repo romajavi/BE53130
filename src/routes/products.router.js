@@ -46,14 +46,10 @@ router.get('/:pid', async (req, res) => {
 });
 
 // POST /api/products
-router.post('/', authMiddleware, isPremiumOrAdmin, async (req, res, next) => {
+router.post('/', authMiddleware, isPremiumOrAdmin, async (req, res) => {
     try {
         const productData = req.body;
-        if (!req.user) {
-            throw new Error('Usuario no autenticado');
-        }
-        productData.owner = req.user.role === 'admin' ? 'admin' : req.user.email;
-        const newProduct = await productManager.addProduct(productData);
+        const newProduct = await productManager.addProduct({ ...productData, user: req.user });
         res.status(201).json(newProduct);
     } catch (error) {
         logger.error('Error al agregar producto:', error);
