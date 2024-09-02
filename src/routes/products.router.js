@@ -6,6 +6,9 @@ const { authMiddleware, isPremiumOrAdmin } = require('../middlewares/auth.middle
 const { generateMockProducts } = require('../utils/mockingModule');
 const { CustomError } = require('../utils/errorHandler');
 const logger = require('../utils/logger');
+const User = require('../models/user.model');
+const { sendProductDeletedEmail } = require('../utils/mailer');
+
 
 // GET /api/products/mockingproducts (sin autenticación)
 router.get('/mockingproducts', (req, res) => {
@@ -79,13 +82,28 @@ router.put('/:pid', authMiddleware, isPremiumOrAdmin, async (req, res) => {
 router.delete('/:pid', authMiddleware, isPremiumOrAdmin, async (req, res) => {
     try {
         const product = await productManager.getProductById(req.params.pid);
+
         if (!product) {
             return res.status(404).json({ error: 'Producto no encontrado' });
         }
-        if (req.user.role === 'premium' && product.owner !== req.user.email) {
-            return res.status(403).json({ error: 'No tienes permiso para eliminar este producto' });
+
+        if (product.owner !== 'admin') {
+            const ownerUser = await User.findOne({ email: product.owner });
+            if (ownerUser && ownerUser.role === 'premium') {
+                try {
+                    await sendProductDeletedEmail(ownerUser.email, product.title);
+                } catch (emailError) {
+                }
+            } else {
+                console.log('El producto no pertenece a un usuario premium o no se encontró el usuario');
+            }
+        } else {
+            console.log('El producto pertenece al admin, no se envía correo');
         }
+
+        // Eliminar el producto
         await productManager.deleteProduct(req.params.pid);
+
         res.json({ message: 'Producto eliminado correctamente' });
     } catch (error) {
         logger.error('Error al eliminar el producto:', error);

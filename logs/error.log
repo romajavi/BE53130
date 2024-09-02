@@ -63,3 +63,8 @@
 2024-07-25 00:28:31:2831 [31merror[39m: [31mError en el servidor: Failed to lookup view "error" in views directory "./src/views"[39m
 2024-07-25 10:25:16:2516 [31merror[39m: [31mError en el servidor: read ECONNRESET[39m
 2024-07-25 10:25:16:2516 [31merror[39m: [31mCannot set headers after they are sent to the client[39m
+2024-09-02 13:59:00:590 [31merror[39m: [31mError al eliminar el usuario: Cast to ObjectId failed for value "inactive" (type string) at path "_id" for model "User"[39m
+2024-09-02 13:59:04:594 [31merror[39m: [31mError al eliminar el usuario: Cast to ObjectId failed for value "inactive" (type string) at path "_id" for model "User"[39m
+2024-09-02 13:59:08:598 [31merror[39m: [31mError al eliminar el usuario: Cast to ObjectId failed for value "inactive" (type string) at path "_id" for model "User"[39m
+2024-09-02 13:59:12:5912 [31merror[39m: [31mError al eliminar el usuario: Cast to ObjectId failed for value "inactive" (type string) at path "_id" for model "User"[39m
+2024-09-02 20:20:28:2028 [31merror[39m: [31mError al eliminar producto del carrito: No matching document found for id "66d5f98cc21b62fe7bbfacad" version 2 modifiedPaths "products"[39m

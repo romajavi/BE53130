@@ -112,7 +112,7 @@ router.get('/carts/:cid', authMiddleware, async (req, res) => {
     }
 });
 
-router.get('/admin/users', authMiddleware, isAdmin, async (req, res) => {
+router.get('/api/users', authMiddleware, isAdmin, async (req, res) => {
     try {
         const users = await User.find({}).lean();
         res.render('admin-users', { users, user: req.user });

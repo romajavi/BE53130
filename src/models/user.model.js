@@ -16,9 +16,9 @@ const userSchema = new mongoose.Schema({
         ref: 'Cart'
     },
     resetPasswordToken: String,
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date,
+    last_connection: { type: Date, default: Date.now } // nuevo campo para evaluar tiempo de conexion
 });
-
 
 const User = mongoose.model('User', userSchema);
 

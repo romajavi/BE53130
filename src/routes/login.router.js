@@ -23,8 +23,11 @@ router.get('/github/callback',
 );
 
 // GET para cerrar sesión
-router.get('/logout', (req, res) => {
+router.get('/logout', async (req, res) => {
   console.log('Cerrando sesión...');
+  if (req.user) {
+    await User.findByIdAndUpdate(req.user._id, { last_connection: new Date() });
+  }
   req.session.destroy((err) => {
     if (err) {
       console.error('Error al cerrar sesión:', err);

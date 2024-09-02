@@ -17,6 +17,8 @@
         <thead>
             <tr>
                 <th>Email</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Rol Actual</th>
                 <th>Acción</th>
             </tr>
@@ -25,6 +27,8 @@
             {{#each users}}
             <tr>
                 <td>{{this.email}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
                 <td>{{this.role}}</td>
                 <td>
                     <button onclick="changeRole('{{this._id}}')" class="change-role">
@@ -94,6 +98,19 @@
                 });
         }
     }
+</script>
+
+<button id="deleteInactiveUsers">Eliminar Usuarios Inactivos</button>
+
+<script>
+document.getElementById('deleteInactiveUsers').addEventListener('click', async () => {
+    if (confirm('¿Estás seguro de que quieres eliminar este usuario? Esta opción eliminará a todos los usuarios sin conexión en los ultimos 30 minutos.')) {
+        const response = await fetch('/api/users/inactive', { method: 'DELETE' });
+        const data = await response.json();
+        alert(data.message);
+        location.reload();
+    }
+});
 </script>
 
 <link rel="stylesheet" href="/css/styles.css">

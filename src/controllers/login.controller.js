@@ -35,6 +35,10 @@ const loginUser = async (req, res) => {
       return res.status(401).render('login', { error: 'Contraseña incorrecta.' });
     }
 
+    // Actualizar last_connection
+    user.last_connection = new Date();
+    await user.save();
+
     req.session.user = user;
     res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 3600000 });
     logger.info('Usuario autenticado:', req.session.user);

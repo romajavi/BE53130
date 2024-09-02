@@ -12,6 +12,16 @@ const transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
+// console.log('Transporter de nodemailer configurado');
+// console.log('EMAIL_USER:', config.EMAIL_USER);
+
+transporter.verify(function (error, success) {
+    if (error) {
+        console.log('Error en la configuración del transporter:', error);
+    } else {
+        console.log('Servidor listo para enviar correos');
+    }
+});
 
 const sendPurchaseConfirmationEmail = async (email, ticket, totalAmount) => {
     const mailOptions = {
@@ -58,4 +68,29 @@ const sendPasswordResetEmail = async (email, resetUrl) => {
     }
 };
 
-module.exports = { sendPurchaseConfirmationEmail, sendPasswordResetEmail };
+// función para enviar mail a usuario premiun cuando se elimine uno de sus productos.
+const sendProductDeletedEmail = async (email, productTitle) => {
+    
+    const mailOptions = {
+        from: config.EMAIL_USER,
+        to: email,
+        subject: 'Producto Eliminado',
+        html: `
+            <h1>Tu producto ha sido eliminado</h1>
+            <p>Estimado usuario Premium,</p>
+            <p>Te informamos que tu producto "${productTitle}" ha sido eliminado de nuestro catálogo.</p>
+            <p>Si tienes alguna pregunta, por favor contáctanos.</p>
+            <p>Atentamente,</p>
+            <p>El equipo de PetXpress</p>
+        `
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+    } catch (error) {
+        throw error;
+    }
+};
+
+module.exports = { sendPurchaseConfirmationEmail, sendPasswordResetEmail, sendProductDeletedEmail };
+

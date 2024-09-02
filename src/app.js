@@ -30,6 +30,8 @@ const { errorHandler } = require('./utils/errorHandler');
 const logger = require('./utils/logger');
 const loggerMiddleware = require('./middlewares/logger.middleware');
 const swaggerDocs = require('./utils/swagger');
+const { sendProductDeletedEmail } = require('./utils/mailer');
+
 
 // Importaciones de rutas
 const productsRouter = require("./routes/products.router.js");
@@ -41,6 +43,7 @@ const chatRouter = require("./routes/chat.router.js");
 const ordersRouter = require('./routes/orders.router');
 const passwordRouter = require('./routes/password.router');
 const usersRouter = require('./routes/users.router');
+
 
 // Configuración de sesión
 const sessionMiddleware = session({
@@ -198,8 +201,8 @@ io.use((socket, next) => {
 
 // Manejo de eventos de Socket.io
 io.on('connection', (socket) => {
-  console.log('Nuevo cliente conectado. ID:', socket.id);
-  console.log('Usuario autenticado:', socket.user);
+  // console.log('Nuevo cliente conectado. ID:', socket.id);
+  // console.log('Usuario autenticado:', socket.user);
 
   socket.on('getMessages', async () => {
     try {
@@ -289,15 +292,37 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('deleteProduct', async (productId) => {
+  socket.on('deleteProduct', async ({ productId, userRole, userEmail }, callback) => {
     try {
-      await productManager.deleteProduct(productId);
-      const updatedResult = await productManager.getProducts(10, 1);
-      io.emit('products', updatedResult);
-      socket.emit('productDeleted');
+      console.log('Intento de eliminar producto:', { productId, userRole, userEmail });
+      const product = await productManager.getProductById(productId);
+      if (!product) {
+        return callback({ success: false, error: 'Producto no encontrado' });
+      }
+
+      console.log('Producto a eliminar:', product);
+      console.log('Usuario intentando eliminar:', { role: userRole, email: userEmail });
+
+      if (userRole === 'admin' || (userRole === 'premium' && product.owner === userEmail)) {
+        await productManager.deleteProduct(productId);
+
+        if (product.owner !== 'admin' && userRole === 'admin') {
+          const ownerUser = await User.findOne({ email: product.owner });
+          if (ownerUser && ownerUser.role === 'premium') {
+            await sendProductDeletedEmail(ownerUser.email, product.title);
+          }
+        }
+
+        const updatedResult = await productManager.getProducts(10, 1);
+        io.emit('products', updatedResult);
+        callback({ success: true });
+      } else {
+        callback({ success: false, error: 'No tienes permiso para eliminar este producto' });
+      }
     } catch (error) {
+      console.error('Error al eliminar producto:', error);
       logger.error('Error al eliminar producto:', error);
-      socket.emit('error', { message: 'Error al eliminar producto' });
+      callback({ success: false, error: 'Error al eliminar producto' });
     }
   });
 

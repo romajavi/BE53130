@@ -5,7 +5,6 @@ const logger = require('../utils/logger');
 class ProductManager {
     async addProduct({ title, description, price, img, code, stock, category, status = true, user }) {
         try {
-            console.log('Intentando agregar producto con user:', user);
             if (!user) {
                 throw new Error('Usuario no autenticado');
             }
@@ -20,9 +19,7 @@ class ProductManager {
                 status,
                 owner: user.role === 'admin' ? 'admin' : user.email
             });
-            console.log('Nuevo producto antes de guardar:', newProduct);
             await newProduct.save();
-            console.log('Producto guardado exitosamente');
             return newProduct;
         } catch (error) {
             console.error('Error en addProduct:', error);
@@ -102,12 +99,12 @@ class ProductManager {
 
     async deleteProduct(id) {
         try {
-            const product = await Product.findByIdAndDelete(id).lean();
+            const product = await Product.findByIdAndDelete(id);
             if (!product) {
-                logger.warn('Producto no encontrado');
+                logger.warn('Producto no encontrado para eliminar');
                 return null;
             }
-            logger.info('Producto eliminado correctamente');
+            logger.info('Producto eliminado correctamente:', product);
             return product;
         } catch (error) {
             logger.error('Error al eliminar producto:', error.message);

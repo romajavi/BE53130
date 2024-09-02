@@ -87,16 +87,16 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
     const socket = io({
-      withCredentials: true,
-      transportOptions: {
-        polling: {
-          extraHeaders: {
-            'X-Requested-With': 'XMLHttpRequest'
-          }
+        withCredentials: true,
+        transportOptions: {
+            polling: {
+                extraHeaders: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            }
         }
-      }
     });
-    
+
     socket.on('connect', () => {
         console.log('Conectado a Socket.IO');
     });
@@ -110,6 +110,7 @@
         email: "{{user.email}}",
         role: "{{user.role}}"
     };
+    
     const productList = document.getElementById('product-list');
     const productForm = document.getElementById('product-form');
     const formTitle = document.getElementById('form-title');
@@ -243,7 +244,7 @@
         cancelBtn.style.display = 'none';
     }
 
-    productForm.addEventListener('submit', function(e) {
+    productForm.addEventListener('submit', function (e) {
         e.preventDefault();
         console.log('Formulario enviado');
         const productData = {
@@ -274,7 +275,13 @@
 
     function deleteProduct(productId) {
         if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-            socket.emit('deleteProduct', productId);
+            socket.emit('deleteProduct', { productId: productId, userRole: user.role, userEmail: user.email }, (response) => {
+                if (response.success) {
+                    alert('Producto eliminado correctamente');
+                } else {
+                    alert('Error al eliminar el producto: ' + response.error);
+                }
+            });
         }
     }
 

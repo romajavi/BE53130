@@ -15,12 +15,18 @@ const authMiddleware = async (req, res, next) => {
   }
 
   if (req.isAuthenticated()) {
+    // para actualizar last_connection
+    await User.findByIdAndUpdate(req.user._id, { last_connection: new Date() });
     return next();
   }
 
   if (userEmail) {
     try {
-      const user = await User.findOne({ email: userEmail });
+      const user = await User.findOneAndUpdate(
+        { email: userEmail },
+        { last_connection: new Date() },
+        { new: true }
+      );
       if (user) {
         req.user = user;
         if (user.cartId) {
@@ -58,7 +64,6 @@ const isUser = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  logger.debug('Verificando rol de admin para:', req.user);
   if (req.user && (req.user.role === 'admin' || req.user.email === 'adminCoder@coder.com')) {
     next();
   } else {
