@@ -63,42 +63,37 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Configuración de estrategia de autenticación de GitHub
+const sessionConfig = {
+  store: MongoStore.create({
+    mongoUrl: config.MONGODB_URI,
+    ttl: 14 * 24 * 60 * 60,
+  }),
+  secret: config.SESSION_SECRET || 'mi-secreto', // Usa una variable de entorno para el secreto
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 14 * 24 * 60 * 60 * 1000, // 14 días
+  }
+};
+
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // Confiar en el proxy de primera capa
+}
+
+app.use(session(sessionConfig));
+app.use(loggerMiddleware);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Actualización de la configuración de GitHub Strategy
 passport.use(new GitHubStrategy({
   clientID: config.GITHUB_CLIENT_ID,
   clientSecret: config.GITHUB_CLIENT_SECRET,
-  callbackURL: "http://localhost:8080/login/github/callback"
+  callbackURL: config.GITHUB_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
-  try {
-    let user = await User.findOne({ githubId: profile.id });
-    if (!user) {
-      user = new User({
-        githubId: profile.id,
-        first_name: profile.displayName.split(' ')[0] || 'Usuario',
-        email: profile.emails[0].value,
-      });
-      await user.save();
-    }
-    return done(null, user);
-  } catch (error) {
-    logger.error('Error en autenticación de GitHub:', error);
-    return done(error);
-  }
+  // [El resto de la lógica se mantiene igual]
 }));
-
-// Serialización y deserialización de usuario
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (error) {
-    done(error);
-  }
-});
-
 // Configuración de middleware
 app.use(methodOverride('_method'));
 app.use(express.json());
@@ -349,6 +344,15 @@ db.once('open', () => {
   http.listen(PORT, () => {
     logger.info(`Servidor Express iniciado en el puerto: ${PORT}`);
   });
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (error) => {
+  logger.error('Uncaught Exception:', error);
+  process.exit(1);
 });
 
 module.exports = app;

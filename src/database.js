@@ -9,16 +9,13 @@ logger.info('Intentando conectar a MongoDB con la URI:', uri);
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  connectTimeoutMS: 30000, 
-  socketTimeoutMS: 30000,          
+  serverSelectionTimeoutMS: 5000,
 })
-  .then(() => {
-    logger.info('Conexión exitosa a MongoDB Atlas');
-  })
-  .catch((error) => {
-    logger.error('Error al conectar a MongoDB Atlas:', error);
-    process.exit(1);
-  });
+.then(() => logger.info('Conexión exitosa a MongoDB Atlas'))
+.catch((error) => {
+  logger.error('Error al conectar a MongoDB Atlas:', error);
+  process.exit(1);
+});
 
 const db = mongoose.connection;
 db.on('error', (error) => {
