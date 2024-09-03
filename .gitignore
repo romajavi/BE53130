@@ -1,6 +1,7 @@
 node_modules/
 .txt
 populate-products.js
+.env
 
 
 
