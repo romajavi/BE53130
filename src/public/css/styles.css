@@ -721,7 +721,8 @@ body {
     margin-top: 20px;
 }
 
-.btn, .form-container button {
+.btn,
+.form-container button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
@@ -735,7 +736,8 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.btn:hover, .form-container button:hover {
+.btn:hover,
+.form-container button:hover {
     background-color: #45a049;
 }
 
@@ -834,4 +836,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+/*Noton para elimninar usuarios inactivos*/
+
+.delete-inactive-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.delete-inactive-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ab8262;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-inactive-btn:hover {
+    background-color: #c82333;
+}
+
+.delete-inactive-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.5);
 }

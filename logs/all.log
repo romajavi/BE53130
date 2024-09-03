@@ -11968,3 +11968,141 @@
 2024-09-02 20:30:24:3024 [35mhttp[39m: [35mGET /img/2.png[39m
 2024-09-02 20:30:30:3030 [37mdebug[39m: [37mProducto obtenido por ID:[39m
 2024-09-02 20:30:30:3030 [32minfo[39m: [32mProducto eliminado correctamente:[39m
+2024-09-02 22:43:16:4316 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-09-02 22:43:16:4316 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-09-02 22:43:16:4316 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-09-02 22:43:23:4323 [35mhttp[39m: [35mGET /[39m
+2024-09-02 22:43:23:4323 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:43:23:4323 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:43:23:4323 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:43:24:4324 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:43:24:4324 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-09-02 22:43:24:4324 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:43:26:4326 [35mhttp[39m: [35mGET /login[39m
+2024-09-02 22:43:26:4326 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:43:26:4326 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:43:26:4326 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:43:26:4326 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:43:26:4326 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:43:38:4338 [35mhttp[39m: [35mPOST /login[39m
+2024-09-02 22:43:38:4338 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-09-02 22:43:38:4338 [37mdebug[39m: [37mreq.body:[39m
+2024-09-02 22:43:38:4338 [32minfo[39m: [32mUsuario admin autenticado:[39m
+2024-09-02 22:43:38:4338 [35mhttp[39m: [35mGET /realtimeproducts[39m
+2024-09-02 22:43:39:4339 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:43:39:4339 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:43:41:4341 [35mhttp[39m: [35mGET /api/users[39m
+2024-09-02 22:43:41:4341 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:43:41:4341 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:43:41:4341 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:44:45:4445 [35mhttp[39m: [35mGET /api/users[39m
+2024-09-02 22:44:45:4445 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:44:45:4445 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:45:01:451 [35mhttp[39m: [35mDELETE /api/users/inactive[39m
+2024-09-02 22:45:05:455 [32minfo[39m: [32mCorreo de eliminación por inactividad enviado a gonzalez.roman21@gmail.com[39m
+2024-09-02 22:45:06:456 [35mhttp[39m: [35mGET /api/users[39m
+2024-09-02 22:45:07:457 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:45:07:457 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:45:51:4551 [35mhttp[39m: [35mGET /api/users[39m
+2024-09-02 22:45:51:4551 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:45:51:4551 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:46:06:466 [35mhttp[39m: [35mGET /api/users[39m
+2024-09-02 22:46:07:467 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:46:07:467 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:46:48:4648 [35mhttp[39m: [35mGET /api/users[39m
+2024-09-02 22:46:48:4648 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:46:48:4648 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:10:4710 [35mhttp[39m: [35mGET /[39m
+2024-09-02 22:47:11:4711 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:11:4711 [35mhttp[39m: [35mGET /css/style.css[39m
+2024-09-02 22:47:11:4711 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:11:4711 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:47:11:4711 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:47:11:4711 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:47:12:4712 [35mhttp[39m: [35mGET /login[39m
+2024-09-02 22:47:12:4712 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:12:4712 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:47:12:4712 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:47:12:4712 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:47:12:4712 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:17:4717 [35mhttp[39m: [35mPOST /login[39m
+2024-09-02 22:47:17:4717 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-09-02 22:47:17:4717 [37mdebug[39m: [37mreq.body:[39m
+2024-09-02 22:47:17:4717 [33mwarn[39m: [33mIntento de inicio de sesión fallido: usuario no encontrado (gonzalez.roman21@gmail.com)[39m
+2024-09-02 22:47:17:4717 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:17:4717 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:17:4717 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:47:17:4717 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:47:17:4717 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:47:19:4719 [35mhttp[39m: [35mGET /register[39m
+2024-09-02 22:47:19:4719 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:19:4719 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:43:4743 [35mhttp[39m: [35mPOST /register[39m
+2024-09-02 22:47:43:4743 [37mdebug[39m: [37mIntentando hashear la contraseña: 1234[39m
+2024-09-02 22:47:44:4744 [37mdebug[39m: [37mContraseña hasheada: $2b$10$sRnupObsC6ogfOQW55TC4uEsfHE/lpgm6bOmuBbAgDutRdCiHwTry[39m
+2024-09-02 22:47:44:4744 [32minfo[39m: [32mUsuario registrado: gonzalez.roman21@gmail.com[39m
+2024-09-02 22:47:44:4744 [35mhttp[39m: [35mGET /login[39m
+2024-09-02 22:47:44:4744 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:44:4744 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:44:4744 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:47:44:4744 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:47:44:4744 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:47:48:4748 [35mhttp[39m: [35mPOST /login[39m
+2024-09-02 22:47:48:4748 [37mdebug[39m: [37mRecibida petición POST a /login[39m
+2024-09-02 22:47:48:4748 [37mdebug[39m: [37mreq.body:[39m
+2024-09-02 22:47:48:4748 [37mdebug[39m: [37mComparando contraseñas para el usuario: gonzalez.roman21@gmail.com[39m
+2024-09-02 22:47:48:4748 [32minfo[39m: [32mUsuario autenticado:[39m
+2024-09-02 22:47:48:4748 [37mdebug[39m: [37mCartId almacenado en la sesión:[39m
+2024-09-02 22:47:49:4749 [35mhttp[39m: [35mGET /products[39m
+2024-09-02 22:47:49:4749 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:49:4749 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:49:4749 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-09-02 22:47:51:4751 [35mhttp[39m: [35mGET /profile[39m
+2024-09-02 22:47:51:4751 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:47:51:4751 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:51:4751 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:52:4752 [35mhttp[39m: [35mGET /chat[39m
+2024-09-02 22:47:52:4752 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:52:4752 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:56:4756 [35mhttp[39m: [35mGET /products[39m
+2024-09-02 22:47:57:4757 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:47:57:4757 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-09-02 22:47:57:4757 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:57:4757 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:57:4757 [35mhttp[39m: [35mGET /chat[39m
+2024-09-02 22:47:58:4758 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:47:58:4758 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:58:4758 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:47:58:4758 [35mhttp[39m: [35mGET /profile[39m
+2024-09-02 22:47:58:4758 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:47:58:4758 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:47:58:4758 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:00:480 [35mhttp[39m: [35mGET /chat[39m
+2024-09-02 22:48:00:480 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:00:480 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:01:481 [35mhttp[39m: [35mGET /profile[39m
+2024-09-02 22:48:01:481 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:48:01:481 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:01:481 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:03:483 [35mhttp[39m: [35mGET /products[39m
+2024-09-02 22:48:03:483 [35mhttp[39m: [35mGET /js/main.js[39m
+2024-09-02 22:48:03:483 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:03:483 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:03:483 [35mhttp[39m: [35mGET /chat[39m
+2024-09-02 22:48:04:484 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:48:04:484 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:04:484 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:12:4812 [35mhttp[39m: [35mGET /profile[39m
+2024-09-02 22:48:12:4812 [32minfo[39m: [32mCliente desconectado[39m
+2024-09-02 22:48:12:4812 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:12:4812 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /logout[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /login[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /img/2.png[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /img/carrousel3.png[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
+2024-09-02 22:48:16:4816 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-02 22:48:21:4821 [35mhttp[39m: [35mGET /register[39m
+2024-09-02 22:48:21:4821 [35mhttp[39m: [35mGET /css/styles.css[39m
+2024-09-02 22:48:21:4821 [35mhttp[39m: [35mGET /img/2.png[39m

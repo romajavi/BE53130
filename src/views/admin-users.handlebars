@@ -100,17 +100,19 @@
     }
 </script>
 
-<button id="deleteInactiveUsers">Eliminar Usuarios Inactivos</button>
+<div class="delete-inactive-container">
+    <button id="deleteInactiveUsers" class="delete-inactive-btn">ELIMINAR USUARIOS INACTIVOS</button>
+</div>
 
 <script>
-document.getElementById('deleteInactiveUsers').addEventListener('click', async () => {
-    if (confirm('¿Estás seguro de que quieres eliminar este usuario? Esta opción eliminará a todos los usuarios sin conexión en los ultimos 30 minutos.')) {
-        const response = await fetch('/api/users/inactive', { method: 'DELETE' });
-        const data = await response.json();
-        alert(data.message);
-        location.reload();
-    }
-});
+    document.getElementById('deleteInactiveUsers').addEventListener('click', async () => {
+        if (confirm('¿Estás seguro de que quieres eliminar los usuarios inactivos? Esta acción eliminará a todos los usuarios sin conexión en los últimos 30 minutos.')) {
+            const response = await fetch('/api/users/inactive', { method: 'DELETE' });
+            const data = await response.json();
+            alert(data.message);
+            location.reload();
+        }
+    });
 </script>
 
 <link rel="stylesheet" href="/css/styles.css">
