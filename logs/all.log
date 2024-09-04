@@ -12351,3 +12351,9 @@
 2024-09-03 14:32:24:3224 [35mhttp[39m: [35mGET /img/carrousel1.jpg[39m
 2024-09-03 14:32:24:3224 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
 2024-09-03 14:32:24:3224 [35mhttp[39m: [35mGET /img/carrousel2.jpg[39m
+2024-09-04 11:46:55:4655 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-09-04 11:46:56:4656 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-09-04 11:46:56:4656 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
+2024-09-04 11:57:41:5741 [32minfo[39m: [32mIntentando conectar a MongoDB con la URI:[39m
+2024-09-04 11:57:42:5742 [32minfo[39m: [32mConexión exitosa a MongoDB Atlas[39m
+2024-09-04 11:57:42:5742 [32minfo[39m: [32mServidor Express iniciado en el puerto: 8080[39m
